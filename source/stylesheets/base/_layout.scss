@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: $f-pixel-condensed;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+.anchor {
+  display: block;
+  position: relative;
+  bottom: -10px;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: lighten($c-fore, 10%);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $c-primary;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: darken($c-primary, 15%);
+}

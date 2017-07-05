@@ -1,0 +1,15 @@
+.cursor {
+  position: absolute;
+  top: 0;
+  width: 18px;
+  height: 100%;
+  background-color: darken($c-secondary, 30%);
+  margin-left: 2px;
+  animation: blink-animation 3s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,261 @@
+.header {
+  position: fixed;
+  top: -70px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+  animation: slide 0.5s linear;
+  animation-fill-mode: forwards;
+
+  nav {
+    background-color: #fff;
+
+    &.nav-experience {
+      background-color: $c-fore;
+
+      .clock {
+        color: $c-secondary;
+      }
+
+      .burger {
+        span {
+          background-color: $c-secondary;
+        }
+      }
+    }
+
+    &.nav-studies {
+      background-color: darken($c-secondary, 10%);
+
+      .clock {
+        color: #fff;
+      }
+
+      .burger {
+        span {
+          background-color: #fff;
+        }
+      }
+    }
+
+    &.nav-projects {
+      background-color: $c-fore;
+
+      .clock {
+        color: $c-primary;
+      }
+
+      .burger {
+        span {
+          background-color: $c-primary;
+        }
+      }
+    }
+  }
+
+  .burger {
+    display: none;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+
+    li {
+      flex: 0 0 auto;
+
+      a {
+        display: inline-block;
+        font-size: 28px;
+        line-height: 70px;
+        padding: 0 20px;
+        background-color: $c-secondary;
+        color: $c-fore;
+        text-decoration: none;
+        text-align: center;
+        text-transform: uppercase;
+
+        &:hover {
+          background-color: darken($c-secondary, 25%);
+          color: #fff;
+        }
+      }
+
+      &.active {
+        a {
+          background-color: $c-primary;
+          color: #fff;
+          text-align: center;
+        }
+      }
+    }
+
+    &.sections {
+      li {
+        margin-right: 15px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        a {
+          min-width: 12vw;
+        }
+      }
+    }
+
+    &.languages {
+      margin-right: 15px;
+
+      li {
+        a {
+          padding: 0 10px;
+        }
+      }
+    }
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    > * {
+      flex: 0 0 auto;
+    }
+  }
+
+  .clock {
+    margin: -2px 0 0 0;
+    color: $c-fore-very-light;
+    height: 70px;
+
+    .time {
+      font: 400 80px/70px $f-pixel;
+    }
+
+    .seconds {
+      font: 400 60px/70px $f-pixel;
+    }
+
+    .blinker {
+      font: 400 80px/70px $f-pixel;
+      animation: blinker 1s ease infinite;
+
+      &:before {
+        content: ':';
+      }
+    }
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes slide {
+  0% {
+    top: -70px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+@include media($small-desktop) {
+  .header {
+    top: -40px;
+
+    ul {
+      li {
+        a {
+          font-size: 18px;
+          line-height: 40px;
+          padding: 0 10px;
+        }
+      }
+    }
+
+    .clock {
+      height: 40px;
+
+      .time {
+        font-size: 30px;
+        line-height: 40px;
+      }
+
+      .seconds {
+        font-size: 22px;
+        line-height: 40px;
+      }
+
+      .blinker {
+        font-size: 30px;
+        line-height: 40px;
+      }
+    }
+
+    ul.languages {
+      margin: 0;
+    }
+  }
+}
+
+@include media($mobile) {
+  .header {
+    z-index: 500;
+    position: absolute;
+
+    &.sticky {
+      position: fixed;
+    }
+
+    nav {
+      background-color: transparent;
+
+      &.nav-intro {
+        .clock {
+          display: none;
+        }
+
+        &.mobile-scrolled {
+          background-color: #fff;
+
+          .clock {
+            display: block;
+          }
+        }
+      }
+
+      ul.sections {
+        display: none;
+      }
+    }
+
+    .clock {
+      .time {
+        line-height: 43px;
+      }
+    }
+
+    .burger {
+      display: block;
+      padding: 10px 0 0 15px;
+
+      span {
+        display: block;
+        width: 36px;
+        height: 4px;
+        background-color: $c-fore-very-light;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

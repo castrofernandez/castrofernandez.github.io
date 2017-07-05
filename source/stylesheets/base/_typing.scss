@@ -1,0 +1,19 @@
+.typing {
+  visibility: hidden;
+
+  &.started {
+    visibility: visible;
+  }
+
+  .to-type {
+    display: none;
+  }
+}
+
+.typing-chain {
+  visibility: hidden;
+
+  &.started {
+    visibility: visible;
+  }
+}
