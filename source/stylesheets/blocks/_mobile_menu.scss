@@ -94,6 +94,7 @@
 
     &.opened {
       .app-wrapper {
+        position: fixed;
         max-height: 100vh;
         left: 250px;
 
