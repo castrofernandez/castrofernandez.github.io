@@ -26,6 +26,7 @@ $(function() {
 
     $links.click(function(event) {
       $app.removeClass('opened');
+      $header.addClass('sticky');
     });
   })();
 });
