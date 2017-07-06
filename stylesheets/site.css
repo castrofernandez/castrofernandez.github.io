@@ -316,10 +316,13 @@ body {
       margin: 0; } }
 @media only screen and (max-width: 767px) {
   .header {
+    top: -50px;
     z-index: 500;
     position: absolute; }
     .header.sticky {
       position: fixed; }
+    .header ul li a {
+      line-height: 50px; }
     .header nav {
       background-color: transparent; }
       .header nav.nav-intro .clock {
@@ -330,11 +333,17 @@ body {
           display: block; }
       .header nav ul.sections {
         display: none; }
-    .header .clock .time {
-      line-height: 43px; }
+    .header .clock {
+      height: 50px; }
+      .header .clock .time {
+        line-height: 53px; }
+      .header .clock .seconds {
+        line-height: 50px; }
+      .header .clock .blinker {
+        line-height: 50px; }
     .header .burger {
       display: block;
-      padding: 10px 0 0 15px; }
+      padding: 15px 0 0 15px; }
       .header .burger span {
         display: block;
         width: 36px;
@@ -1277,7 +1286,8 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    height: calc(100vh - 200px); }
+    height: calc(100vh - 200px);
+    min-height: 700px; }
     .projects .interface .menu {
       width: 35%;
       -webkit-box-flex: 0;

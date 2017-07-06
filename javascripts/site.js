@@ -9488,6 +9488,7 @@ $(function() {
 
     $links.click(function(event) {
       $app.removeClass('opened');
+      $header.addClass('sticky');
     });
   })();
 });
@@ -10398,10 +10399,16 @@ $(function() {
 
   function getPuzzleWidth() {
     if (IsMobile.isMobile()) {
-      return (window.innerWidth > 0) ? window.innerWidth : screen.width;
+      var size = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+
+      return round(size);
     }
 
-    return Math.round(puzzle.offsetWidth / SIZE) * SIZE;
+    return round(puzzle.offsetWidth);
+  }
+
+  function round(number) {
+    return Math.round(number / SIZE) * SIZE;
   }
 
   // Creacion
