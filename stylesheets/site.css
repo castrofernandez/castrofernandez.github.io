@@ -418,6 +418,7 @@ body {
     .app .mobile-menu {
       display: block; }
     .app.opened .app-wrapper {
+      position: fixed;
       max-height: 100vh;
       left: 250px; }
       .app.opened .app-wrapper .header {
