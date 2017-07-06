@@ -210,11 +210,20 @@
 
 @include media($mobile) {
   .header {
+    top: -50px;
     z-index: 500;
     position: absolute;
 
     &.sticky {
       position: fixed;
+    }
+
+    ul {
+      li {
+        a {
+          line-height: 50px;
+        }
+      }
     }
 
     nav {
@@ -240,14 +249,24 @@
     }
 
     .clock {
+      height: 50px;
+
       .time {
-        line-height: 43px;
+        line-height: 53px;
+      }
+
+      .seconds {
+        line-height: 50px;
+      }
+
+      .blinker {
+        line-height: 50px;
       }
     }
 
     .burger {
       display: block;
-      padding: 10px 0 0 15px;
+      padding: 15px 0 0 15px;
 
       span {
         display: block;
