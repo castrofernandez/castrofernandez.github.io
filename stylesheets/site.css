@@ -222,7 +222,7 @@ body {
               flex: 0 0 auto; }
       .header ul li a {
         display: inline-block;
-        font-size: 28px;
+        font-size: 24px;
         line-height: 70px;
         padding: 0 20px;
         background-color: #00FEFE;
@@ -246,7 +246,8 @@ body {
     .header ul.languages {
       margin-right: 15px; }
       .header ul.languages li a {
-        padding: 0 10px; }
+        padding: 0 7px;
+        min-width: 62px; }
   .header nav {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -323,6 +324,9 @@ body {
       position: fixed; }
     .header ul li a {
       line-height: 50px; }
+    .header ul.languages li a {
+      min-width: 48px;
+      font-size: 17px; }
     .header nav {
       background-color: transparent; }
       .header nav.nav-intro .clock {
@@ -429,7 +433,9 @@ body {
   background-color: #fff;
   color: #4a4a4a;
   position: relative;
-  min-height: 100vh; }
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden; }
   .intro > .wrapper {
     padding: 80px 50px 40px 50px;
     max-width: 1300px; }
@@ -886,7 +892,7 @@ body {
       line-height: 34px;
       text-transform: lowercase;
       position: absolute;
-      color: #373737; }
+      color: #444444; }
     .experience .section-title:before {
       content: 'defmodule';
       top: -34px;
@@ -906,7 +912,7 @@ body {
       content: counter(line);
       position: absolute;
       left: -80px;
-      color: #373737;
+      color: #444444;
       text-align: right;
       -webkit-user-select: none;
          -moz-user-select: none;
@@ -914,7 +920,7 @@ body {
               user-select: none; }
   .experience .end:after {
     content: 'end';
-    color: rgba(0, 254, 254, 0.1); }
+    color: rgba(0, 254, 254, 0.2); }
   .experience .unindent {
     margin-left: -40px; }
   .experience .indent {
@@ -922,7 +928,7 @@ body {
   .experience .ide {
     position: relative;
     font: 400 30px/22px pixel_condensed, sans-serif;
-    color: #373737; }
+    color: #444444; }
     .experience .ide .array-start,
     .experience .ide .array-end {
       display: block;
@@ -968,12 +974,12 @@ body {
           color: #deae0b; }
       .experience .ide .where .link:before {
         content: 'def';
-        color: rgba(0, 254, 254, 0.1);
+        color: rgba(0, 254, 254, 0.2);
         margin-right: 20px;
         text-decoration: none; }
       .experience .ide .where .link:after {
         content: 'do';
-        color: rgba(0, 254, 254, 0.1);
+        color: rgba(0, 254, 254, 0.2);
         margin-left: 20px;
         text-decoration: none; }
     .experience .ide .technologies ul {
@@ -992,7 +998,7 @@ body {
       margin: 15px 0; }
       .experience .ide .technologies .array.inline > :first-child:before {
         content: '[';
-        color: #373737;
+        color: #444444;
         margin-right: 10px; }
       .experience .ide .technologies .array.inline:after {
         content: ']'; }
@@ -1002,7 +1008,7 @@ body {
           margin-left: 10px; }
         .experience .ide .technologies .array.inline li:not(:last-child):after {
           content: ',';
-          color: #373737; }
+          color: #444444; }
     .experience .ide .technologies > ul li:not(:last-child) .array.inline:after {
       content: '],';
       color: #373737; }
@@ -1460,7 +1466,7 @@ body {
     font: 400 30px/30px pixel_condensed, sans-serif;
     text-align: center;
     padding: 10px 20px;
-    margin: 0 20px;
+    margin: 0 20px 20px 20px;
     text-decoration: none;
     background-color: #F14848;
     color: #fff; }
@@ -1478,6 +1484,25 @@ body {
       color: #fff; }
       .footer .link.twitter:hover {
         background-color: #0c85d0; }
+    .footer .link.github {
+      background-color: #24292e;
+      color: #fff; }
+      .footer .link.github:hover {
+        background-color: #0e1011; }
+  .footer .made {
+    background-color: #00b7b7;
+    color: #00cbcb;
+    padding: 2px 2px 6px 2px;
+    margin: 0;
+    text-align: center; }
+    .footer .made img {
+      height: 28px;
+      margin-right: 10px;
+      position: relative;
+      top: 4px; }
+    .footer .made span {
+      font: 400 32px/28px pixel, sans-serif;
+      text-transform: uppercase; }
 
 @media only screen and (max-width: 1024px) {
   .footer .wrapper {
@@ -1485,7 +1510,9 @@ body {
   .footer .name {
     font-size: 80px;
     line-height: 80px;
-    margin-top: 40px; } }
+    margin-top: 40px; }
+  .footer .link {
+    width: 40%; } }
 @media only screen and (max-width: 767px) {
   .footer .wrapper {
     padding: 40px 20px 50px 20px; }

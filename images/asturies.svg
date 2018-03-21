@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="27px" viewBox="0 0 20 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" fill="#00CBCB">
+            <g id="Group">
+                <polygon id="Rectangle-11" points="9 0 11 0 11 27 9 27"></polygon>
+                <polygon id="Rectangle-12" points="8 1 12 1 12 2 8 2"></polygon>
+                <polygon id="Rectangle-13" points="7 25 13 25 13 26 7 26"></polygon>
+                <polygon id="Rectangle-14" points="8 24 12 24 12 25 8 25"></polygon>
+                <polygon id="Rectangle-15" points="0 10 20 10 20 12 0 12"></polygon>
+                <polygon id="Rectangle-17" points="1 9 2 9 2 13 1 13"></polygon>
+                <polygon id="Rectangle-18" points="18 9 19 9 19 13 18 13"></polygon>
+                <polygon id="Rectangle-16" points="8 9 12 9 12 13 8 13"></polygon>
+            </g>
+            <path d="M3,15 L3,11.71875 L6.28125,11.71875 L6.28125,15 L5.8125,15 L5.8125,13.875 L3.46875,13.875 L3.46875,15 L3,15 Z M3.46875,13.40625 L5.8125,13.40625 L5.8125,12.1875 L3.46875,12.1875 L3.46875,13.40625 Z" id="A"></path>
+            <polygon id="W" points="13 15 13 11.71875 13.46875 11.71875 13.46875 14.53125 14.6875 14.53125 14.6875 11.71875 15.15625 11.71875 15.15625 14.53125 16.375 14.53125 16.375 11.71875 16.84375 11.71875 16.84375 15"></polygon>
+        </g>
+    </g>
+</svg>

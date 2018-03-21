@@ -15,10 +15,10 @@
   <header class="mobile-menu">
   <p class="title">Juan Castro</p>
   <ul class="sections">
-    <li><a href="#intro" data-es="Inicio">Home</a></li>
-    <li><a href="#experience" data-es="Experiencia">Experience</a></li>
-    <li><a href="#studies" data-es="Estudios">Studies</a></li>
-    <li><a href="#projects" data-es="Proyectos">Projects</a></li>
+    <li><a href="#intro" data-es="Inicio" data-ast="Entamu">Home</a></li>
+    <li><a href="#experience" data-es="Experiencia" data-ast="Esperiencia">Experience</a></li>
+    <li><a href="#studies" data-es="Estudios" data-ast="Estudios">Studies</a></li>
+    <li><a href="#projects" data-es="Proyectos" data-ast="Proyeutos">Projects</a></li>
   </ul>
   <ul class="links">
     <li><a class="link mail" href="mailto:info@juancastro.es">info@juancastro.es</a></li>
@@ -45,10 +45,10 @@
       <span></span>
     </a>
     <ul class="sections">
-      <li class="active"><a href="#intro" data-es="Inicio">Home</a></li>
-      <li><a href="#experience" data-es="Experiencia">Experience</a></li>
-      <li><a href="#studies" data-es="Estudios">Studies</a></li>
-      <li><a href="#projects" data-es="Proyectos">Projects</a></li>
+      <li class="active"><a href="#intro" data-es="Inicio" data-ast="Entamu">Home</a></li>
+      <li><a href="#experience" data-es="Experiencia" data-ast="Esperiencia">Experience</a></li>
+      <li><a href="#studies" data-es="Estudios" data-ast="Estudios">Studies</a></li>
+      <li><a href="#projects" data-es="Proyectos" data-ast="Proyeutos">Projects</a></li>
     </ul>
     <p class="clock" id="clock">
       <span class="time hour"></span>
@@ -63,6 +63,9 @@
       <li>
         <a href="/?lang=es" class="lang-s" title="Español" data-language="es">ES</a>
       </li>
+      <li>
+        <a href="/?lang=ast" class="lang-s" title="Asturianu" data-language="ast">AST</a>
+      </li>
     </ul>
   </nav>
 </header>
@@ -75,9 +78,9 @@
       <div class="line">
         <p class="typing">Juan Castro</p>
         <div>
-          <img alt="" src="/images/heart.png" />
-          <img alt="" src="/images/heart.png" />
-          <img alt="" src="/images/heart-semi.png" />
+          <img alt="" src="/images/heart.svg" />
+          <img alt="" src="/images/heart.svg" />
+          <img alt="" src="/images/heart-semi.svg" />
         </div>
       </div>
       <hr />
@@ -108,7 +111,7 @@
       </figure>
       <div class="tetris" id="tetris"></div>
       <div class="scores">
-        <p class="message typing">¡Bienvenido!</p>
+        <p class="message typing" data-es="¡Bienvenido!" data-ast="¡Bienveníu!">¡Bienvenido!</p>
         <p class="message typing">Welcome!</p>
         <p class="message"><span id="level"></span></p>
         <div class="score">
@@ -120,12 +123,12 @@
   </div>
   <h2>
     <ul class="typing-chain">
-      <li data-es="Informática" class="typing-child">Computer Science</li>
-      <li data-es="Desarrollador Front" class="typing-child">Front Developer</li>
-      <li data-es="Diseño" class="typing-child">Design</li>
+      <li data-es="Informática" data-ast="Informática" class="typing-child">Computer Science</li>
+      <li data-es="Desarrollador Front" data-ast="Desenvolvedor Front" class="typing-child">Front Developer</li>
+      <li data-es="Diseño" data-ast="Diseñu" class="typing-child">Design</li>
     </ul>
     <ul class="typing-chain">
-      <li data-es="Desarrollador Back" class="typing-child">Back Developer</li>
+      <li data-es="Desarrollador Back" data-ast="Desenvolvedor Back" class="typing-child">Back Developer</li>
       <li class="typing-child">Ruby</li>
       <li class="typing-child">Python</li>
     </ul>
@@ -144,27 +147,91 @@
 
 <section class="experience cv-section" data-section="experience">
   <div class="wrapper">
-    <h2 class="section-title title-secondary animation-section typing" data-es="Experiencia">Experience</h2>
+    <h2 class="section-title title-secondary animation-section typing" data-es="Experiencia" data-ast="Esperiencia">Experience</h2>
     <div class="ide">
 
       <article class="unit animation-section fading">
         <h3 class="where line">
-          <span class="link"><a href="https://the-cocktail.com/" rel="nofollow">The Cocktail</a></span>
+          <span class="link"><a href="https://www.edreamsodigeo.com/" rel="nofollow">eDreams</a></span>
           <span class="cursor"></span>
         </h3>
         <div class="unit-data line">
           <span class="array-start unindent"></span>
           <h4 class="position trail-comma line">
             <span class="desc">position</span>
-            <span class="string" data-es="Desarrollador Full Stack">Full Stack Developer</span>
+            <span class="string" data-es="Desarrollador Full Stack" data-ast="Desenvolvedor Full Stack">Full Stack Developer</span>
+          </h4>
+          <h4 class="when trail-comma line">
+            <span class="desc">from</span>
+            <span class="number">2017</span>
+          </h4>
+          <h5 class="description trail-comma line">
+            <span class="desc">description</span>
+            <span class="string" data-es="Desarrollo web y mantenimiento de producto" 
+              data-ast="Desenvuelvo web y caltenimientu de productu">Web development and application maintenance</span>
+          </h5>
+          <div class="technologies line">
+            <span class="desc">technologies</span>
+            <span class="array-start line"></span>
+            <ul>
+              <li>
+                <span class="desc line">backend</span>
+                <ul class="array inline line">
+                  <li><span class="symbol">Java</span></li>
+                  <li><span class="symbol">JBoss</span></li>
+                  <li><span class="symbol">Jenkins</span></li>
+                </ul>
+              </li>
+              <li>
+                <span class="desc line">frontend</span>
+                <ul class="array inline line">
+                  <li><span class="symbol">HTML5</span></li>
+                  <li><span class="symbol">CSS3</span></li>
+                  <li><span class="symbol">jQuery</span></li>
+                  <li><span class="symbol">SASS</span></li>
+                </ul>
+                <ul class="array inline line">
+                  <li><span class="symbol">Webpack</span></li>
+                  <li><span class="symbol">Underscore.js</span></li>
+                  <li><span class="symbol">NPM</span></li>
+                </ul>
+                <ul class="array inline line">
+                <li><span class="symbol">Cucumber</span></li>
+                <li><span class="symbol">Gherkin</span></li>
+              </ul>
+              </li>
+            </ul>
+            <span class="array-end line"></span>
+          </div>
+          <span class="array-end unindent line"></span>
+        </div>
+        <span class="end line"></span>
+        <span class="line empty"></span>
+      </article>
+
+      <article class="unit animation-section fading">
+        <h3 class="where line">
+          <span class="link"><a href="https://the-cocktail.com/" rel="nofollow">The Cocktail</a></span>
+        </h3>
+        <div class="unit-data line">
+          <span class="array-start unindent"></span>
+          <h4 class="position trail-comma line">
+            <span class="desc">position</span>
+            <span class="string" data-es="Desarrollador Full Stack" 
+              data-ast="Desenvolvedor Full Stack">Full Stack Developer</span>
           </h4>
           <h4 class="when trail-comma line">
             <span class="desc">from</span>
             <span class="number">2016</span>
           </h4>
+          <h4 class="when trail-comma line">
+            <span class="desc">to</span>
+            <span class="number">2017</span>
+          </h4>
           <h5 class="description trail-comma line">
             <span class="desc">description</span>
-            <span class="string" data-es="Desarrollo web y mantenimiento de aplicaciones">Web development and application maintenance</span>
+            <span class="string" data-es="Desarrollo web y mantenimiento de aplicaciones"
+            data-ast="Desenvuelvo web y caltenimientu d'aplicaciones">Web development and application maintenance</span>
           </h5>
           <div class="technologies line">
             <span class="desc">technologies</span>
@@ -228,7 +295,7 @@
           <span class="array-start unindent"></span>
           <h4 class="position trail-comma line">
             <span class="desc">position</span>
-            <span class="string" data-es="Desarrollador Full Stack">Full Stack Developer</span>
+            <span class="string" data-es="Desarrollador Full Stack" data-ast="Desenvolvedor Full Stack">Full Stack Developer</span>
           </h4>
           <h4 class="when trail-comma line">
             <span class="desc">from</span>
@@ -240,7 +307,8 @@
           </h4>
           <h5 class="description trail-comma line">
             <span class="desc">description</span>
-            <span class="string" data-es="Desarrollo web y gestión de proyectos">Web development and project management</span>
+            <span class="string" data-es="Desarrollo web y gestión de proyectos"
+            data-ast="Desenvuelvo web y xestión de proyectos">Web development and project management</span>
           </h5>
           <div class="technologies line">
             <span class="desc">technologies</span>
@@ -300,7 +368,7 @@
           <span class="array-start unindent"></span>
           <h4 class="position trail-comma line">
             <span class="desc">position</span>
-            <span class="string" data-es="Desarrollador Full Stack">Full Stack Developer</span>
+            <span class="string" data-es="Desarrollador Full Stack" data-ast="Desenvolvedor Full Stack">Full Stack Developer</span>
           </h4>
           <h4 class="when trail-comma line">
             <span class="desc">from</span>
@@ -312,7 +380,8 @@
           </h4>
           <h5 class="description trail-comma line">
             <span class="desc">description</span>
-            <span class="string" data-es="Desarrollo web y gestión de proyectos">Web development and project management</span>
+            <span class="string" data-es="Desarrollo web y gestión de proyectos"
+            data-ast="Desenvuelvo web y xestión de proyectos">Web development and project management</span>
           </h5>
           <div class="technologies line">
             <span class="desc">technologies</span>
@@ -376,7 +445,7 @@
           <span class="array-start unindent"></span>
           <h4 class="position trail-comma line">
             <span class="desc">position</span>
-            <span class="string" data-es="Desarrollador Full Stack">Full Stack Developer</span>
+            <span class="string" data-es="Desarrollador Full Stack" data-ast="Desenvolvedor Full Stack">Full Stack Developer</span>
           </h4>
           <h4 class="when trail-comma line">
             <span class="desc">from</span>
@@ -388,7 +457,8 @@
           </h4>
           <h5 class="description trail-comma line">
             <span class="desc">description</span>
-            <span class="string" data-es="Desarrollo web y mantenimiento de producto">Web development and product maintenance</span>
+            <span class="string" data-es="Desarrollo web y mantenimiento de producto"
+            data-ast="Desenvuelvo web y caltenimientu de productu">Web development and product maintenance</span>
           </h5>
           <div class="technologies line">
             <span class="desc">technologies</span>
@@ -433,7 +503,7 @@
           <span class="array-start unindent"></span>
           <h4 class="position trail-comma line">
             <span class="desc">position</span>
-            <span class="string" data-es="Desarrollador Backend">Backend Developer</span>
+            <span class="string" data-es="Desarrollador Backend" data-ast="Desenvolvedor Backend">Backend Developer</span>
           </h4>
           <h4 class="when trail-comma line">
             <span class="desc">from</span>
@@ -445,7 +515,8 @@
           </h4>
           <h5 class="description trail-comma line">
             <span class="desc">description</span>
-            <span class="string" data-es="Desarrollo web y mantenimiento de aplicaciones">Web development and application maintenance</span>
+            <span class="string" data-es="Desarrollo web y mantenimiento de aplicaciones"
+            data-ast="Desenvuelvo web y caltenimientu d'aplicaciones">Web development and application maintenance</span>
           </h5>
           <div class="technologies line">
             <span class="desc">technologies</span>
@@ -488,7 +559,7 @@
           <span class="array-start unindent"></span>
           <h4 class="position trail-comma line">
             <span class="desc">position</span>
-            <span class="string" data-es="Desarrollador Backend">Backend Developer</span>
+            <span class="string" data-es="Desarrollador Backend" data-ast="Desenvolvedor Backend">Backend Developer</span>
           </h4>
           <h4 class="when trail-comma line">
             <span class="desc">from</span>
@@ -500,7 +571,8 @@
           </h4>
           <h5 class="description trail-comma line">
             <span class="desc">description</span>
-            <span class="string" data-es="Profesor de clases particulares para universitarios">Private lessons teacher for College students</span>
+            <span class="string" data-es="Profesor de clases particulares para universitarios"
+            data-ast="Profesor de clases particulares para universitarios">Private lessons teacher for College students</span>
           </h5>
           <div class="technologies line">
             <span class="desc">technologies</span>
@@ -510,11 +582,13 @@
                 <span class="desc line">subjects</span>
                 <ul class="array inline line">
                   <li><span class="symbol">C++</span></li>
-                  <li><span class="symbol" data-es="Introducción a la Programación">Programming introduction</span></li>
+                  <li><span class="symbol" data-es="Introducción a la Programación"
+                  data-ast="Introducción a la Programación">Programming introduction</span></li>
                 </ul>
                 <ul class="array inline line">
-                  <li><span class="symbol" data-es="Estructuras de datos">Data Structures</span></li>
-                  <li><span class="symbol" data-es="Algoritmia">Algorithms</span></li>
+                  <li><span class="symbol" data-es="Estructuras de datos"
+                  data-ast="Estructures de datos">Data Structures</span></li>
+                  <li><span class="symbol" data-es="Algoritmia" data-ast="Algoritmia">Algorithms</span></li>
                 </ul>
               </li>
             </ul>
@@ -537,8 +611,8 @@
 <section class="studies cv-section" data-section="studies">
   <div class="wrapper">
     <div class="title animation-section">
-      <h2 class="section-title title-primary typing" data-es="Estudios">Studies</h2>
-      <span class="section-title title-inverse typing" data-es="Estudios">Studies</span>
+      <h2 class="section-title title-primary typing" data-es="Estudios" data-ast="Estudios">Studies</h2>
+      <span class="section-title title-inverse typing" data-es="Estudios" data-ast="Estudios">Studies</span>
     </div>
 
     <div class="animation-section fading">
@@ -550,7 +624,8 @@
       <article class="study">
         <div class="study-wrapper">
           <div class="description">
-            <h3 class="what file" data-es="Máster en Ingeniería Web">Master in Web Engineering</h3>
+            <h3 class="what file" data-es="Máster en Ingeniería Web"
+            data-ast="Máster n'Inxeniería Web">Master in Web Engineering</h3>
             <ul class="skills">
               <li>HTML5</li>
               <li>CSS3</li>
@@ -562,22 +637,22 @@
               <li>Android</li>
               <li>MySQL</li>
               <li>jQuery</li>
-              <li data-es="Patrones de Diseño">Design Patterns</li>
-              <li data-es="Compiladores e Intérpretes">Compilers and Interpreters</li>
+              <li data-es="Patrones de Diseño" data-ast="Patrones de Diseñu">Design Patterns</li>
+              <li data-es="Compiladores e Intérpretes" data-ast="Compiladores ya Intérpretes">Compilers and Interpreters</li>
               <li>TDD</li>
             </ul>
           </div>
           <div class="universities">
             <div class="university typing-chain backwards-desktop">
               <h4 class="where">
-                <a href="http://www.uniovi.es/" rel="nofollow" class="typing-child" data-es="Universidad de Oviedo">
+                <a href="http://www.uniovi.es/" rel="nofollow" class="typing-child" data-es="Universidad de Oviedo" data-ast="Universidá d'Uviéu">
                   University of Oviedo
                 </a>
               </h4>
               <h5 class="when typing-child">2013</h5>
             </div>
             <div class="university typing-chain backwards-desktop">
-              <h5 class="country typing-child" data-es="Irlanda">Ireland</h5>
+              <h5 class="country typing-child" data-es="Irlanda" data-ast="Irlanda">Ireland</h5>
               <h4 class="where cit">
                 <a href="http://www.cit.ie/" rel="nofollow" class="typing-child">
                   CIT - Cork
@@ -595,23 +670,24 @@
       <article class="study">
         <div class="study-wrapper">
           <div class="description">
-            <h3 class="what file" data-es="Ingeniería Informática de Sistemas">Computer Engineering</h3>
+            <h3 class="what file" data-es="Ingeniería Informática de Sistemas"
+            data-ast="Inxeniería Informática de Sistemes">Computer Engineering</h3>
             <ul class="skills">
               <li>C</li>
               <li>C++</li>
-              <li data-es="Estructura de Datos">Data Structures</li>
-              <li data-es="Algoritmos">Algorithms</li>
-              <li data-es="Sistemas Operativos">Operating Systems</li>
-              <li data-es="Redes">Network</li>
-              <li data-es="Bases de Datos">Data Bases</li>
+              <li data-es="Estructura de Datos" data-ast="Estructura de Datos">Data Structures</li>
+              <li data-es="Algoritmos" data-ast="Algoritmos">Algorithms</li>
+              <li data-es="Sistemas Operativos" data-ast="Sistemes Operativos">Operating Systems</li>
+              <li data-es="Redes" data-ast="Redes">Network</li>
+              <li data-es="Bases de Datos" data-ast="Bases de Datos">Data Bases</li>
               <li>SQL</li>
-              <li data-es="Ingeniería del Software">Software Engineering</li>
+              <li data-es="Ingeniería del Software" data-ast="Inxeniería del Software">Software Engineering</li>
             </ul>
           </div>
           <div class="universities">
             <div class="university typing-chain backwards-desktop">
               <h4 class="where">
-                <a href="http://www.uniovi.es/" rel="nofollow" class="typing-child" data-es="Universidad de Oviedo">
+                <a href="http://www.uniovi.es/" rel="nofollow" class="typing-child" data-es="Universidad de Oviedo" data-ast="Universidá d'Uviéu">
                   University of Oviedo
                 </a>
               </h4>
@@ -630,21 +706,21 @@
       <span class="result result-2"></span>
 
       <article class="language">
-        <h3 class="what file" data-es="Español">Spanish</h3>
-        <h3 class="how" data-es="Hablante nativo">Native Speaker</h3>
+        <h3 class="what file" data-es="Español" data-ast="Español">Spanish</h3>
+        <h3 class="how" data-es="Hablante nativo" data-ast="Falante nativu">Native Speaker</h3>
       </article>
 
       <article class="language">
-        <h3 class="what file" data-es="Asturiano">Asturian</h3>
-        <h3 class="how" data-es="Hablante nativo">Native Speaker</h3>
+        <h3 class="what file" data-es="Asturiano" data-ast="Asturianu">Asturian</h3>
+        <h3 class="how" data-es="Hablante nativo" data-ast="Falante nativu">Native Speaker</h3>
       </article>
 
       <article class="language">
-        <h3 class="what file" data-es="Inglés">English</h3>
+        <h3 class="what file" data-es="Inglés" data-ast="Inglés">English</h3>
         <h3 class="how">B2</h3>
         <div class="typing-chain backwards-desktop">
           <h4 class="where eoi">
-            <a href="http://web.educastur.princast.es/eoi/eoigijon/" rel="nofollow" class="typing-child" data-es="Escuela Oficial de Idiomas">
+            <a href="http://web.educastur.princast.es/eoi/eoigijon/" rel="nofollow" class="typing-child" data-es="Escuela Oficial de Idiomas" data-ast="Escuela Oficial d'Idiomes">
               State Language School
             </a>
           </h4>
@@ -653,11 +729,11 @@
       </article>
 
       <article class="language">
-        <h3 class="what file" data-es="Francés">French</h3>
+        <h3 class="what file" data-es="Francés" data-ast="Francés">French</h3>
         <h3 class="how">A1</h3>
         <div class="typing-chain backwards-desktop">
           <h4 class="where">
-            <a href="http://www.uniovi.es/" rel="nofollow" class="typing-child" data-es="Universidad de Oviedo">
+            <a href="http://www.uniovi.es/" rel="nofollow" class="typing-child" data-es="Universidad de Oviedo" data-ast="Universidá d'Uviéu">
               University of Oviedo
             </a>
           </h4>
@@ -666,11 +742,11 @@
       </article>
 
       <article class="language">
-        <h3 class="what file" data-es="Alemán">German</h3>
+        <h3 class="what file" data-es="Alemán" data-ast="Alemán">German</h3>
         <h3 class="how">A1</h3>
         <div class="typing-chain backwards-desktop">
           <h4 class="where">
-            <a href="http://www.uniovi.es/" rel="nofollow" class="typing-child" data-es="Universidad de Oviedo">
+            <a href="http://www.uniovi.es/" rel="nofollow" class="typing-child" data-es="Universidad de Oviedo" data-ast="Universidá d'Uviéu">
               University of Oviedo
             </a>
           </h4>
@@ -679,8 +755,8 @@
       </article>
 
       <article class="language">
-        <h3 class="what file" data-es="Italiano">Italian</h3>
-        <h3 class="how" data-es="Conocimiento básicos">Basic Knowledge</h3>
+        <h3 class="what file" data-es="Italiano" data-ast="Italianu">Italian</h3>
+        <h3 class="how" data-es="Conocimientos básicos" data-ast="Conocencies básiques">Basic Knowledge</h3>
       </article>
 
       <p class="command prompt"><span class="cursor"></span></p>
@@ -694,7 +770,7 @@
 
 <section class="projects cv-section animation-section" data-section="projects">
   <div class="wrapper">
-    <h2 class="section-title title-primary typing" data-es="Proyectos">Projects</h2>
+    <h2 class="section-title title-primary typing" data-es="Proyectos" data-ast="Proyeutos">Projects</h2>
 
     <div class="interface fading">
       <nav class="menu">
@@ -716,7 +792,8 @@
           <div class="features">
             <h3 class="info title">World Wide Web Foundation website</h3>
             <h4 class="info when">2015</h4>
-            <h5 class="info tasks" data-es="Gestión del proyecto. Integración de interfaces de usuario y desarrollo de arquitectura en WordPress">
+            <h5 class="info tasks" data-es="Gestión del proyecto. Integración de interfaces de usuario y desarrollo de arquitectura en WordPress"
+            data-ast="Xestión del proyectu. Integración d'interfaces d'usuariu y desenvolvimientu d'arquitectura en WordPress">
               Project responsible. UX integration and WordPress architecture development.
             </h5>
             <h5 class="info technologies">
@@ -737,7 +814,8 @@
           <div class="features">
             <h3 class="info title">The Affordability Report</h3>
             <h4 class="info when">2015</h4>
-            <h5 class="info tasks" data-es="Responsable del proyecto. Diseño, implementación y puesta en funcionamiento.">
+            <h5 class="info tasks" data-es="Responsable del proyecto. Diseño, implementación y puesta en funcionamiento."
+            data-ast="Responsable del proyeutu. Diseñu, implementación y puesta en funcionamientu.">
               Project responsible. Design, development and deployment.
             </h5>
             <h5 class="info technologies">
@@ -758,7 +836,8 @@
           <div class="features">
             <h3 class="info title">The Web Index 2014</h3>
             <h4 class="info when">2014</h4>
-            <h5 class="info tasks" data-es="Responsable del proyecto. Diseño, implementación y puesta en funcionamiento.">
+            <h5 class="info tasks" data-es="Responsable del proyecto. Diseño, implementación y puesta en funcionamiento." 
+            data-ast="Responsable del proyeutu. Diseñu, implementación y puesta en funcionamientu.">
               Project responsible. Design, development and deployment.
             </h5>
             <h5 class="info technologies">
@@ -779,7 +858,8 @@
           <div class="features">
             <h3 class="info title">Circo Neuronal</h3>
             <h4 class="info when">2013 - 2014</h4>
-            <h5 class="info tasks" data-es="Responsable del proyecto. Diseño, implementación y puesta en funcionamiento.">
+            <h5 class="info tasks" data-es="Responsable del proyecto. Diseño, implementación y puesta en funcionamiento."
+            data-ast="Responsable del proyeutu. Diseñu, implementación y puesta en funcionamientu.">
               Project responsible. Design, development and deployment.
             </h5>
             <h5 class="info technologies">
@@ -800,7 +880,8 @@
           <div class="features">
             <h3 class="info title">WesCountry</h3>
             <h4 class="info when">2013 - 2014</h4>
-            <h5 class="info tasks" data-es="Responsable del proyecto. Diseño, implementación y puesta en funcionamiento.">
+            <h5 class="info tasks" data-es="Responsable del proyecto. Diseño, implementación y puesta en funcionamiento."
+            data-ast="Responsable del proyeutu. Diseñu, implementación y puesta en funcionamientu.">
               Project responsible. Design, development and deployment.
             </h5>
             <h5 class="info technologies">
@@ -818,7 +899,8 @@
           <div class="features">
             <h3 class="info title">landportal.info</h3>
             <h4 class="info when">2013 - 2014</h4>
-            <h5 class="info tasks" data-es="Responsable del proyecto. Diseño, implementación y puesta en funcionamiento.">
+            <h5 class="info tasks" data-es="Responsable del proyecto. Diseño, implementación y puesta en funcionamiento."
+            data-ast="Responsable del proyeutu. Diseñu, implementación y puesta en funcionamientu.">
               Project responsible. Design, development and deployment.
             </h5>
             <h5 class="info technologies">
@@ -841,7 +923,8 @@
           <div class="features">
             <h3 class="info title">Web Foundation</h3>
             <h4 class="info when">2013</h4>
-            <h5 class="info tasks" data-es="Responsable del interfaces de usuarios. Diseño, implementación y puesta en funcionamiento.">
+            <h5 class="info tasks" data-es="Responsable de interfaces de usuario. Diseño, implementación y puesta en funcionamiento."
+            data-ast="Responsable d'interfaces d'usuariu. Diseñu, implementación y puesta en funcionamientu.">
               UX Project responsible. Design, development and deployment.
             </h5>
             <h5 class="info technologies">
@@ -870,9 +953,14 @@
       <a class="link mail" href="mailto:info@juancastro.es">info@juancastro.es</a>
       <a class="link twitter" rel="me nofollow" href="https://twitter.com/castrofernandez">Twitter</a>
       <a class="link linkedin" rel="me nofollow" href="https://es.linkedin.com/pub/juan-castro-fernández/35/43b/728">Linked<span>In</span></a>
+      <a class="link github" rel="me nofollow" href="https://github.com/castrofernandez/">GitHub</a>
     </div>
     <p class="name">Juan Castro</p>
   </div>
+  <p class="made">
+    <img alt="" src="/images/asturies.svg" />
+    <span data-es="Hecho en Asturias" data-ast="Fechu n'Asturies">Made in Asturias</span>
+  </p>
 </footer>
 
   </div>

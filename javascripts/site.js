@@ -9353,7 +9353,7 @@ var Scroll = (function() {
 $(function() {
   var translatables = $('[data-es]');
   var selectors = $('.lang-s');
-  var valid_languages = ['en', 'es'];
+  var valid_languages = ['en', 'es', 'ast'];
   var default_language = 'en';
 
   (function init() {
@@ -9415,7 +9415,7 @@ $(function() {
   }
 
   function detectLanguage() {
-    var language = getUrlParameter('lang');
+    var language = getUrlParameter('language');
 
     if (language) {
       return language;
@@ -9451,7 +9451,7 @@ $(function() {
   function changeUrl(language) {
     var hash = window.location.hash;
 
-    var url = '/?lang=' + language + (hash ? hash : '');
+    var url = '/?language=' + language + (hash ? hash : '');
 
     history.pushState({}, "", url);
   }
