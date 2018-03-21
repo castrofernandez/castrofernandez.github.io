@@ -43,7 +43,7 @@
     font: 400 30px/30px $f-pixel-condensed;
     text-align: center;
     padding: 10px 20px;
-    margin: 0 20px;
+    margin: 0 20px 20px 20px;
     text-decoration: none;
     background-color: $c-primary;
     color: #fff;
@@ -73,6 +73,15 @@
         background-color: darken(#1da1f2, 10%)
       }
     }
+
+    &.github {
+      background-color: #24292e;
+      color: #fff;
+
+      &:hover {
+        background-color: darken(#24292e, 10%)
+      }
+    }
   }
 }
 
@@ -86,6 +95,10 @@
       font-size: 80px;
       line-height: 80px;
       margin-top: 40px;
+    }
+
+    .link {
+      width: 40%;
     }
   }
 }
