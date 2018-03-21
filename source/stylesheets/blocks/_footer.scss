@@ -83,6 +83,25 @@
       }
     }
   }
+
+  .made {
+    background-color: darken($c-secondary, 14%);
+    color: darken($c-secondary, 10%);
+    padding: 2px 2px 6px 2px;
+    text-align: center;
+
+    img {
+      height: 28px;
+      margin-right: 10px;
+      position: relative;
+      top: 4px;
+    }
+
+    span {
+      font: 400 32px/28px $f-pixel;
+      text-transform: uppercase;
+    }
+  }
 }
 
 @include media($tablet-landscape) {
