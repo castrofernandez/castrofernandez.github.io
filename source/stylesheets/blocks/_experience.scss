@@ -253,7 +253,7 @@
 
         > :first-child:before {
           content: '[';
-          color: $c-fore-light;
+          color: lighten($c-fore-light, 5%);
           margin-right: 10px;
         }
 
@@ -270,7 +270,7 @@
 
           &:not(:last-child):after {
             content: ',';
-            color: $c-fore-light;
+            color: lighten($c-fore-light, 5%);
           }
         }
       }
