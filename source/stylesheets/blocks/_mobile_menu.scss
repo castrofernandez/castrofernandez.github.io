@@ -78,7 +78,7 @@
   }
 }
 
-@include media($mobile) {
+@include media($tablet) {
   .app {
     overflow: hidden;
 
