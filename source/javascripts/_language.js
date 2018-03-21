@@ -1,7 +1,7 @@
 $(function() {
   var translatables = $('[data-es]');
   var selectors = $('.lang-s');
-  var valid_languages = ['en', 'es'];
+  var valid_languages = ['en', 'es', 'ast'];
   var default_language = 'en';
 
   (function init() {
