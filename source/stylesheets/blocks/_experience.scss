@@ -72,7 +72,7 @@
       line-height: 34px;
       text-transform: lowercase;
       position: absolute;
-      color: $c-fore-light;
+      color: lighten($c-fore-light, 5%);
     }
 
     &:before {
@@ -102,7 +102,7 @@
       content: counter(line);
       position: absolute;
       left: -80px;
-      color: $c-fore-light;
+      color: lighten($c-fore-light, 5%);
       text-align: right;
       user-select: none;
     }
@@ -126,7 +126,7 @@
   .ide {
     position: relative;
     font: 400 30px/#{$line-height} $f-pixel-condensed;
-    color: $c-fore-light;
+    color: lighten($c-fore-light, 5%);
 
     .array-start,
     .array-end {
