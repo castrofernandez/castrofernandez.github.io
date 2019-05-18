@@ -1,5 +1,7 @@
 import React from 'react';
 
+import LanguageSelector from './LanguageSelector/LanguageSelector.container';
+
 const Header = () => (
     <header className="header sticky">
         <nav>
@@ -44,38 +46,7 @@ const Header = () => (
                 <span className="time minutes" />
                 <span className="seconds" />
             </p>
-            <ul className="languages">
-                <li className="active">
-                    <a
-                        href="/?lang=en"
-                        className="lang-s"
-                        title="English"
-                        data-language="en"
-                    >
-                        EN
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="/?lang=es"
-                        className="lang-s"
-                        title="Español"
-                        data-language="es"
-                    >
-                        ES
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="/?lang=ast"
-                        className="lang-s"
-                        title="Asturianu"
-                        data-language="ast"
-                    >
-                        AST
-                    </a>
-                </li>
-            </ul>
+            <LanguageSelector />
         </nav>
     </header>
 );

@@ -17,4 +17,12 @@ import App from './components/app.jsx';
 //= require _puzzle
 //= require _projects
 
-Reactdom.render(<App/>, document.getElementById('app'));
+import { Provider } from 'react-redux';
+import { store } from './reducers/index';
+
+Reactdom.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('app')
+);
