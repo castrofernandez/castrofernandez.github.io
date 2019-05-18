@@ -1,5 +1,7 @@
 import React from 'react';
 
+import TypingText from './TypingText/TypingText.component';
+
 import JuanCastro from '../../images/juan-castro.gif';
 import Heart from '../../images/heart.svg';
 import HeartSemi from '../../images/heart-semi.svg';
@@ -31,7 +33,7 @@ const Intro = () => (
             <div className="wrapper">
                 <h1>
                     <div className="line">
-                        <p className="typing">Juan Castro</p>
+                        <TypingText text="Juan Castro" />
                         <div>
                             <img alt="" src={Heart} />
                             <img alt="" src={Heart} />
