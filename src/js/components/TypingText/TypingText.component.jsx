@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const SPEED = 80;
 
-const TypingText = ({ text }) => {
+const TypingText = ({ text, className }) => {
     const [toType, setToType] = useState(text.split(''));
     const [typed, setTyped] = useState('');
 
@@ -18,15 +18,21 @@ const TypingText = ({ text }) => {
         }
     }, [typed]);
 
+    useEffect(() => {
+        setToType('');
+        setTyped(text);
+    }, [text]);
+
     return (
-        <p className="typing started">
+        <p className={`${className} typing started`}>
             <span className="writen">{typed}</span>
         </p>
     );
 };
 
 TypingText.propTypes = {
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    className: PropTypes.string
 };
 
 export default TypingText;

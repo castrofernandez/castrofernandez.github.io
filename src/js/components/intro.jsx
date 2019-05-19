@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TypingText from './TypingText/TypingText.component';
+import TranslatableTypingText from './TypingText/TranslatableTypingText.component';
 
 import JuanCastro from '../../images/juan-castro.gif';
 import Heart from '../../images/heart.svg';
@@ -73,14 +74,8 @@ const Intro = () => (
                     </figure>
                     <div className="tetris" id="tetris" />
                     <div className="scores">
-                        <p
-                            className="message typing"
-                            data-es="¡Bienvenido!"
-                            data-ast="¡Bienveníu!"
-                        >
-                            ¡Bienvenido!
-                        </p>
-                        <p className="message typing">Welcome!</p>
+                        <TranslatableTypingText className="message" text="welcome" />
+                        <TypingText className="message" text="Welcome!" />
                         <p className="message">
                             <span id="level" />
                         </p>

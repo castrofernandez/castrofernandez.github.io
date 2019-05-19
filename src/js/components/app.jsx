@@ -1,12 +1,12 @@
 import React from 'react';
 
-import MobileMenu from './mobile.menu';
-import Header from './header';
-import Intro from './intro';
-import Experience from './experience';
-import Studies from './studies';
-import Projects from './projects';
-import Footer from './footer';
+import MobileMenu from './Mobile.menu';
+import Header from './Header';
+import Intro from './Intro';
+import Experience from './Experience';
+import Studies from './Studies';
+import Projects from './Projects';
+import Footer from './Footer';
 
 export default class App extends React.Component {
     render() {
