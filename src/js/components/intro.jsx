@@ -7,7 +7,8 @@ import Heart from '../../images/heart.svg';
 import HeartSemi from '../../images/heart-semi.svg';
 
 import Puzzle from './Puzzle/Puzzle.component';
-import Tetris from './Tetris/Tetris.component';
+import Tetris from './Tetris/Tetris.container';
+import Score from './Score/Score.container';
 
 const Intro = () => (
     <React.Fragment>
@@ -37,10 +38,7 @@ const Intro = () => (
                         <p className="message">
                             <span id="level" />
                         </p>
-                        <div className="score">
-                            <span />
-                            <p id="score">0250</p>
-                        </div>
+                        <Score />
                     </div>
                 </div>
             </div>

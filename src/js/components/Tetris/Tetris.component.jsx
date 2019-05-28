@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import { Game } from './Tetris.game';
 
 const TETRIS_EMPTY_BLOCK = 'empty';
 const TETRIS_FULL_BLOCK = 'full';
 
-const Tetris = () => {
+const Tetris = ({ changeScore }) => {
     const [cells, setCells] = useState([]);
     const [game, setGame] = useState(null);
+
+    const updateCells = c => setCells([...c]);
 
     const startTetris = () => {
         if (game) {
             game.finish();
         }
 
-        const newGame = new Game(c => {
-            setCells([...c]);
-        });
+        const newGame = new Game({ updateCells, changeScore });
 
         setGame(newGame);
         newGame.start();
@@ -28,8 +29,6 @@ const Tetris = () => {
     useEffect(() => {
         startTetris();
     }, []);
-
-    console.log('tetris');
 
     return (
         <div className="tetris" id="tetris">
@@ -45,6 +44,10 @@ const Tetris = () => {
             })}
         </div>
     );
+};
+
+Tetris.propTypes = {
+    changeScore: PropTypes.func.isRequired
 };
 
 export default Tetris;

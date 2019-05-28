@@ -9,10 +9,11 @@ import { Board } from './Tetris.board';
 const TETRIS_SPEED = 200;
 
 export class Game {
-    constructor(updateCells) {
+    constructor({ updateCells, changeScore }) {
         this.board = new Board();
         this.piece = null;
         this.updateCells = updateCells;
+        this.changeScore = changeScore;
 
         this.finished = false;
 
@@ -52,6 +53,7 @@ export class Game {
         }
 
         // this.showScore();
+        this.changeScore(this.board.points);
         this.updateCells(this.board.getCells());
 
         if (this.piece != null && this.piece.endGame) {
