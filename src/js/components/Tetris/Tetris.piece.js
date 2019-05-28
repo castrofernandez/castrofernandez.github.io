@@ -1,11 +1,14 @@
 import * as Pieces from './Tetris.pieces';
 
+const FULL = 1;
+const EMPTY = 0;
+
 export class Piece {
     constructor(board, pieceCode = null, rotation = 0) {
         this.board = board;
-        this.codePiece = pieceCode || this.getRandomCodePiece();
+        this.pieceCode = this.getRandomPieceCode(pieceCode);
         this.rotation = rotation;
-        this.element = Pieces.pieces[rotation][this.codePiece];
+        this.element = Pieces.pieces[rotation][this.pieceCode];
         this.x = this.getNumColumns() / 2;
         this.y = 0;
         this.bestResult = 0;
@@ -20,51 +23,64 @@ export class Piece {
         return this.board.TETRIS_NUM_COLUMNS;
     }
 
-    getRandomCodePiece() {
-        return Math.floor(Math.random() * Pieces.length);
+    getRandomPieceCode(pieceCode) {
+        return pieceCode === null ? Math.floor(Math.random() * Pieces.length) : pieceCode;
     }
 
-    show(mark) {
+    render(mark) {
         this.board.showPiece(this, mark);
     }
 
-    goDown() {
+    draw() {
+        this.render(true);
+    }
+
+    clear() {
+        this.render(false);
+    }
+
+    goDownIfPossible() {
         if (this.isPossibleContinue(this.x, this.y + 1)) {
-            this.show(false); // Borramos el hueco que dejó en la posición anterior
-
-            this.y = this.y + 1;
-
-            this.show(true);
-
-            return true;
+            return this.goDown();
         }
 
-        this.setPieceInBoard();
+        return this.setPieceInBoard();
+    }
 
-        return false;
+    goDown() {
+        this.clear();
+        this.increaseY();
+        this.draw();
+
+        return true;
+    }
+
+    increaseY() {
+        this.y += 1;
     }
 
     setPieceInBoard() {
-        for (let i = 0; i < this.element.length; i++) {
-            for (let j = 0; j < this.element[i].length; j++) {
-                if (this.element[i][j] === 1) {
-                    this.board.setPieceInBoard(this.x + j, this.y + i);
-                }
-            }
-        }
+        this.setPixelsInBoard();
 
         for (let i = 0; i < this.element.length; i++) {
             this.board.checkFullRow(this.y + i);
         }
+
+        return false;
+    }
+
+    setPixelsInBoard() {
+        for (let i = 0; i < this.element.length; i++) {
+            for (let j = 0; j < this.element[i].length; j++) {
+                if (this.element[i][j] === FULL) {
+                    this.board.setPieceInBoard(this.x + j, this.y + i);
+                }
+            }
+        }
     }
 
     isPossibleContinue(posX, posY) {
-        if (
-            posY >= this.getNumRows() ||
-            posY + this.element.length - 1 >= this.getNumRows() ||
-            posX >= this.getNumColumns() ||
-            posX < 0
-        ) {
+        if (this.isOutOfBounds(posX, posY)) {
             return false;
         }
 
@@ -72,7 +88,7 @@ export class Piece {
             for (let j = 0; j < this.element[i].length; j++) {
                 if (
                     this.board.isPositionFull(posX + j, posY + i) &&
-                    this.element[i][j] === 1
+                    this.element[i][j] === FULL
                 ) {
                     return false;
                 }
@@ -80,6 +96,15 @@ export class Piece {
         }
 
         return true;
+    }
+
+    isOutOfBounds(posX, posY) {
+        return (
+            posY >= this.getNumRows() ||
+            posY + this.element.length - 1 >= this.getNumRows() ||
+            posX >= this.getNumColumns() ||
+            posX < 0
+        );
     }
 
     numberOfCompletedRows(posX, posY) {
@@ -92,10 +117,7 @@ export class Piece {
             i >= 0 &&
             this.board.valueInPosition(this.getNumColumns(), i) > 0
         ) {
-            rowValue = this.board.valueInPosition(
-                this.getNumColumns(),
-                i
-            );
+            rowValue = this.board.valueInPosition(this.getNumColumns(), i);
 
             rowValue += this.verticalPieceValue(posY, i);
 
@@ -128,10 +150,10 @@ export class Piece {
 
         for (let i = 0; i < this.element.length; i++) {
             for (let j = 0; j < this.element[0].length; j++) {
-                if (this.element[i][j] === 1) {
+                if (this.element[i][j] === FULL) {
                     if (
                         i === this.element.length - 1 ||
-                        this.element[i + 1][j] === 0
+                        this.element[i + 1][j] === EMPTY
                     ) {
                         if (
                             posY + i + 1 === this.getNumRows() ||
@@ -148,48 +170,40 @@ export class Piece {
     }
 
     evaluateBestPosition() {
-        let posY = 0;
-
-        //var maxY = 0;
-        let maxX = 0;
-        let maxValue = 0;
+        const max = { x: 0, value: 0 };
 
         let value;
+        const length = this.getNumColumns() - this.element[0].length;
 
-        for (
-            let i = 0;
-            i <= this.getNumColumns() - this.element[0].length;
-            i++
-        ) {
-            while (this.isPossibleContinue(i, posY)) {
-                posY++;
-            }
+        for (let i = 0; i <= length; i++) {
+            const posY = this.getLowestPosition(i);
 
             value = this.numberOfCompletedRows(i, posY > 0 ? posY - 1 : 0);
 
-            if (value > maxValue) {
-                //maxY = (posY - this.element.length + 1) ;
-                maxX = i;
-                maxValue = value;
+            if (value > max.value) {
+                max.x = i;
+                max.value = value;
             }
-
-            posY = 0;
         }
 
-        this.x = maxX;
-        this.bestResult = maxValue;
+        this.x = max.x;
+        this.bestResult = max.value;
 
         return this;
     }
 
+    getLowestPosition(posX) {
+        let posY = 0;
+
+        while (this.isPossibleContinue(posX, posY)) {
+            posY++;
+        }
+
+        return posY;
+    }
+
     rotate() {
-        const rotateAux = this.getNextRotation();
-
-        const returnPiece = new Piece(this.board, this.pieceCode, rotateAux);
-        returnPiece.element = Pieces.pieces[rotateAux][this.codePiece];
-        returnPiece.rotation = rotateAux;
-
-        return returnPiece;
+        return new Piece(this.board, this.pieceCode, this.getNextRotation());
     }
 
     getNextRotation() {

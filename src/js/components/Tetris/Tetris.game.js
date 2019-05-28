@@ -44,9 +44,9 @@ export class Game {
             this.piece = this.createNewPiece();
         }
 
-        this.piece.show(true);
+        this.piece.draw();
 
-        if (!this.piece.goDown()) {
+        if (!this.piece.goDownIfPossible()) {
             this.piece = null;
         }
 
@@ -62,16 +62,16 @@ export class Game {
     }
 
     createNewPiece() {
-        const newPiece = new Piece(this.board);
-        const newPieceRotation1 = newPiece.rotate();
+        const newPieceRotation1 = new Piece(this.board);
         const newPieceRotation2 = newPieceRotation1.rotate();
         const newPieceRotation3 = newPieceRotation2.rotate();
+        const newPieceRotation4 = newPieceRotation3.rotate();
 
         return this.getBestPiece([
-            newPiece.evaluateBestPosition(),
             newPieceRotation1.evaluateBestPosition(),
             newPieceRotation2.evaluateBestPosition(),
-            newPieceRotation3.evaluateBestPosition()
+            newPieceRotation3.evaluateBestPosition(),
+            newPieceRotation4.evaluateBestPosition()
         ]);
     }
 
