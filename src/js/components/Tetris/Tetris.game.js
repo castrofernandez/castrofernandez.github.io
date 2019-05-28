@@ -49,7 +49,7 @@ export class Game {
         if (!this.piece.goDown()) {
             this.piece = null;
         }
-        console.log(this.board.level);
+
         this.changeScore(this.board.points);
         this.changeLevel(this.board.level);
         this.updateCells(this.board.getCells());

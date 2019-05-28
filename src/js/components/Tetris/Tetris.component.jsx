@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { Game } from './Tetris.game';
-
-const TETRIS_EMPTY_BLOCK = 'empty';
-const TETRIS_FULL_BLOCK = 'full';
+import Piece from './Piece.component';
 
 const Tetris = ({ changeScore, changeLevel }) => {
     const [cells, setCells] = useState([]);
@@ -23,9 +21,6 @@ const Tetris = ({ changeScore, changeLevel }) => {
         newGame.start();
     };
 
-    const getBlockStatus = value =>
-        value === 1 ? TETRIS_FULL_BLOCK : TETRIS_EMPTY_BLOCK;
-
     useEffect(() => {
         startTetris();
     }, []);
@@ -35,10 +30,7 @@ const Tetris = ({ changeScore, changeLevel }) => {
             {cells.map(row => {
                 return row.map((value, i) => {
                     return (
-                        <div
-                            className={`tetris-block ${getBlockStatus(value)}`}
-                            key={i}
-                        />
+                        <Piece key={i} value={value} />
                     );
                 });
             })}
