@@ -1,15 +1,27 @@
 import * as Pieces from './Tetris.pieces';
 
 export class Piece {
-    constructor(board) {
+    constructor(board, pieceCode = null, rotation = 0) {
         this.board = board;
-        this.codePiece = Math.floor(Math.random() * Pieces.length);
-        this.rotation = 0;
-        this.element = Pieces.pieces[0][this.codePiece];
-        this.x = 4;
+        this.codePiece = pieceCode || this.getRandomCodePiece();
+        this.rotation = rotation;
+        this.element = Pieces.pieces[rotation][this.codePiece];
+        this.x = this.getNumColumns() / 2;
         this.y = 0;
         this.bestResult = 0;
         this.endGame = !this.isPossibleContinue(this.x, this.y);
+    }
+
+    getNumRows() {
+        return this.board.TETRIS_NUM_ROWS;
+    }
+
+    getNumColumns() {
+        return this.board.TETRIS_NUM_COLUMNS;
+    }
+
+    getRandomCodePiece() {
+        return Math.floor(Math.random() * Pieces.length);
     }
 
     show(mark) {
@@ -48,9 +60,9 @@ export class Piece {
 
     isPossibleContinue(posX, posY) {
         if (
-            posY >= this.board.TETRIS_NUM_ROWS ||
-            posY + this.element.length - 1 >= this.board.TETRIS_NUM_ROWS ||
-            posX >= this.board.TETRIS_NUM_COLUMNS ||
+            posY >= this.getNumRows() ||
+            posY + this.element.length - 1 >= this.getNumRows() ||
+            posX >= this.getNumColumns() ||
             posX < 0
         ) {
             return false;
@@ -74,20 +86,20 @@ export class Piece {
         let result = 0;
         let rowValue = 0;
 
-        let i = this.board.TETRIS_NUM_ROWS - 1;
+        let i = this.getNumRows() - 1;
 
         while (
             i >= 0 &&
-            this.board.valueInPosition(this.board.TETRIS_NUM_COLUMNS, i) > 0
+            this.board.valueInPosition(this.getNumColumns(), i) > 0
         ) {
             rowValue = this.board.valueInPosition(
-                this.board.TETRIS_NUM_COLUMNS,
+                this.getNumColumns(),
                 i
             );
 
             rowValue += this.verticalPieceValue(posY, i);
 
-            if (rowValue === this.board.TETRIS_NUM_COLUMNS) {
+            if (rowValue === this.getNumColumns()) {
                 result++;
             }
 
@@ -122,7 +134,7 @@ export class Piece {
                         this.element[i + 1][j] === 0
                     ) {
                         if (
-                            posY + i + 1 === this.board.TETRIS_NUM_ROWS ||
+                            posY + i + 1 === this.getNumRows() ||
                             !this.board.isPositionFull(posX + j, posY + i + 1)
                         ) {
                             numSpots++;
@@ -146,7 +158,7 @@ export class Piece {
 
         for (
             let i = 0;
-            i <= this.board.TETRIS_NUM_COLUMNS - this.element[0].length;
+            i <= this.getNumColumns() - this.element[0].length;
             i++
         ) {
             while (this.isPossibleContinue(i, posY)) {
@@ -171,16 +183,16 @@ export class Piece {
     }
 
     rotate() {
-        let rotateAux = this.rotation + 1;
+        const rotateAux = this.getNextRotation();
 
-        if (rotateAux === 4) {
-            rotateAux = 0;
-        }
-
-        const returnPiece = new Piece(this.board);
+        const returnPiece = new Piece(this.board, this.pieceCode, rotateAux);
         returnPiece.element = Pieces.pieces[rotateAux][this.codePiece];
         returnPiece.rotation = rotateAux;
 
         return returnPiece;
+    }
+
+    getNextRotation() {
+        return (this.rotation + 1) % Pieces.NUMBER_OF_ROTATIONS;
     }
 }

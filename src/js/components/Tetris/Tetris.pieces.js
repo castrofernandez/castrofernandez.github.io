@@ -42,3 +42,4 @@ export const pieces = [
 ];
 
 export const length = pieces[0].length;
+export const NUMBER_OF_ROTATIONS = 4;
