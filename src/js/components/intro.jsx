@@ -7,6 +7,7 @@ import Heart from '../../images/heart.svg';
 import HeartSemi from '../../images/heart-semi.svg';
 
 import Puzzle from './Puzzle/Puzzle.component';
+import Tetris from './Tetris/Tetris.component';
 
 const Intro = () => (
     <React.Fragment>
@@ -28,10 +29,8 @@ const Intro = () => (
                     <hr />
                 </h1>
                 <div className="three-col">
-                    <figure>
-                        <Puzzle />
-                    </figure>
-                    <div className="tetris" id="tetris" />
+                    <Puzzle />
+                    <Tetris />
                     <div className="scores">
                         <TranslatableTypingText className="message" text="welcome" />
                         <TypingText className="message" text="Welcome!" />

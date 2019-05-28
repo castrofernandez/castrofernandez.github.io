@@ -96,26 +96,27 @@ const Puzzle = () => {
     }, [count]);
 
     return (
-        <figure
-            className="puzzle"
-            ref={puzzleEl}
-            style={{ width: `${width * SIZE}px` }}
-            onClick={clickable ? onClick : () => {}}
-        >
-            <picture>
-                {sequence.coordinates.map((item, i) => {
-                    return (
-                        <Piece
-                            id={`${i + 1}`}
-                            key={i + 1}
-                            width={width}
-                            coordinates={item}
-                        />
-                    );
-                })}
-            </picture>
-
+        <figure>
             <Gif show={showingGif} />
+            <div
+                className="puzzle"
+                ref={puzzleEl}
+                style={{ width: `${width * SIZE}px` }}
+                onClick={clickable ? onClick : () => {}}
+            >
+                <picture>
+                    {sequence.coordinates.map((item, i) => {
+                        return (
+                            <Piece
+                                id={`${i + 1}`}
+                                key={i + 1}
+                                width={width}
+                                coordinates={item}
+                            />
+                        );
+                    })}
+                </picture>
+            </div>
         </figure>
     );
 };
