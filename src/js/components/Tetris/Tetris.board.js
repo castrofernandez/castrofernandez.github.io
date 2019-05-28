@@ -3,10 +3,13 @@ const TETRIS_NUM_COLUMNS = 10;
 
 const TETRIS_START_FULL_ROWS = 4;
 const TETRIS_START_SCORE = 250;
-const TETRIS_ROW_BONUS = 50;
+const TETRIS_ROW_BONUS = 150;
 
 const EMPTY_CELL = 0;
 const FULL_CELL = 1;
+
+const FULL_LEVEL = 9999;
+const MAX_LEVEL = 99;
 
 export class Board {
     constructor() {
@@ -116,11 +119,11 @@ export class Board {
 
         this.points += TETRIS_ROW_BONUS;
 
-        if (this.points >= 9999) {
+        if (this.points >= FULL_LEVEL) {
             this.points = 0;
             this.level += 1;
 
-            if (this.level > 99) {
+            if (this.level > MAX_LEVEL) {
                 this.level = 1;
             }
         }

@@ -9,16 +9,14 @@ import { Board } from './Tetris.board';
 const TETRIS_SPEED = 200;
 
 export class Game {
-    constructor({ updateCells, changeScore }) {
+    constructor({ updateCells, changeScore, changeLevel }) {
         this.board = new Board();
         this.piece = null;
         this.updateCells = updateCells;
         this.changeScore = changeScore;
+        this.changeLevel = changeLevel;
 
         this.finished = false;
-
-        this.score = document.getElementById('score');
-        this.level = document.getElementById('level');
 
         this.interval = null;
     }
@@ -51,9 +49,9 @@ export class Game {
         if (!this.piece.goDown()) {
             this.piece = null;
         }
-
-        // this.showScore();
+        console.log(this.board.level);
         this.changeScore(this.board.points);
+        this.changeLevel(this.board.level);
         this.updateCells(this.board.getCells());
 
         if (this.piece != null && this.piece.endGame) {
@@ -62,30 +60,6 @@ export class Game {
             this.start();
         }
     }
-
-    // showScore() {
-    // var score = this.board.points;
-    // var level = this.board.level;
-
-    //     if (points < 1000) {
-    //         score = '0' + points;
-    //     }
-
-    //     if (points < 100) {
-    //         score = '0' + score;
-    //     }
-
-    //     if (points < 10) {
-    //         score = '0' + score;
-    //     }
-
-    //     if (level < 10) {
-    //         level = '0' + level;
-    //     }
-
-    //     this.level.innerHTML = level;
-    //     this.score.innerHTML = score;
-    // }
 
     createNewPiece() {
         const newPiece = new Piece(this.board);

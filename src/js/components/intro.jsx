@@ -9,6 +9,7 @@ import HeartSemi from '../../images/heart-semi.svg';
 import Puzzle from './Puzzle/Puzzle.component';
 import Tetris from './Tetris/Tetris.container';
 import Score from './Score/Score.container';
+import Level from './Level/Level.container';
 
 const Intro = () => (
     <React.Fragment>
@@ -35,9 +36,7 @@ const Intro = () => (
                     <div className="scores">
                         <TranslatableTypingText className="message" text="welcome" />
                         <TypingText className="message" text="Welcome!" />
-                        <p className="message">
-                            <span id="level" />
-                        </p>
+                        <Level />
                         <Score />
                     </div>
                 </div>

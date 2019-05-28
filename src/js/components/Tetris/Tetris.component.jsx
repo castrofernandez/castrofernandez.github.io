@@ -6,7 +6,7 @@ import { Game } from './Tetris.game';
 const TETRIS_EMPTY_BLOCK = 'empty';
 const TETRIS_FULL_BLOCK = 'full';
 
-const Tetris = ({ changeScore }) => {
+const Tetris = ({ changeScore, changeLevel }) => {
     const [cells, setCells] = useState([]);
     const [game, setGame] = useState(null);
 
@@ -17,7 +17,7 @@ const Tetris = ({ changeScore }) => {
             game.finish();
         }
 
-        const newGame = new Game({ updateCells, changeScore });
+        const newGame = new Game({ updateCells, changeScore, changeLevel });
 
         setGame(newGame);
         newGame.start();
@@ -47,7 +47,8 @@ const Tetris = ({ changeScore }) => {
 };
 
 Tetris.propTypes = {
-    changeScore: PropTypes.func.isRequired
+    changeScore: PropTypes.func.isRequired,
+    changeLevel: PropTypes.func.isRequired
 };
 
 export default Tetris;
