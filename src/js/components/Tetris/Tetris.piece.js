@@ -1,11 +1,11 @@
-import { pieces } from './Tetris.pieces';
+import * as Pieces from './Tetris.pieces';
 
 export class Piece {
     constructor(board) {
         this.board = board;
-        this.codePiece = Math.floor(Math.random() * 8);
+        this.codePiece = Math.floor(Math.random() * Pieces.length);
         this.rotation = 0;
-        this.element = pieces[0][this.codePiece];
+        this.element = Pieces.pieces[0][this.codePiece];
         this.x = 4;
         this.y = 0;
         this.bestResult = 0;
@@ -178,7 +178,7 @@ export class Piece {
         }
 
         const returnPiece = new Piece(this.board);
-        returnPiece.element = pieces[rotateAux][this.codePiece];
+        returnPiece.element = Pieces.pieces[rotateAux][this.codePiece];
         returnPiece.rotation = rotateAux;
 
         return returnPiece;

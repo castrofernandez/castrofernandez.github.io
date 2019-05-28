@@ -40,3 +40,5 @@ export const pieces = [
         [[1, 1, 1], [0, 0, 1]]
     ]
 ];
+
+export const length = pieces[0].length;
