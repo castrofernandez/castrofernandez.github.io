@@ -40,25 +40,50 @@ export class Game {
             return;
         }
 
-        if (this.piece === null) {
+        this.checkIfPieceIsEmpty();
+        this.movePieceDown();
+        this.update();
+        this.checkIfGameIsOver();
+    }
+
+    checkIfGameIsOver() {
+        if (this.isGameOver()) {
+            this.reset();
+        }
+    }
+
+    checkIfPieceIsEmpty() {
+        if (this.isPieceEmpty()) {
             this.piece = this.createNewPiece();
         }
+    }
 
+    movePieceDown() {
         this.piece.draw();
 
         if (!this.piece.goDownIfPossible()) {
             this.piece = null;
         }
+    }
 
+    isPieceEmpty() {
+        return this.piece === null;
+    }
+
+    reset() {
+        clearInterval(this.interval);
+        this.interval = null;
+        this.start();
+    }
+
+    isGameOver() {
+        return !this.isPieceEmpty() && this.piece.endGame;
+    }
+
+    update() {
         this.changeScore(this.board.points);
         this.changeLevel(this.board.level);
         this.updateCells(this.board.getCells());
-
-        if (this.piece !== null && this.piece.endGame) {
-            clearInterval(this.interval);
-            this.interval = null;
-            this.start();
-        }
     }
 
     createNewPiece() {
