@@ -16,11 +16,11 @@ export class Piece {
     }
 
     getNumRows() {
-        return this.board.TETRIS_NUM_ROWS;
+        return this.board.numRows();
     }
 
     getNumColumns() {
-        return this.board.TETRIS_NUM_COLUMNS;
+        return this.board.numColumns();
     }
 
     getRandomPieceCode(pieceCode) {
@@ -72,7 +72,7 @@ export class Piece {
     setPixelsInBoard() {
         for (let i = 0; i < this.element.length; i++) {
             for (let j = 0; j < this.element[i].length; j++) {
-                if (this.element[i][j] === FULL) {
+                if (this.isFullAt(i, j)) {
                     this.board.setPieceInBoard(this.x + j, this.y + i);
                 }
             }
@@ -86,16 +86,26 @@ export class Piece {
 
         for (let i = 0; i < this.element.length; i++) {
             for (let j = 0; j < this.element[i].length; j++) {
-                if (
-                    this.board.isPositionFull(posX + j, posY + i) &&
-                    this.element[i][j] === FULL
-                ) {
+                if (this.isNotEmptyGap(posX, posY, i, j)) {
                     return false;
                 }
             }
         }
 
         return true;
+    }
+
+    isNotEmptyGap(posX, posY, i, j) {
+        return this.board.isPositionFull(posX + j, posY + i) &&
+            this.isFullAt(i, j);
+    }
+
+    isFullAt(posX, posY) {
+        return this.element[posX][posY] === FULL;
+    }
+
+    isEmptyAt(posX, posY) {
+        return this.element[posX][posY] === EMPTY;
     }
 
     isOutOfBounds(posX, posY) {
@@ -109,19 +119,11 @@ export class Piece {
 
     numberOfCompletedRows(posX, posY) {
         let result = 0;
-        let rowValue = 0;
 
         let i = this.getNumRows() - 1;
 
-        while (
-            i >= 0 &&
-            this.board.valueInPosition(this.getNumColumns(), i) > 0
-        ) {
-            rowValue = this.board.valueInPosition(this.getNumColumns(), i);
-
-            rowValue += this.verticalPieceValue(posY, i);
-
-            if (rowValue === this.getNumColumns()) {
+        while (i >= 0 && this.board.rowCount(i) > 0) {
+            if (this.isFullRowInPosition(posY, i)) {
                 result++;
             }
 
@@ -129,6 +131,15 @@ export class Piece {
         }
 
         return result * 100 + posY - this.numberOfSpotsBelow(posX, posY);
+    }
+
+    isFullRowInPosition(posY, i) {
+        return this.getCombinedValueRowCount(posY, i) === this.getNumColumns();
+    }
+
+    getCombinedValueRowCount(posY, i) {
+        return this.board.rowCount(i) +
+            this.verticalPieceValue(posY, i);
     }
 
     verticalPieceValue(pieceStart, posY) {
@@ -150,23 +161,25 @@ export class Piece {
 
         for (let i = 0; i < this.element.length; i++) {
             for (let j = 0; j < this.element[0].length; j++) {
-                if (this.element[i][j] === FULL) {
-                    if (
-                        i === this.element.length - 1 ||
-                        this.element[i + 1][j] === EMPTY
-                    ) {
-                        if (
-                            posY + i + 1 === this.getNumRows() ||
-                            !this.board.isPositionFull(posX + j, posY + i + 1)
-                        ) {
-                            numSpots++;
-                        }
-                    }
+                if (this.isSpotEmpty(posX, posY, i, j)) {
+                    numSpots++;
                 }
             }
         }
 
         return numSpots;
+    }
+
+    isSpotEmpty(posX, posY, i, j) {
+        const isFullAt = this.isFullAt(i, j);
+        const condition2 = i === this.element.length - 1 || this.isEmptyAt(i + 1, j);
+        const isLastRowOrEmpty = this.isLastRow(posY + i) || this.board.isPositionEmpty(posX + j, posY + i + 1);
+
+        return isFullAt && condition2 && isLastRowOrEmpty;
+    }
+
+    isLastRow(row) {
+        return row + 1 === this.getNumRows();
     }
 
     evaluateBestPosition() {

@@ -222,6 +222,10 @@
       &.full {
         background-color: $c-fore-very-light;
       }
+
+      &.empty {
+        background-color: #f8f8f8;
+      }
     }
   }
 

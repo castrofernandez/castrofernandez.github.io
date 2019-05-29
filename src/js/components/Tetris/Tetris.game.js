@@ -40,7 +40,7 @@ export class Game {
             return;
         }
 
-        if (this.piece == null) {
+        if (this.piece === null) {
             this.piece = this.createNewPiece();
         }
 
@@ -54,7 +54,7 @@ export class Game {
         this.changeLevel(this.board.level);
         this.updateCells(this.board.getCells());
 
-        if (this.piece != null && this.piece.endGame) {
+        if (this.piece !== null && this.piece.endGame) {
             clearInterval(this.interval);
             this.interval = null;
             this.start();

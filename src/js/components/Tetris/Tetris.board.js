@@ -13,50 +13,43 @@ const MAX_LEVEL = 99;
 
 export class Board {
     constructor() {
-        this.TETRIS_NUM_ROWS = TETRIS_NUM_ROWS;
-        this.TETRIS_NUM_COLUMNS = TETRIS_NUM_COLUMNS;
         this.cells = [];
         this.matrix = [];
         this.level = 1;
         this.points = 0;
     }
 
+    numColumns() {
+        return TETRIS_NUM_COLUMNS;
+    }
+
+    numRows() {
+        return TETRIS_NUM_ROWS;
+    }
+
     generate() {
         this.points = TETRIS_START_SCORE;
 
-        //const tetris = document.getElementById('tetris');
-        //tetris.innerHTML = '';
-
-        for (let i = 0; i < this.TETRIS_NUM_ROWS; i++) {
+        for (let i = 0; i < this.numRows(); i++) {
             this.cells[i] = [];
             this.matrix[i] = [];
-            this.matrix[i][this.TETRIS_NUM_COLUMNS] = 0; // Contador
+            this.matrix[i][this.numColumns()] = 0; // Contador
 
-            // var width = TETRIS_CELL_WIDTH + 'px';
-            // var height = TETRIS_CELL_HEIGHT + 'px';
-
-            for (let j = 0; j < this.TETRIS_NUM_COLUMNS; j++) {
-                // this.cells[i][j] = document.createElement('div');
-
-                // this.cells[i][j].style.minWidth = width;
-                // this.cells[i][j].style.minHeight = height;
-
+            for (let j = 0; j < this.numColumns(); j++) {
                 if (
-                    i >= this.TETRIS_NUM_ROWS - TETRIS_START_FULL_ROWS &&
+                    i >= this.numRows() - TETRIS_START_FULL_ROWS &&
                     Math.floor(Math.random() * 3) !== 0 &&
-                    this.matrix[i][this.TETRIS_NUM_COLUMNS] <
-                        this.TETRIS_NUM_COLUMNS - 1
+                    this.matrix[i][this.numColumns()] <
+                        this.numColumns() - 1
                 ) {
                     this.cells[i][j] = FULL_CELL;
                     this.matrix[i][j] = 1;
-                    this.matrix[i][this.TETRIS_NUM_COLUMNS] =
-                        this.matrix[i][this.TETRIS_NUM_COLUMNS] + 1; // Contador
+                    this.matrix[i][this.numColumns()] =
+                        this.matrix[i][this.numColumns()] + 1; // Contador
                 } else {
                     this.cells[i][j] = EMPTY_CELL;
                     this.matrix[i][j] = 0;
                 }
-
-                //tetris.appendChild(this.cells[i][j]);
             }
         }
     }
@@ -64,20 +57,24 @@ export class Board {
     setPieceInBoard(posX, posY) {
         this.matrix[posY][posX] = 1;
 
-        this.matrix[posY][this.TETRIS_NUM_COLUMNS] =
-            this.matrix[posY][this.TETRIS_NUM_COLUMNS] + 1; // Contador
+        this.matrix[posY][this.numColumns()] =
+            this.matrix[posY][this.numColumns()] + 1; // Contador
     }
 
     isPositionFull(posX, posY) {
         return this.valueInPosition(posX, posY) === FULL_CELL;
     }
 
+    isPositionEmpty(posX, posY) {
+        return !this.isPositionFull(posX, posY);
+    }
+
     valueInPosition(posX, posY) {
-        try {
-            return this.matrix[posY][posX];
-        } catch (e) {
-            // alert(posX + ' ' + posY);
-        }
+        return this.matrix[posY][posX];
+    }
+
+    rowCount(row) {
+        return this.valueInPosition(this.numColumns(), row);
     }
 
     showPiece(piece, mark) {
@@ -93,29 +90,29 @@ export class Board {
 
     checkFullRow(posY) {
         if (
-            this.matrix[posY][this.TETRIS_NUM_COLUMNS] !==
-            this.TETRIS_NUM_COLUMNS
+            this.matrix[posY][this.numColumns()] !==
+            this.numColumns()
         ) {
             return;
         }
 
         for (let i = posY; i > 0; i--) {
-            for (let j = 0; j < this.TETRIS_NUM_COLUMNS; j++) {
+            for (let j = 0; j < this.numColumns(); j++) {
                 this.matrix[i][j] = this.matrix[i - 1][j];
                 this.cells[i][j] = this.cells[i - 1][j];
             }
 
-            this.matrix[i][TETRIS_NUM_COLUMNS] = this.matrix[i - 1][
-                TETRIS_NUM_COLUMNS
+            this.matrix[i][this.numColumns()] = this.matrix[i - 1][
+                this.numColumns()
             ]; // Contador
         }
 
-        for (let j = 0; j < this.TETRIS_NUM_COLUMNS; j++) {
+        for (let j = 0; j < this.numColumns(); j++) {
             this.matrix[0][j] = 0;
             this.cells[0][j] = EMPTY_CELL;
         }
 
-        this.matrix[0][this.TETRIS_NUM_COLUMNS] = 0; // Contador
+        this.matrix[0][this.numColumns()] = 0; // Contador
 
         this.points += TETRIS_ROW_BONUS;
 
