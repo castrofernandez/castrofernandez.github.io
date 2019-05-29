@@ -3,14 +3,14 @@
 //   return;
 // }
 
-import { Piece } from './Tetris.piece';
-import { Board } from './Tetris.board';
+import Piece from './Tetris.piece';
+import Board from './Tetris.board';
 
-const TETRIS_SPEED = 200;
+import { DEFAULT_CONFIG } from './Tetris.settings';
 
 export class Game {
     constructor({ updateCells, changeScore, changeLevel }) {
-        this.board = new Board();
+        this.board = null;
         this.piece = null;
         this.updateCells = updateCells;
         this.changeScore = changeScore;
@@ -22,9 +22,9 @@ export class Game {
     }
 
     start() {
-        this.board.generate();
+        this.board = new Board();
 
-        this.interval = setInterval(() => this.loop(), TETRIS_SPEED);
+        this.interval = setInterval(() => this.loop(), DEFAULT_CONFIG.speed);
     }
 
     finish() {

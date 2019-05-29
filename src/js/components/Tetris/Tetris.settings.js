@@ -41,5 +41,19 @@ export const pieces = [
     ]
 ];
 
-export const length = pieces[0].length;
+export const LENGTH = pieces[0].length;
 export const NUMBER_OF_ROTATIONS = 4;
+
+export const FULL = 1;
+export const EMPTY = 0;
+
+export const DEFAULT_CONFIG = {
+    numRows: 12,
+    numColumns: 10,
+    initialFullRows: 4,
+    initialScore: 250,
+    rowBonus: 150,
+    fullLevelPoints: 9999,
+    maxLevel: 99,
+    speed: 200
+};

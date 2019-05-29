@@ -1,14 +1,11 @@
-import * as Pieces from './Tetris.pieces';
+import * as Settings from './Tetris.settings';
 
-const FULL = 1;
-const EMPTY = 0;
-
-export class Piece {
+export default class Piece {
     constructor(board, pieceCode = null, rotation = 0) {
         this.board = board;
         this.pieceCode = this.getRandomPieceCode(pieceCode);
         this.rotation = rotation;
-        this.element = Pieces.pieces[rotation][this.pieceCode];
+        this.element = Settings.pieces[rotation][this.pieceCode];
         this.x = this.getNumColumns() / 2;
         this.y = 0;
         this.bestResult = 0;
@@ -24,7 +21,7 @@ export class Piece {
     }
 
     getRandomPieceCode(pieceCode) {
-        return pieceCode === null ? Math.floor(Math.random() * Pieces.length) : pieceCode;
+        return pieceCode === null ? Math.floor(Math.random() * Settings.LENGTH) : pieceCode;
     }
 
     render(mark) {
@@ -101,11 +98,11 @@ export class Piece {
     }
 
     isFullAt(posX, posY) {
-        return this.element[posX][posY] === FULL;
+        return this.element[posX][posY] === Settings.FULL;
     }
 
     isEmptyAt(posX, posY) {
-        return this.element[posX][posY] === EMPTY;
+        return this.element[posX][posY] === Settings.EMPTY;
     }
 
     isOutOfBounds(posX, posY) {
@@ -220,6 +217,6 @@ export class Piece {
     }
 
     getNextRotation() {
-        return (this.rotation + 1) % Pieces.NUMBER_OF_ROTATIONS;
+        return (this.rotation + 1) % Settings.NUMBER_OF_ROTATIONS;
     }
 }

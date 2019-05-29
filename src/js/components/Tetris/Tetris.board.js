@@ -1,67 +1,78 @@
-const TETRIS_NUM_ROWS = 12;
-const TETRIS_NUM_COLUMNS = 10;
+import { FULL, EMPTY, DEFAULT_CONFIG } from './Tetris.settings';
 
-const TETRIS_START_FULL_ROWS = 4;
-const TETRIS_START_SCORE = 250;
-const TETRIS_ROW_BONUS = 150;
-
-const EMPTY_CELL = 0;
-const FULL_CELL = 1;
-
-const FULL_LEVEL = 9999;
-const MAX_LEVEL = 99;
-
-export class Board {
-    constructor() {
+export default class Board {
+    constructor(config = DEFAULT_CONFIG) {
+        this.config = { ...DEFAULT_CONFIG, ...config };
         this.cells = [];
         this.matrix = [];
         this.level = 1;
-        this.points = 0;
+        this.points = this.getConfig().initialScore;
+
+        this.generate();
+    }
+
+    getConfig() {
+        return this.config;
     }
 
     numColumns() {
-        return TETRIS_NUM_COLUMNS;
+        return this.getConfig().numColumns;
     }
 
     numRows() {
-        return TETRIS_NUM_ROWS;
+        return this.getConfig().numRows;
     }
 
     generate() {
-        this.points = TETRIS_START_SCORE;
-
         for (let i = 0; i < this.numRows(); i++) {
             this.cells[i] = [];
             this.matrix[i] = [];
             this.setRowCount(i, 0);
 
             for (let j = 0; j < this.numColumns(); j++) {
-                if (
-                    i >= this.numRows() - TETRIS_START_FULL_ROWS &&
-                    Math.floor(Math.random() * 3) !== 0 &&
-                    this.matrix[i][this.numColumns()] <
-                        this.numColumns() - 1
-                ) {
-                    this.cells[i][j] = FULL_CELL;
-                    this.matrix[i][j] = FULL_CELL;
-
+                if (this.mustInitialCellBeFull(i, j)) {
+                    this.setInitialValue(i, j, FULL);
                     this.increaseRowCount(i);
                 } else {
-                    this.cells[i][j] = EMPTY_CELL;
-                    this.matrix[i][j] = EMPTY_CELL;
+                    this.setInitialValue(i, j, EMPTY);
                 }
             }
         }
     }
 
+    setInitialValue(row, column, value) {
+        this.cells[row][column] = value;
+        this.matrix[row][column] = value;
+    }
+
+    mustInitialCellBeFull(row, column) {
+        return (
+            this.shouldInitialCellBeFull() &&
+            this.isRowInInitialRowRange(row) &&
+            this.isRowIncomplete(row)
+        );
+    }
+
+    isRowIncomplete(row) {
+        return this.getRowCount(row) < this.numColumns() - 1;
+    }
+
+    shouldInitialCellBeFull() {
+        return Math.floor(Math.random() * 3) !== 0;
+    }
+
+    isRowInInitialRowRange(row) {
+        return row >= this.numRows() - this.getConfig().initialFullRows;
+    }
+
     setPieceInBoard(posX, posY) {
-        this.matrix[posY][posX] = FULL_CELL;
+        this.matrix[posY][posX] = FULL;
 
         this.increaseRowCount(posY);
     }
 
     isPositionFull(posX, posY) {
-        return this.valueInPosition(posX, posY) === FULL_CELL;
+        return this.valueInPosition(posX, posY) === FULL;
     }
 
     isPositionEmpty(posX, posY) {
@@ -89,17 +100,14 @@ export class Board {
             for (let j = 0; j < piece.element[i].length; j++) {
                 if (piece.element[i][j] === 1) {
                     this.cells[piece.y + i][piece.x + j] =
-                        mark === true ? FULL_CELL : EMPTY_CELL;
+                        mark === true ? FULL : EMPTY;
                 }
             }
         }
     }
 
     checkIfRowIsFull(posY) {
-        if (
-            this.matrix[posY][this.numColumns()] !==
-            this.numColumns()
-        ) {
+        if (this.matrix[posY][this.numColumns()] !== this.numColumns()) {
             return;
         }
 
@@ -113,19 +121,19 @@ export class Board {
         }
 
         for (let j = 0; j < this.numColumns(); j++) {
-            this.matrix[0][j] = EMPTY_CELL;
-            this.cells[0][j] = EMPTY_CELL;
+            this.matrix[0][j] = EMPTY;
+            this.cells[0][j] = EMPTY;
         }
 
         this.setRowCount(0, 0);
 
-        this.points += TETRIS_ROW_BONUS;
+        this.points += this.getConfig().rowBonus;
 
-        if (this.points >= FULL_LEVEL) {
+        if (this.points >= this.getConfig().fullLevelPoints) {
             this.points = 0;
             this.level += 1;
 
-            if (this.level > MAX_LEVEL) {
+            if (this.level > this.getConfig().maxLevel) {
                 this.level = 1;
             }
         }
