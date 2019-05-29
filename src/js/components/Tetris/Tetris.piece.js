@@ -63,7 +63,7 @@ export class Piece {
         this.setPixelsInBoard();
 
         for (let i = 0; i < this.element.length; i++) {
-            this.board.checkFullRow(this.y + i);
+            this.board.checkIfRowIsFull(this.y + i);
         }
 
         return false;
@@ -122,7 +122,7 @@ export class Piece {
 
         let i = this.getNumRows() - 1;
 
-        while (i >= 0 && this.board.rowCount(i) > 0) {
+        while (i >= 0 && this.board.getRowCount(i) > 0) {
             if (this.isFullRowInPosition(posY, i)) {
                 result++;
             }
@@ -138,7 +138,7 @@ export class Piece {
     }
 
     getCombinedValueRowCount(posY, i) {
-        return this.board.rowCount(i) +
+        return this.board.getRowCount(i) +
             this.verticalPieceValue(posY, i);
     }
 

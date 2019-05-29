@@ -33,7 +33,7 @@ export class Board {
         for (let i = 0; i < this.numRows(); i++) {
             this.cells[i] = [];
             this.matrix[i] = [];
-            this.matrix[i][this.numColumns()] = 0; // Contador
+            this.setRowCount(i, 0);
 
             for (let j = 0; j < this.numColumns(); j++) {
                 if (
@@ -43,22 +43,21 @@ export class Board {
                         this.numColumns() - 1
                 ) {
                     this.cells[i][j] = FULL_CELL;
-                    this.matrix[i][j] = 1;
-                    this.matrix[i][this.numColumns()] =
-                        this.matrix[i][this.numColumns()] + 1; // Contador
+                    this.matrix[i][j] = FULL_CELL;
+
+                    this.increaseRowCount(i);
                 } else {
                     this.cells[i][j] = EMPTY_CELL;
-                    this.matrix[i][j] = 0;
+                    this.matrix[i][j] = EMPTY_CELL;
                 }
             }
         }
     }
 
     setPieceInBoard(posX, posY) {
-        this.matrix[posY][posX] = 1;
+        this.matrix[posY][posX] = FULL_CELL;
 
-        this.matrix[posY][this.numColumns()] =
-            this.matrix[posY][this.numColumns()] + 1; // Contador
+        this.increaseRowCount(posY);
     }
 
     isPositionFull(posX, posY) {
@@ -73,8 +72,16 @@ export class Board {
         return this.matrix[posY][posX];
     }
 
-    rowCount(row) {
+    getRowCount(row) {
         return this.valueInPosition(this.numColumns(), row);
+    }
+
+    setRowCount(row, value) {
+        this.matrix[row][this.numColumns()] = value;
+    }
+
+    increaseRowCount(row) {
+        this.setRowCount(row, this.getRowCount(row) + 1);
     }
 
     showPiece(piece, mark) {
@@ -88,7 +95,7 @@ export class Board {
         }
     }
 
-    checkFullRow(posY) {
+    checkIfRowIsFull(posY) {
         if (
             this.matrix[posY][this.numColumns()] !==
             this.numColumns()
@@ -102,17 +109,15 @@ export class Board {
                 this.cells[i][j] = this.cells[i - 1][j];
             }
 
-            this.matrix[i][this.numColumns()] = this.matrix[i - 1][
-                this.numColumns()
-            ]; // Contador
+            this.setRowCount(i, this.getRowCount(i - 1));
         }
 
         for (let j = 0; j < this.numColumns(); j++) {
-            this.matrix[0][j] = 0;
+            this.matrix[0][j] = EMPTY_CELL;
             this.cells[0][j] = EMPTY_CELL;
         }
 
-        this.matrix[0][this.numColumns()] = 0; // Contador
+        this.setRowCount(0, 0);
 
         this.points += TETRIS_ROW_BONUS;
 
