@@ -81,8 +81,8 @@ export class Game {
     }
 
     update() {
-        this.changeScore(this.board.points);
-        this.changeLevel(this.board.level);
+        this.changeScore(this.board.getPoints());
+        this.changeLevel(this.board.getLevel());
         this.updateCells(this.board.getCells());
     }
 

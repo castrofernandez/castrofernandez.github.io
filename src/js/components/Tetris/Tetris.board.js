@@ -1,13 +1,13 @@
 import { FULL, EMPTY, DEFAULT_CONFIG } from './Tetris.settings';
+import Level from './Tetris.board.level';
+import Display from './Tetris.board.display';
+import Initial from './Tetris.board.initial';
 
 export default class Board {
     constructor(config = DEFAULT_CONFIG) {
         this.config = { ...DEFAULT_CONFIG, ...config };
-        this.cells = [];
-        this.matrix = [];
-        this.level = 1;
-        this.points = this.getConfig().initialScore;
-        this.rowCount = new Array(this.numRows()).fill(0);
+        this.display = new Display();
+        this.level = new Level(config);
 
         this.generate();
     }
@@ -25,45 +25,16 @@ export default class Board {
     }
 
     generate() {
-        for (let i = 0; i < this.numRows(); i++) {
-            this.cells[i] = [];
-            this.matrix[i] = [];
-            this.setRowCount(i, 0);
+        const initial = new Initial(this.getConfig());
+        const { matrix, rowCount } = initial.generate();
 
-            for (let j = 0; j < this.numColumns(); j++) {
-                if (this.mustInitialCellBeFull(i, j)) {
-                    this.setInitialValue(i, j, FULL);
-                    this.increaseRowCount(i);
-                } else {
-                    this.setInitialValue(i, j, EMPTY);
-                }
-            }
-        }
+        this.matrix = matrix;
+        this.rowCount = rowCount;
+        this.mirrowDisplay();
     }
 
-    setInitialValue(row, column, value) {
-        this.cells[row][column] = value;
-        this.matrix[row][column] = value;
-    }
-
-    mustInitialCellBeFull(row, column) {
-        return (
-            this.shouldInitialCellBeFull() &&
-            this.isRowInInitialRowRange(row) &&
-            this.wouldAnotherPieceCompleteTheRow(row)
-        );
-    }
-
-    wouldAnotherPieceCompleteTheRow(row) {
-        return this.getRowCount(row) < this.numColumns() - 1;
-    }
-
-    shouldInitialCellBeFull() {
-        return Math.floor(Math.random() * 3) !== 0;
-    }
-
-    isRowInInitialRowRange(row) {
-        return row >= this.numRows() - this.getConfig().initialFullRows;
+    mirrowDisplay() {
+        this.display.setValues(this.matrix);
     }
 
     setCellInBoard(posX, posY) {
@@ -97,17 +68,7 @@ export default class Board {
     }
 
     showPiece(piece, mark) {
-        for (let i = 0; i < piece.element.length; i++) {
-            for (let j = 0; j < piece.element[i].length; j++) {
-                if (piece.element[i][j] === FULL) {
-                    this.setCell(piece.y + i, piece.x + j, mark);
-                }
-            }
-        }
-    }
-
-    setCell(row, column, value) {
-        this.cells[row][column] = value === true ? FULL : EMPTY;
+        this.display.showPiece(piece, mark);
     }
 
     isRowIncomplete(row) {
@@ -129,13 +90,13 @@ export default class Board {
 
         this.deleteRow(row);
         this.addNewEmptyRowAtTop();
-        this.addCompletedRowPoints();
+        this.mirrowDisplay();
+        this.level.addCompletedRowPoints();
     }
 
     deleteRow(row) {
         for (let i = row; i > 0; i--) {
             this.matrix[i] = this.matrix[i - 1];
-            this.cells[i] = this.cells[i - 1];
 
             this.setRowCount(i, this.getRowCount(i - 1));
         }
@@ -143,33 +104,19 @@ export default class Board {
 
     addNewEmptyRowAtTop() {
         this.matrix[0] = this.getNewEmptyRow();
-        this.cells[0] = this.getNewEmptyRow();
 
         this.setRowCount(0, 0);
     }
 
-    addCompletedRowPoints() {
-        this.increasePoints();
-
-        if (this.isLevelComplete()) {
-            this.increaseLevel();
-        }
+    getPoints() {
+        return this.level.getPoints();
     }
 
-    increasePoints() {
-        this.points += this.getConfig().rowBonus;
-    }
-
-    isLevelComplete() {
-        return this.points >= this.getConfig().fullLevelPoints;
-    }
-
-    increaseLevel() {
-        this.points = 0;
-        this.level = (this.level + 1) % this.getConfig().maxLevel;
+    getLevel() {
+        return this.level.getLevel();
     }
 
     getCells() {
-        return this.cells;
+        return this.display.getCells();
     }
 }

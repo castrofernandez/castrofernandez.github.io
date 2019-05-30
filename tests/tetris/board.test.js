@@ -1,18 +1,21 @@
 import sinon from 'sinon';
 
-import { FULL } from '../../src/js/components/Tetris/Tetris.settings';
 import Board from '../../src/js/components/Tetris/Tetris.board';
 import Piece from '../../src/js/components/Tetris/Tetris.piece';
+import Initial from '../../src/js/components/Tetris/Tetris.board.initial';
 
-const getCell = cells => (row, column) => cells[row][column] === FULL;
+const setBoard = cells => () => {
+    return {
+        matrix: [...cells].map(row => [...row]),
+        rowCount: cells.map(row => row.reduce((sum, cell) => sum + cell))
+    };
+};
 
 const createBoard = (cells = []) => {
     const numRows = cells.length;
     const numColumns = cells[0].length;
 
-    sinon
-        .stub(Board.prototype, 'mustInitialCellBeFull')
-        .callsFake(getCell(cells));
+    sinon.stub(Initial.prototype, 'generate').callsFake(setBoard(cells));
 
     const board = new Board({ numRows, numColumns, initialFullRows: numRows });
 
@@ -26,7 +29,7 @@ describe('default Board', () => {
             numColumns: 4,
             initialFullRows: 0
         });
-        expect(board.cells).toStrictEqual([
+        expect(board.getCells()).toStrictEqual([
             [0, 0, 0, 0],
             [0, 0, 0, 0],
             [0, 0, 0, 0],
@@ -49,7 +52,7 @@ describe('default Board', () => {
             numColumns: 2,
             initialFullRows: 0
         });
-        expect(board.cells).toStrictEqual([[0, 0], [0, 0], [0, 0]]);
+        expect(board.getCells()).toStrictEqual([[0, 0], [0, 0], [0, 0]]);
         expect(board.matrix).toStrictEqual([[0, 0], [0, 0], [0, 0]]);
         expect(board.rowCount).toStrictEqual([0, 0, 0]);
     });
@@ -63,7 +66,7 @@ describe('defined Board', () => {
     test('(2x2)', () => {
         const board = createBoard([[0, 1], [1, 1]]);
 
-        expect(board.cells).toStrictEqual([[0, 1], [1, 1]]);
+        expect(board.getCells()).toStrictEqual([[0, 1], [1, 1]]);
         expect(board.matrix).toStrictEqual([[0, 1], [1, 1]]);
         expect(board.rowCount).toStrictEqual([1, 2]);
     });
@@ -71,7 +74,7 @@ describe('defined Board', () => {
     test('(3x3)', () => {
         const board = createBoard([[0, 1, 1], [1, 1, 0]]);
 
-        expect(board.cells).toStrictEqual([[0, 1, 1], [1, 1, 0]]);
+        expect(board.getCells()).toStrictEqual([[0, 1, 1], [1, 1, 0]]);
         expect(board.matrix).toStrictEqual([[0, 1, 1], [1, 1, 0]]);
         expect(board.rowCount).toStrictEqual([2, 2]);
     });
@@ -114,7 +117,7 @@ describe('deleteRowIfFull', () => {
         board.deleteRowIfFull(4);
 
         expect(board.matrix).toStrictEqual(initialBoard);
-        expect(board.matrix).toStrictEqual(board.cells);
+        expect(board.matrix).toStrictEqual(board.getCells());
 
         board.deleteRowIfFull(5);
         expect(board.matrix).toStrictEqual([
@@ -125,7 +128,7 @@ describe('deleteRowIfFull', () => {
             [0, 0, 1, 1, 1],
             [0, 1, 1, 1, 1]
         ]);
-        expect(board.matrix).toStrictEqual(board.cells);
+        expect(board.matrix).toStrictEqual(board.getCells());
     });
 });
 
@@ -150,7 +153,7 @@ describe('showPiece', () => {
         piece.x = 0;
         piece.y = 1;
         board.showPiece(piece, true);
-        expect(board.cells).toStrictEqual([
+        expect(board.getCells()).toStrictEqual([
             [0, 0, 0, 0, 0],
             [1, 0, 0, 0, 1],
             [1, 0, 0, 1, 1],
@@ -159,6 +162,6 @@ describe('showPiece', () => {
             [1, 1, 1, 1, 1]
         ]);
         board.showPiece(piece, false);
-        expect(board.cells).toStrictEqual(initialBoard);
+        expect(board.getCells()).toStrictEqual(initialBoard);
     });
 });
