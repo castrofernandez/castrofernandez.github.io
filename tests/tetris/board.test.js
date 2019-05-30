@@ -33,12 +33,13 @@ describe('default Board', () => {
             [0, 0, 0, 0]
         ]);
         expect(board.matrix).toStrictEqual([
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0]
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
         ]);
+        expect(board.rowCount).toStrictEqual([0, 0, 0, 0, 0]);
     });
 
     test('empty (2x2)', () => {
@@ -48,7 +49,8 @@ describe('default Board', () => {
             initialFullRows: 0
         });
         expect(board.cells).toStrictEqual([[0, 0], [0, 0], [0, 0]]);
-        expect(board.matrix).toStrictEqual([[0, 0, 0], [0, 0, 0], [0, 0, 0]]);
+        expect(board.matrix).toStrictEqual([[0, 0], [0, 0], [0, 0]]);
+        expect(board.rowCount).toStrictEqual([0, 0, 0]);
     });
 });
 
@@ -61,13 +63,15 @@ describe('defined Board', () => {
         const board = createBoard([[0, 1], [1, 1]]);
 
         expect(board.cells).toStrictEqual([[0, 1], [1, 1]]);
-        expect(board.matrix).toStrictEqual([[0, 1, 1], [1, 1, 2]]);
+        expect(board.matrix).toStrictEqual([[0, 1], [1, 1]]);
+        expect(board.rowCount).toStrictEqual([1, 2]);
     });
 
     test('(3x3)', () => {
         const board = createBoard([[0, 1, 1], [1, 1, 0]]);
 
         expect(board.cells).toStrictEqual([[0, 1, 1], [1, 1, 0]]);
-        expect(board.matrix).toStrictEqual([[0, 1, 1, 2], [1, 1, 0, 2]]);
+        expect(board.matrix).toStrictEqual([[0, 1, 1], [1, 1, 0]]);
+        expect(board.rowCount).toStrictEqual([2, 2]);
     });
 });

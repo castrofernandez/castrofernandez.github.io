@@ -7,6 +7,7 @@ export default class Board {
         this.matrix = [];
         this.level = 1;
         this.points = this.getConfig().initialScore;
+        this.rowCount = new Array(this.numRows()).fill(0);
 
         this.generate();
     }
@@ -84,11 +85,11 @@ export default class Board {
     }
 
     getRowCount(row) {
-        return this.valueInPosition(this.numColumns(), row);
+        return this.rowCount[row];
     }
 
     setRowCount(row, value) {
-        this.matrix[row][this.numColumns()] = value;
+        this.rowCount[row] = value;
     }
 
     increaseRowCount(row) {
@@ -107,7 +108,7 @@ export default class Board {
     }
 
     checkIfRowIsFull(posY) {
-        if (this.matrix[posY][this.numColumns()] !== this.numColumns()) {
+        if (this.getRowCount(posY) !== this.numColumns()) {
             return;
         }
 
