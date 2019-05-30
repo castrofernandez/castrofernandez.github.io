@@ -2,6 +2,7 @@ import sinon from 'sinon';
 
 import { FULL } from '../../src/js/components/Tetris/Tetris.settings';
 import Board from '../../src/js/components/Tetris/Tetris.board';
+import Piece from '../../src/js/components/Tetris/Tetris.piece';
 
 const getCell = cells => (row, column) => cells[row][column] === FULL;
 
@@ -73,5 +74,91 @@ describe('defined Board', () => {
         expect(board.cells).toStrictEqual([[0, 1, 1], [1, 1, 0]]);
         expect(board.matrix).toStrictEqual([[0, 1, 1], [1, 1, 0]]);
         expect(board.rowCount).toStrictEqual([2, 2]);
+    });
+});
+
+describe('isRowComplete', () => {
+    afterEach(() => {
+        sinon.restore();
+    });
+
+    test('complete row', () => {
+        const board = createBoard([[0, 1]]);
+        expect(board.isRowComplete(0)).toBe.false;
+        expect(board.isRowIncomplete(0)).toBe.true;
+    });
+
+    test('incomplete row', () => {
+        const board = createBoard([[1, 1]]);
+        expect(board.isRowComplete(0)).toBe.true;
+        expect(board.isRowIncomplete(0)).toBe.false;
+    });
+});
+
+describe('deleteRowIfFull', () => {
+    afterEach(() => {
+        sinon.restore();
+    });
+
+    test('row is deleted', () => {
+        const initialBoard = [
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1],
+            [0, 0, 0, 1, 1],
+            [0, 0, 1, 1, 1],
+            [0, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1]
+        ];
+
+        const board = createBoard(initialBoard);
+        board.deleteRowIfFull(4);
+
+        expect(board.matrix).toStrictEqual(initialBoard);
+        expect(board.matrix).toStrictEqual(board.cells);
+
+        board.deleteRowIfFull(5);
+        expect(board.matrix).toStrictEqual([
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1],
+            [0, 0, 0, 1, 1],
+            [0, 0, 1, 1, 1],
+            [0, 1, 1, 1, 1]
+        ]);
+        expect(board.matrix).toStrictEqual(board.cells);
+    });
+});
+
+describe('showPiece', () => {
+    afterEach(() => {
+        sinon.restore();
+    });
+
+    test('showPiece', () => {
+        const initialBoard = [
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1],
+            [0, 0, 0, 1, 1],
+            [0, 0, 1, 1, 1],
+            [0, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1]
+        ];
+
+        const pieceCode = 1;
+        const board = createBoard(initialBoard);
+        const piece = new Piece(board, pieceCode);
+        piece.x = 0;
+        piece.y = 1;
+        board.showPiece(piece, true);
+        expect(board.cells).toStrictEqual([
+            [0, 0, 0, 0, 0],
+            [1, 0, 0, 0, 1],
+            [1, 0, 0, 1, 1],
+            [1, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1]
+        ]);
+        board.showPiece(piece, false);
+        expect(board.cells).toStrictEqual(initialBoard);
     });
 });

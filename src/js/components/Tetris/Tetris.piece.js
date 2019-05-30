@@ -60,7 +60,7 @@ export default class Piece {
         this.setPixelsInBoard();
 
         for (let i = 0; i < this.element.length; i++) {
-            this.board.checkIfRowIsFull(this.y + i);
+            this.board.deleteRowIfFull(this.y + i);
         }
 
         return false;
@@ -70,7 +70,7 @@ export default class Piece {
         for (let i = 0; i < this.element.length; i++) {
             for (let j = 0; j < this.element[i].length; j++) {
                 if (this.isFullAt(i, j)) {
-                    this.board.setPieceInBoard(this.x + j, this.y + i);
+                    this.board.setCellInBoard(this.x + j, this.y + i);
                 }
             }
         }

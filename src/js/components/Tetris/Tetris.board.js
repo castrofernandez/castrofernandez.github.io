@@ -50,11 +50,11 @@ export default class Board {
         return (
             this.shouldInitialCellBeFull() &&
             this.isRowInInitialRowRange(row) &&
-            this.isRowIncomplete(row)
+            this.wouldAnotherPieceCompleteTheRow(row)
         );
     }
 
-    isRowIncomplete(row) {
+    wouldAnotherPieceCompleteTheRow(row) {
         return this.getRowCount(row) < this.numColumns() - 1;
     }
 
@@ -66,7 +66,7 @@ export default class Board {
         return row >= this.numRows() - this.getConfig().initialFullRows;
     }
 
-    setPieceInBoard(posX, posY) {
+    setCellInBoard(posX, posY) {
         this.matrix[posY][posX] = FULL;
 
         this.increaseRowCount(posY);
@@ -99,45 +99,74 @@ export default class Board {
     showPiece(piece, mark) {
         for (let i = 0; i < piece.element.length; i++) {
             for (let j = 0; j < piece.element[i].length; j++) {
-                if (piece.element[i][j] === 1) {
-                    this.cells[piece.y + i][piece.x + j] =
-                        mark === true ? FULL : EMPTY;
+                if (piece.element[i][j] === FULL) {
+                    this.setCell(piece.y + i, piece.x + j, mark);
                 }
             }
         }
     }
 
-    checkIfRowIsFull(posY) {
-        if (this.getRowCount(posY) !== this.numColumns()) {
+    setCell(row, column, value) {
+        this.cells[row][column] = value === true ? FULL : EMPTY;
+    }
+
+    isRowIncomplete(row) {
+        return this.getRowCount(row) < this.numColumns();
+    }
+
+    isRowComplete(row) {
+        return !this.isRowIncomplete(row);
+    }
+
+    getNewEmptyRow() {
+        return new Array(this.numColumns()).fill(EMPTY);
+    }
+
+    deleteRowIfFull(row) {
+        if (this.isRowIncomplete(row)) {
             return;
         }
 
-        for (let i = posY; i > 0; i--) {
-            for (let j = 0; j < this.numColumns(); j++) {
-                this.matrix[i][j] = this.matrix[i - 1][j];
-                this.cells[i][j] = this.cells[i - 1][j];
-            }
+        this.deleteRow(row);
+        this.addNewEmptyRowAtTop();
+        this.addCompletedRowPoints();
+    }
+
+    deleteRow(row) {
+        for (let i = row; i > 0; i--) {
+            this.matrix[i] = this.matrix[i - 1];
+            this.cells[i] = this.cells[i - 1];
 
             this.setRowCount(i, this.getRowCount(i - 1));
         }
+    }
 
-        for (let j = 0; j < this.numColumns(); j++) {
-            this.matrix[0][j] = EMPTY;
-            this.cells[0][j] = EMPTY;
-        }
+    addNewEmptyRowAtTop() {
+        this.matrix[0] = this.getNewEmptyRow();
+        this.cells[0] = this.getNewEmptyRow();
 
         this.setRowCount(0, 0);
+    }
 
-        this.points += this.getConfig().rowBonus;
+    addCompletedRowPoints() {
+        this.increasePoints();
 
-        if (this.points >= this.getConfig().fullLevelPoints) {
-            this.points = 0;
-            this.level += 1;
-
-            if (this.level > this.getConfig().maxLevel) {
-                this.level = 1;
-            }
+        if (this.isLevelComplete()) {
+            this.increaseLevel();
         }
+    }
+
+    increasePoints() {
+        this.points += this.getConfig().rowBonus;
+    }
+
+    isLevelComplete() {
+        return this.points >= this.getConfig().fullLevelPoints;
+    }
+
+    increaseLevel() {
+        this.points = 0;
+        this.level = (this.level + 1) % this.getConfig().maxLevel;
     }
 
     getCells() {
