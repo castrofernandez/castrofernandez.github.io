@@ -1,5 +1,5 @@
 import * as Settings from './Tetris.settings';
-import { FULL } from './Tetris.settings';
+import { FULL, EMPTY } from './Tetris.settings';
 
 export default class Piece {
     constructor(board, pieceCode = null, rotation = 0) {
@@ -24,11 +24,11 @@ export default class Piece {
     }
 
     draw() {
-        this.render(true);
+        this.render(FULL);
     }
 
     clear() {
-        this.render(false);
+        this.render(EMPTY);
     }
 
     goDownIfPossible() {
@@ -62,13 +62,7 @@ export default class Piece {
     }
 
     setPixelsInBoard() {
-        for (let i = 0; i < this.element.length; i++) {
-            for (let j = 0; j < this.element[i].length; j++) {
-                if (this.isFullAt(i, j)) {
-                    this.board.setCellInBoard(this.x + j, this.y + i);
-                }
-            }
-        }
+        this.board.addCellsToBoard(this.getCoordinates());
     }
 
     isPossibleContinue(posX, posY) {

@@ -1,6 +1,7 @@
 import sinon from 'sinon';
 
 import Piece from '../../src/js/components/Tetris/Tetris.piece';
+import { FULL, EMPTY } from '../../src/js/components/Tetris/Tetris.settings';
 
 import { createBoard } from './utils';
 
@@ -24,7 +25,7 @@ describe('showPiece', () => {
         const piece = new Piece(board, pieceCode);
         piece.x = 0;
         piece.y = 1;
-        board.showPiece(piece, true);
+        board.showPiece(piece, FULL);
         expect(board.getCells()).toStrictEqual([
             [0, 0, 0, 0, 0],
             [1, 0, 0, 0, 1],
@@ -41,7 +42,7 @@ describe('showPiece', () => {
         const piece = new Piece(board, pieceCode);
         piece.x = 1;
         piece.y = 1;
-        board.showPiece(piece, true);
+        board.showPiece(piece, FULL);
         expect(board.getCells()).toStrictEqual([
             [0, 0, 0, 0, 0],
             [0, 1, 1, 0, 1],
@@ -57,7 +58,7 @@ describe('showPiece', () => {
         const piece = new Piece(board, 1);
         piece.x = 1;
         piece.y = 0;
-        board.showPiece(piece, false);
+        board.showPiece(piece, EMPTY);
         expect(board.getCells()).toStrictEqual(initialBoard);
     });
 });

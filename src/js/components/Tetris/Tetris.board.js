@@ -37,10 +37,13 @@ export default class Board {
         this.display.setValues(this.matrix);
     }
 
-    setCellInBoard(posX, posY) {
-        this.matrix[posY][posX] = FULL;
+    addCellsToBoard(cells) {
+        cells.map(pos => this.addSingleCellToBoard(pos));
+    }
 
-        this.increaseRowCount(posY);
+    addSingleCellToBoard({ x, y }) {
+        this.matrix[y][x] = FULL;
+        this.increaseRowCount(y);
     }
 
     isPositionFull(posX, posY) {
@@ -95,17 +98,13 @@ export default class Board {
     }
 
     deleteRow(row) {
-        for (let i = row; i > 0; i--) {
-            this.matrix[i] = this.matrix[i - 1];
-
-            this.setRowCount(i, this.getRowCount(i - 1));
-        }
+        this.matrix.splice(row, 1);
+        this.rowCount.splice(row, 1);
     }
 
     addNewEmptyRowAtTop() {
-        this.matrix[0] = this.getNewEmptyRow();
-
-        this.setRowCount(0, 0);
+        this.matrix.unshift(this.getNewEmptyRow());
+        this.rowCount.unshift(0);
     }
 
     isPosOutOfBounds(posX, posY) {
