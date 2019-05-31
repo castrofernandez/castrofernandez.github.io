@@ -31,9 +31,9 @@ export default class Initial {
     }
 
     getNewRow(row) {
-        return this.isRowInInitialRowRange(row) ?
-            this.getNewRowWithRandomValues(row) :
-            this.getNewEmptyRow();
+        return this.isRowInInitialRowRange(row)
+            ? this.getNewRowWithRandomValues(row)
+            : this.getNewEmptyRow();
     }
 
     getNewEmptyRow() {

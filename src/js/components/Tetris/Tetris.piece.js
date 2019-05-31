@@ -1,4 +1,5 @@
 import * as Settings from './Tetris.settings';
+import { FULL } from './Tetris.settings';
 
 export default class Piece {
     constructor(board, pieceCode = null, rotation = 0) {
@@ -6,22 +7,16 @@ export default class Piece {
         this.pieceCode = this.getRandomPieceCode(pieceCode);
         this.rotation = rotation;
         this.element = Settings.pieces[rotation][this.pieceCode];
-        this.x = this.getNumColumns() / 2;
+        this.x = Math.floor(this.board.numColumns() / 2);
         this.y = 0;
         this.bestResult = 0;
         this.endGame = !this.isPossibleContinue(this.x, this.y);
     }
 
-    getNumRows() {
-        return this.board.numRows();
-    }
-
-    getNumColumns() {
-        return this.board.numColumns();
-    }
-
     getRandomPieceCode(pieceCode) {
-        return pieceCode === null ? Math.floor(Math.random() * Settings.LENGTH) : pieceCode;
+        return pieceCode === null
+            ? Math.floor(Math.random() * Settings.LENGTH)
+            : pieceCode;
     }
 
     render(mark) {
@@ -77,7 +72,10 @@ export default class Piece {
     }
 
     isPossibleContinue(posX, posY) {
-        if (this.isOutOfBounds(posX, posY)) {
+        if (
+            this.isOutOfBounds(posX, posY) ||
+            this.isOutOfBounds(posX, posY + this.element.length - 1)
+        ) {
             return false;
         }
 
@@ -93,8 +91,9 @@ export default class Piece {
     }
 
     isNotEmptyGap(posX, posY, i, j) {
-        return this.board.isPositionFull(posX + j, posY + i) &&
-            this.isFullAt(i, j);
+        return (
+            this.board.isPositionFull(posX + j, posY + i) && this.isFullAt(i, j)
+        );
     }
 
     isFullAt(posX, posY) {
@@ -106,18 +105,13 @@ export default class Piece {
     }
 
     isOutOfBounds(posX, posY) {
-        return (
-            posY >= this.getNumRows() ||
-            posY + this.element.length - 1 >= this.getNumRows() ||
-            posX >= this.getNumColumns() ||
-            posX < 0
-        );
+        return this.board.isPosOutOfBounds(posX, posY);
     }
 
     numberOfCompletedRows(posX, posY) {
         let result = 0;
 
-        let i = this.getNumRows() - 1;
+        let i = this.board.numRows() - 1;
 
         while (i >= 0 && this.board.getRowCount(i) > 0) {
             if (this.isFullRowInPosition(posY, i)) {
@@ -131,12 +125,13 @@ export default class Piece {
     }
 
     isFullRowInPosition(posY, i) {
-        return this.getCombinedValueRowCount(posY, i) === this.getNumColumns();
+        return (
+            this.getCombinedValueRowCount(posY, i) === this.board.numColumns()
+        );
     }
 
     getCombinedValueRowCount(posY, i) {
-        return this.board.getRowCount(i) +
-            this.verticalPieceValue(posY, i);
+        return this.board.getRowCount(i) + this.verticalPieceValue(posY, i);
     }
 
     verticalPieceValue(pieceStart, posY) {
@@ -169,21 +164,24 @@ export default class Piece {
 
     isSpotEmpty(posX, posY, i, j) {
         const isFullAt = this.isFullAt(i, j);
-        const condition2 = i === this.element.length - 1 || this.isEmptyAt(i + 1, j);
-        const isLastRowOrEmpty = this.isLastRow(posY + i) || this.board.isPositionEmpty(posX + j, posY + i + 1);
+        const condition2 =
+            i === this.element.length - 1 || this.isEmptyAt(i + 1, j);
+        const isLastRowOrEmpty =
+            this.isLastRow(posY + i) ||
+            this.board.isPositionEmpty(posX + j, posY + i + 1);
 
         return isFullAt && condition2 && isLastRowOrEmpty;
     }
 
     isLastRow(row) {
-        return row + 1 === this.getNumRows();
+        return row + 1 === this.board.numRows();
     }
 
     evaluateBestPosition() {
         const max = { x: 0, value: 0 };
 
         let value;
-        const length = this.getNumColumns() - this.element[0].length;
+        const length = this.board.numColumns() - this.element[0].length;
 
         for (let i = 0; i <= length; i++) {
             const posY = this.getLowestPosition(i);
@@ -218,5 +216,17 @@ export default class Piece {
 
     getNextRotation() {
         return (this.rotation + 1) % Settings.NUMBER_OF_ROTATIONS;
+    }
+
+    getCoordinates() {
+        const x = this.x;
+        const y = this.y;
+        return this.element.reduce((result, row, j) => {
+            return row.reduce((result, cell, i) => {
+                return cell === FULL
+                    ? [...result, { x: x + i, y: y + j }]
+                    : result;
+            }, result);
+        }, []);
     }
 }

@@ -1,26 +1,8 @@
 import sinon from 'sinon';
 
 import Board from '../../src/js/components/Tetris/Tetris.board';
-import Piece from '../../src/js/components/Tetris/Tetris.piece';
-import Initial from '../../src/js/components/Tetris/Tetris.board.initial';
 
-const setBoard = cells => () => {
-    return {
-        matrix: [...cells].map(row => [...row]),
-        rowCount: cells.map(row => row.reduce((sum, cell) => sum + cell))
-    };
-};
-
-const createBoard = (cells = []) => {
-    const numRows = cells.length;
-    const numColumns = cells[0].length;
-
-    sinon.stub(Initial.prototype, 'generate').callsFake(setBoard(cells));
-
-    const board = new Board({ numRows, numColumns, initialFullRows: numRows });
-
-    return board;
-};
+import { createBoard } from './utils';
 
 describe('default Board', () => {
     test('empty default (5x4)', () => {
@@ -129,39 +111,5 @@ describe('deleteRowIfFull', () => {
             [0, 1, 1, 1, 1]
         ]);
         expect(board.matrix).toStrictEqual(board.getCells());
-    });
-});
-
-describe('showPiece', () => {
-    afterEach(() => {
-        sinon.restore();
-    });
-
-    test('showPiece', () => {
-        const initialBoard = [
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1],
-            [0, 0, 0, 1, 1],
-            [0, 0, 1, 1, 1],
-            [0, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1]
-        ];
-
-        const pieceCode = 1;
-        const board = createBoard(initialBoard);
-        const piece = new Piece(board, pieceCode);
-        piece.x = 0;
-        piece.y = 1;
-        board.showPiece(piece, true);
-        expect(board.getCells()).toStrictEqual([
-            [0, 0, 0, 0, 0],
-            [1, 0, 0, 0, 1],
-            [1, 0, 0, 1, 1],
-            [1, 0, 1, 1, 1],
-            [1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1]
-        ]);
-        board.showPiece(piece, false);
-        expect(board.getCells()).toStrictEqual(initialBoard);
     });
 });

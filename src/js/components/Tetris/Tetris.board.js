@@ -108,6 +108,10 @@ export default class Board {
         this.setRowCount(0, 0);
     }
 
+    isPosOutOfBounds(posX, posY) {
+        return posY >= this.numRows() || posX >= this.numColumns() || posX < 0;
+    }
+
     getPoints() {
         return this.level.getPoints();
     }
