@@ -46,16 +46,20 @@ export default class Board {
         this.increaseRowCount(y);
     }
 
-    isPositionFull(posX, posY) {
-        return this.valueInPosition(posX, posY) === FULL;
+    isPositionFull(x, y) {
+        return this.valueInPosition(x, y) === FULL;
     }
 
-    isPositionEmpty(posX, posY) {
-        return !this.isPositionFull(posX, posY);
+    isPositionEmpty(x, y) {
+        return !this.isPositionFull(x, y);
     }
 
-    valueInPosition(posX, posY) {
-        return this.matrix[posY][posX];
+    isPositionEmpty(x, y) {
+        return !this.isPositionFull(x, y);
+    }
+
+    valueInPosition(x, y) {
+        return this.matrix[y][x];
     }
 
     getRowCount(row) {
@@ -107,8 +111,8 @@ export default class Board {
         this.rowCount.unshift(0);
     }
 
-    isPosOutOfBounds(posX, posY) {
-        return posY >= this.numRows() || posX >= this.numColumns() || posX < 0;
+    isPosOutOfBounds(x, y) {
+        return y >= this.numRows() || x >= this.numColumns() || x < 0;
     }
 
     getPoints() {
