@@ -36,7 +36,7 @@ export default class Piece {
             return this.goDown();
         }
 
-        return this.setPieceInBoard();
+        return false;
     }
 
     goDown() {
@@ -49,20 +49,6 @@ export default class Piece {
 
     increaseY() {
         this.y += 1;
-    }
-
-    setPieceInBoard() {
-        this.setPixelsInBoard();
-
-        for (let i = 0; i < this.element.length; i++) {
-            this.board.deleteRowIfFull(this.y + i);
-        }
-
-        return false;
-    }
-
-    setPixelsInBoard() {
-        this.board.addCellsToBoard(this.getCoordinates());
     }
 
     isPositionValid(x, y) {

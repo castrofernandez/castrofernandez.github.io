@@ -62,8 +62,21 @@ export class Game {
         this.piece.draw();
 
         if (!this.piece.goDownIfPossible()) {
+            this.setPieceInBoard();
             this.piece = null;
         }
+    }
+
+    setPieceInBoard() {
+        this.setPixelsInBoard();
+
+        this.board.deleteAllFullRows();
+
+        return false;
+    }
+
+    setPixelsInBoard() {
+        this.board.addCellsToBoard(this.piece.getCoordinates());
     }
 
     isPieceEmpty() {

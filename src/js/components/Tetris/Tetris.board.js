@@ -90,6 +90,10 @@ export default class Board {
         return new Array(this.numColumns()).fill(EMPTY);
     }
 
+    deleteAllFullRows() {
+        this.rowCount.map((_, row) => this.deleteRowIfFull(row));
+    }
+
     deleteRowIfFull(row) {
         if (this.isRowIncomplete(row)) {
             return;
@@ -125,5 +129,9 @@ export default class Board {
 
     getCells() {
         return this.display.getCells();
+    }
+
+    getClonedMatrix() {
+        return this.matrix.map((row) => [...row]);
     }
 }
