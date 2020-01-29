@@ -1,5 +1,19 @@
 # juancastro.es
 
+1. Install
+
+```
+npm install
+```
+
+2. Start
+
+```
+npm start
+```
+
+# OLD
+
 Made with [Middleman](https://middlemanapp.com/)
 
 1. Install

@@ -8,21 +8,27 @@ class Translations {
                 experience: 'esperiencia',
                 studies: 'estudios',
                 projects: 'proyeutos',
-                welcome: '¡Bienveníu!'
+                welcome: '¡Bienveníu!',
+                computerScience: 'Informática',
+                frontender: 'Desenvolvedor frontend'
             },
             es: {
                 home: 'inicio',
                 experience: 'experiencia',
                 studies: 'estudios',
                 projects: 'proyectos',
-                welcome: '¡Bienvenido!'
+                welcome: '¡Bienvenido!',
+                computerScience: 'Informática',
+                frontender: 'Desarrollador frontend'
             },
             en: {
                 home: 'home',
                 experience: 'experience',
                 studies: 'studies',
                 projects: 'projects',
-                welcome: '¡Bienvenido!'
+                welcome: '¡Bienvenido!',
+                computerScience: 'Computer Science',
+                frontender: 'Frontend developer'
             }
         };
     }

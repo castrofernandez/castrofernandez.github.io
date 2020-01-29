@@ -1,7 +1,7 @@
 import React from 'react';
 
-import TypingText from './TypingText/TypingText.component';
-import TranslatableTypingText from './TypingText/TranslatableTypingText.component';
+import { TypingParagraph } from './TypingText/TypingText.component';
+import { TranslatableTypingParagraph, TranslatableTypingLi } from './TypingText/TranslatableTypingText.component';
 
 import Heart from '../../images/heart.svg';
 import HeartSemi from '../../images/heart-semi.svg';
@@ -21,7 +21,7 @@ const Intro = () => (
             <div className="wrapper">
                 <h1>
                     <div className="line">
-                        <TypingText text="Juan Castro" />
+                        <TypingParagraph text="Juan Castro" />
                         <div>
                             <img alt="" src={Heart} />
                             <img alt="" src={Heart} />
@@ -34,8 +34,8 @@ const Intro = () => (
                     <Puzzle />
                     <Tetris />
                     <div className="scores">
-                        <TranslatableTypingText className="message" text="welcome" />
-                        <TypingText className="message" text="Welcome!" />
+                        <TranslatableTypingParagraph className="message" text="welcome" />
+                        <TypingParagraph className="message" text="Welcome!" />
                         <Level />
                         <Score />
                     </div>
@@ -43,6 +43,8 @@ const Intro = () => (
             </div>
             <h2>
                 <ul className="typing-chain">
+                    <TranslatableTypingLi text="computerScience" />
+                    <TranslatableTypingLi text="frontender" />
                     <li
                         data-es="Informática"
                         data-ast="Informática"

@@ -3,36 +3,42 @@ import PropTypes from 'prop-types';
 
 const SPEED = 80;
 
-const TypingText = ({ text, className }) => {
-    const [toType, setToType] = useState(text.split(''));
-    const [typed, setTyped] = useState('');
+const typingDefault = (Tag = 'p') => {
+    const InnerTypingText = ({ text, className = '' }) => {
+        const [toType, setToType] = useState(text.split(''));
+        const [typed, setTyped] = useState('');
 
-    useEffect(() => {
-        if (toType.length > 0) {
-            const [first, ...remainder] = toType;
+        useEffect(() => {
+            if (toType.length > 0) {
+                const [first, ...remainder] = toType;
 
-            setTimeout(() => {
-                setToType(remainder);
-                setTyped([...typed, first]);
-            }, SPEED);
-        }
-    }, [typed]);
+                setTimeout(() => {
+                    setToType(remainder);
+                    setTyped([...typed, first]);
+                }, SPEED);
+            }
+        }, [typed]);
 
-    useEffect(() => {
-        setToType('');
-        setTyped(text);
-    }, [text]);
+        useEffect(() => {
+            setToType('');
+            setTyped(text);
+        }, [text]);
 
-    return (
-        <p className={`${className} typing started`}>
-            <span className="writen">{typed}</span>
-        </p>
-    );
+        return (
+            <Tag className={`${className} typing started`}>
+                <span className="writen">{typed}</span>
+            </Tag>
+        );
+    };
+
+    InnerTypingText.propTypes = {
+        text: PropTypes.string.isRequired,
+        className: PropTypes.string
+    };
+
+    return InnerTypingText;
 };
 
-TypingText.propTypes = {
-    text: PropTypes.string.isRequired,
-    className: PropTypes.string
-};
+export const TypingParagraph = typingDefault('p');
 
-export default TypingText;
+export const TypingLi = typingDefault('li');
