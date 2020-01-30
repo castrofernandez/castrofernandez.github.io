@@ -10,6 +10,7 @@ import Puzzle from './Puzzle/Puzzle.component';
 import Tetris from './Tetris/Tetris.container';
 import Score from './Score/Score.container';
 import Level from './Level/Level.container';
+import TypingChain from './TypingText/TypingChain.component';
 
 const Intro = () => (
     <React.Fragment>
@@ -42,9 +43,12 @@ const Intro = () => (
                 </div>
             </div>
             <h2>
-                <ul className="typing-chain">
+                <TypingChain>
                     <TranslatableTypingLi text="computerScience" />
                     <TranslatableTypingLi text="frontender" />
+                </TypingChain>
+
+                <ul className="typing-chain">
                     <li
                         data-es="Informática"
                         data-ast="Informática"
