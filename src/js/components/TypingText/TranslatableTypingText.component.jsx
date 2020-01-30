@@ -7,24 +7,15 @@ import Translations from '../../containers/Translations';
 const translate = (language, key) => Translations.getTranslationHTML(language, key);
 
 const translatableTypingText = (Tag) => {
-    const InnerTranslatableTypingText = ({
-        index,
-        text,
-        language,
-        className,
-        speed,
-        initialStatus,
-        finishedHandler
-    }) => {
+    const InnerTranslatableTypingText = ({ text, language, className, speed, initialStatus, finishedHandler }) => {
         return (
-            <Tag index={index} text={translate(language, text)}
+            <Tag text={translate(language, text)}
                 className={className} speed={speed} initialStatus={initialStatus}
                 finishedHandler={finishedHandler} />
         );
     };
 
     InnerTranslatableTypingText.propTypes = {
-        index: PropTypes.number,
         text: PropTypes.string.isRequired,
         language: PropTypes.string.isRequired,
         className: PropTypes.string,

@@ -12,7 +12,6 @@ const TypingChain = ({ children }) => {
         <ul className="typing-chain">
             {
                 React.Children.map(children, (child, i) => React.cloneElement(child, {
-                    index,
                     initialStatus: i === index ? STATUS.STARTING : STATUS.WAITING,
                     finishedHandler,
                     speed: SPEED

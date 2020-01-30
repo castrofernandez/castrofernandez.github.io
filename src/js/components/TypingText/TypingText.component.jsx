@@ -10,12 +10,7 @@ const isTyping = (status) => status === STATUS.TYPING;
 
 const typingDefault = (Tag = 'p') => {
     const InnerTypingText = ({
-        index = 0,
-        text,
-        className = '',
-        speed = SPEED,
-        initialStatus = STATUS.STARTING,
-        finishedHandler = () => {}
+        text, className = '', speed = SPEED, initialStatus = STATUS.STARTING, finishedHandler = () => {}
     }) => {
         const [toType, setToType] = useState(text.split(''));
         const [typed, setTyped] = useState('');
@@ -31,7 +26,7 @@ const typingDefault = (Tag = 'p') => {
 
         const finishTyping = () => {
             setStatus(STATUS.FINISHED);
-            finishedHandler(index);
+            finishedHandler();
         };
 
         const processTyping = () => (toType.length > 0) ? doType(toType) : finishTyping();
@@ -63,7 +58,6 @@ const typingDefault = (Tag = 'p') => {
     };
 
     InnerTypingText.propTypes = {
-        index: PropTypes.number,
         text: PropTypes.string.isRequired,
         className: PropTypes.string,
         speed: PropTypes.number,
