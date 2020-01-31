@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { STATUS } from './TypingStatus';
 
 const SPEED = 80;
+const TYPING_CLASS = 'started';
 
 const mustBeShown = (status, typed = '') => status !== STATUS.WAITING && typed.length > 0;
-const getWrapperClass = (status, typed) => mustBeShown(status, typed) ? 'started' : '';
+const getWrapperClass = (status, typed) => mustBeShown(status, typed) ? TYPING_CLASS : '';
 const isTyping = (status) => status === STATUS.TYPING;
+const isNotWaiting = (status) => status !== STATUS.WAITING && status !== STATUS.STARTING;
 
 const typingDefault = (Tag = 'p') => {
     const InnerTypingText = ({
@@ -16,6 +18,16 @@ const typingDefault = (Tag = 'p') => {
         const [typed, setTyped] = useState('');
         const [timeoutHandler, setTimeoutHandler] = useState(null);
         const [status, setStatus] = useState(initialStatus);
+
+        const getClass = (suffix) => `${className} typing ${suffix}`;
+
+        const getContent = (content) => (<span className="writen">{content}</span>);
+
+        const wrapRender = (style, content) => (<Tag className={getClass(style)}>{getContent(content)}</Tag>);
+
+        const typingRender = () => wrapRender(getWrapperClass(status, typed), typed);
+
+        const pausedRender = () => wrapRender(TYPING_CLASS, text);
 
         const updateStatus = (newStatus) => newStatus === STATUS.STARTING ? setStatus(STATUS.TYPING) : undefined;
 
@@ -35,10 +47,10 @@ const typingDefault = (Tag = 'p') => {
             clearTimeout(timeoutHandler);
             setToType('');
             setTyped(text);
-            setStatus(STATUS.FINISHED);
+            finishTyping();
         };
 
-        const stopAnimationIfLanguageHasChangedHandler = () => isTyping(status) ? clearTyping() : undefined;
+        const stopAnimationIfLanguageHasChangedHandler = () => isNotWaiting(status) ? clearTyping() : undefined;
 
         const typingHandler = () => isTyping(status) ? processTyping() : undefined;
 
@@ -50,11 +62,7 @@ const typingDefault = (Tag = 'p') => {
 
         useEffect(stopAnimationIfLanguageHasChangedHandler, [text]);
 
-        return (
-            <Tag className={`${className} typing ${getWrapperClass(status, typed)}`}>
-                <span className="writen">{typed}</span>
-            </Tag>
-        );
+        return initialStatus === STATUS.PAUSED ? pausedRender() : typingRender();
     };
 
     InnerTypingText.propTypes = {

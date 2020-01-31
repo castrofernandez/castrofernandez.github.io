@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TypingParagraph } from './TypingText/TypingText.component';
+import { TypingParagraph, TypingLi } from './TypingText/TypingText.component';
 import { TranslatableTypingParagraph, TranslatableTypingLi } from './TypingText/TranslatableTypingText.component';
 
 import Heart from '../../images/heart.svg';
@@ -41,52 +41,35 @@ const Intro = () => (
                         <Score />
                     </div>
                 </div>
-            </div>
-            <h2>
-                <TypingChain>
-                    <TranslatableTypingLi text="computerScience" />
-                    <TranslatableTypingLi text="frontender" />
-                </TypingChain>
 
-                <ul className="typing-chain">
-                    <li
-                        data-es="Informática"
-                        data-ast="Informática"
-                        className="typing-child"
-                    >
-                        Computer Science
-                    </li>
-                    <li
-                        data-es="Desarrollador Front"
-                        data-ast="Desenvolvedor Front"
-                        className="typing-child"
-                    >
-                        Front Developer
-                    </li>
-                    <li data-es="Diseño" data-ast="Diseñu" className="typing-child">
-                        Design
-                    </li>
-                </ul>
-                <ul className="typing-chain">
-                    <li
-                        data-es="Desarrollador Back"
-                        data-ast="Desenvolvedor Back"
-                        className="typing-child"
-                    >
-                        Back Developer
-                    </li>
-                    <li className="typing-child">Ruby</li>
-                    <li className="typing-child">Python</li>
-                </ul>
-                <ul className="typing-chain">
-                    <li className="typing-child">Rails</li>
-                    <li className="typing-child">PHP</li>
-                    <li className="typing-child">Laravel</li>
-                    <li className="typing-child">Symfony</li>
-                    <li className="typing-child">SASS</li>
-                    <li className="typing-child">JavaScript</li>
-                </ul>
-            </h2>
+                <h2>
+                    <TypingChain>
+                        <TranslatableTypingLi text="computerScience" />
+                        <TranslatableTypingLi text="frontender" />
+                        <TranslatableTypingLi text="fullstack" />
+                    </TypingChain>
+
+                    <TypingChain>
+                        <TypingLi text="JavaScript" />
+                        <TypingLi text="React" />
+                        <TypingLi text="Vue" />
+                        <TypingLi text="Redux" />
+                        <TypingLi text="HTML5" />
+                        <TypingLi text="CSS3" />
+                    </TypingChain>
+
+                    <TypingChain>
+                        <TypingLi text="Ruby" />
+                        <TypingLi text="Rails" />
+                        <TypingLi text="Java" />
+                        <TypingLi text="Python" />
+                        <TypingLi text="PHP" />
+                        <TypingLi text="Node" />
+                        <TranslatableTypingLi text="designPatterns" />
+                    </TypingChain>
+                </h2>
+
+            </div>
         </section>
     </React.Fragment>
 );

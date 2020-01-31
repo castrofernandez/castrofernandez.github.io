@@ -10,7 +10,9 @@ class Translations {
                 projects: 'proyeutos',
                 welcome: '¡Bienveníu!',
                 computerScience: 'Informática',
-                frontender: 'Desenvolvedor frontend'
+                frontender: 'Desenvolvedor frontend',
+                fullstack: 'Desenvolvedor fullstack',
+                designPatterns: 'Patrones de diseñu'
             },
             es: {
                 home: 'inicio',
@@ -19,7 +21,9 @@ class Translations {
                 projects: 'proyectos',
                 welcome: '¡Bienvenido!',
                 computerScience: 'Informática',
-                frontender: 'Desarrollador frontend'
+                frontender: 'Desarrollador frontend',
+                fullstack: 'Desarrollador fullstack',
+                designPatterns: 'Patrones de diseño'
             },
             en: {
                 home: 'home',
@@ -28,7 +32,9 @@ class Translations {
                 projects: 'projects',
                 welcome: '¡Bienvenido!',
                 computerScience: 'Computer Science',
-                frontender: 'Frontend developer'
+                frontender: 'Frontend developer',
+                fullstack: 'Fullstack developer',
+                designPatterns: 'Design patterns'
             }
         };
     }
