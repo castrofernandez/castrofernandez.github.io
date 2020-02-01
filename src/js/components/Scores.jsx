@@ -7,7 +7,6 @@ import Score from './Score/Score.container';
 import Level from './Level/Level.container';
 
 const ScoreWrapper = styled.div`
-    padding-top: 10px;
     text-align: right;
 `;
 

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Piece from './Piece.component';
 import Gif from './Gif.component';
 import sizeme from 'sizeme';
-import GLOBALS from '../../styles/globals';
 import { PuzzleWrapper, Picture } from './Puzzle.styles';
 
 import { generateSequence, NUMBER_MOVEMENTS } from './Puzzle.sequence';
@@ -13,19 +12,6 @@ const Figure = styled.figure`
     display: block;
     position: relative;
     margin: 0;
-    top: 32px;
-
-    @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
-        top: 8px;
-    }
-
-    @media (max-width: ${GLOBALS.sizes.tablet}) {
-        top: 26px;
-    }
-
-    @media (max-width: ${GLOBALS.sizes.mobile}) {
-        top: 0;
-    }
 `;
 
 const PUZZLE_SPEED = 80;
