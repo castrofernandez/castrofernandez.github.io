@@ -39,10 +39,28 @@ const Line = styled.div`
     }
 `;
 
+const Name = styled(TypingParagraph)`
+    span:before {
+        content: '<';
+        color: ${GLOBALS.colours.text.lightest};
+        position: relative;
+        top: 3px;
+    }
+
+    &.finished {
+        span:after {
+            content: '>';
+            color: ${GLOBALS.colours.text.lightest};
+            position: relative;
+            top: 3px;
+        }
+    }
+`;
+
 const Title = () => (
     <H1>
         <Line>
-            <TypingParagraph text="<Juan Castro>" />
+            <Name text="Juan Castro" />
             <div>
                 <Heart intensity="full" />
                 <Heart intensity="full" />

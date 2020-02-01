@@ -8,12 +8,12 @@ const Li = styled.li`
     text-align: left;
 
     @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
-        font-size: 40px;
+        font-size: 35px;
         line-height: 50px;
     }
 
     @media (max-width: ${GLOBALS.sizes.tablet}) {
-        font-size: 28px;
+        font-size: 26px;
         line-height: 40px;
     }
 

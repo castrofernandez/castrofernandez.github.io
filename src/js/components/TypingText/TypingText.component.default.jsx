@@ -19,7 +19,7 @@ const typingDefault = (Tag) => {
         const [timeoutHandler, setTimeoutHandler] = useState(null);
         const [status, setStatus] = useState(initialStatus);
 
-        const getClass = (suffix) => `${className} typing ${suffix}`;
+        const getClass = (suffix) => `${className} typing ${status.toLowerCase()} ${suffix}`;
 
         const getContent = (content) => (<span className="writen">{content}</span>);
 

@@ -10,7 +10,8 @@ export default {
         secondary: '#00FEFE',
         text: {
             default: '#272727',
-            lighter: '#4a4a4a'
+            lighter: '#4a4a4a',
+            lightest: '#c8c8c8'
         }
     },
     fonts: {
