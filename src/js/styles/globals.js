@@ -6,7 +6,10 @@ export default {
         smallDesktop: '1300px'
     },
     colours: {
+        primary: '#F14848',
+        secondary: '#00FEFE',
         text: {
+            default: '#272727',
             lighter: '#4a4a4a'
         }
     },

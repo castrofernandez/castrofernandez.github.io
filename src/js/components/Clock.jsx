@@ -7,7 +7,7 @@ const ClockWrapper = styled.p`
     color: ${GLOBALS.colours.text.lighter};
     height: 70px;
 
-    @media (max-width: ${GLOBALS.sizes.tablet}) {
+    @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
         height: 40px;
     }
 
@@ -19,7 +19,7 @@ const ClockWrapper = styled.p`
 const Time = styled.span`
     font: 400 80px/70px ${GLOBALS.fonts.pixel};
 
-    @media (max-width: ${GLOBALS.sizes.tablet}) {
+    @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
         font-size: 30px;
         line-height: 40px;
     }
@@ -28,7 +28,7 @@ const Time = styled.span`
 const Seconds = styled.span`
     font: 400 60px/70px ${GLOBALS.fonts.pixel};
 
-    @media (max-width: ${GLOBALS.sizes.tablet}) {
+    @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
         font-size: 22px;
         line-height: 40px;
     }
@@ -44,7 +44,7 @@ const Blinker = styled.span`
     font: 400 80px/70px ${GLOBALS.fonts.pixel};
     animation: ${blink} 1s ease infinite;
 
-    @media (max-width: ${GLOBALS.sizes.tablet}) {
+    @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
         font-size: 30px;
         line-height: 40px;
     }
@@ -69,9 +69,9 @@ const Clock = () => {
 
     return (
         <ClockWrapper>
-            <Time className="hour">{formatTime(time.getHours().toString())}</Time>
+            <Time>{formatTime(time.getHours().toString())}</Time>
             <Blinker />
-            <Time className="minutes">{formatTime(time.getMinutes().toString())}</Time>
+            <Time>{formatTime(time.getMinutes().toString())}</Time>
             <Seconds>{formatTime(time.getSeconds().toString())}</Seconds>
         </ClockWrapper>
     );

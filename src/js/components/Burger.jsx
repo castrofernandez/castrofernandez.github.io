@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import GLOBALS from '../styles/globals';
 
 const BurgerLink = styled.a`
-    display: block;
+    display: none;
     padding: 15px 0 0 15px;
 `;
 

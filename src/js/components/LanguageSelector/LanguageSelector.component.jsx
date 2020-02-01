@@ -1,5 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import SelectorItem from '../SelectorItem';
+import GLOBALS from '../../styles/globals';
+
+const NavWrapper = styled.ul`
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+`;
+
+const Li = styled.li`
+    flex: 0 0 auto;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &.active {
+        a {
+          background-color: ${GLOBALS.colours.primary};
+          color: #fff;
+          text-align: center;
+        }
+      }
+`;
 
 const LANGUAGES = {
     ast: 'Asturianu',
@@ -9,27 +36,26 @@ const LANGUAGES = {
 
 export const LANGUAGE_LIST = Object.keys(LANGUAGES);
 
+const onLanguageChange = (changeLanguage, id) => (e) => {
+    e.preventDefault();
+    changeLanguage(id);
+};
+
 const LanguageSelector = ({ language, changeLanguage }) => (
-    <ul className="languages">
+    <NavWrapper>
         {Object.entries(LANGUAGES).map(([id, name]) => {
             return (
-                <li className={id === language ? 'active' : ''} key={id}>
-                    <a
+                <Li className={id === language ? 'active' : ''} key={id}>
+                    <SelectorItem className="squared"
                         href={`/?lang=${id}`}
-                        className="lang-s"
                         title={name}
-                        data-language={id}
-                        onClick={e => {
-                            e.preventDefault();
-                            changeLanguage(id);
-                        }}
-                    >
+                        onClick={onLanguageChange(changeLanguage, id)}>
                         {id.toString().toUpperCase()}
-                    </a>
-                </li>
+                    </SelectorItem>
+                </Li>
             );
         })}
-    </ul>
+    </NavWrapper>
 );
 
 LanguageSelector.propTypes = {
