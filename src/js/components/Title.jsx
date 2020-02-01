@@ -6,6 +6,23 @@ import Heart from './Heart';
 import Bar from './Bar';
 import GLOBALS from '../styles/globals';
 
+const H1 = styled.h1`
+    width: calc(100% + 20px);
+    text-transform: uppercase;
+    margin: 0 0 20px -20px;
+    text-align: right;
+
+    @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        display: none;
+    }
+`;
+
 const Line = styled.div`
     font: 400 95px/97px ${GLOBALS.fonts.pixel};
     display: flex;
@@ -23,7 +40,7 @@ const Line = styled.div`
 `;
 
 const Title = () => (
-    <React.Fragment>
+    <H1>
         <Line>
             <TypingParagraph text="<Juan Castro>" />
             <div>
@@ -33,7 +50,7 @@ const Title = () => (
             </div>
         </Line>
         <Bar />
-    </React.Fragment>
+    </H1>
 );
 
 export default Title;

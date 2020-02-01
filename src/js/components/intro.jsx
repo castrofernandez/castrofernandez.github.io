@@ -17,9 +17,7 @@ const Intro = () => (
             data-section="intro"
         >
             <div className="wrapper">
-                <h1>
-                    <Title />
-                </h1>
+                <Title />
                 <div className="three-col">
                     <Puzzle />
                     <Tetris />
