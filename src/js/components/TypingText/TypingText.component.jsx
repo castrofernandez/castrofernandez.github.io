@@ -1,8 +1,14 @@
+import styled from 'styled-components';
 import typingDefault from './TypingText.component.default';
 import Message from '../../styles/Message.style';
+import Li from '../../styles/Li.style';
 
-export const TypingParagraph = typingDefault('p');
+const P = styled.p`
+    margin: 0;
+`;
+
+export const TypingParagraph = typingDefault(P);
 
 export const TypingMessage = typingDefault(Message);
 
-export const TypingLi = typingDefault('li');
+export const TypingLi = typingDefault(Li);

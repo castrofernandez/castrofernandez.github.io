@@ -1,58 +1,48 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import { TypingLi } from './TypingText/TypingText.component';
-import { TranslatableTypingLi } from './TypingText/TranslatableTypingText.component';
-
-import Puzzle from './Puzzle/Puzzle.component';
-import Tetris from './Tetris/Tetris.container';
-import TypingChain from './TypingText/TypingChain.component';
-import Scores from './Scores';
+import IntroColumns from './IntroColumns';
 import Title from './Title';
+import Skills from './Skills';
+import GLOBALS from '../styles/globals';
+
+const IntroWrapper = styled.section`
+    background-color: #fff;
+    color: ${GLOBALS.colours.text.lighter};
+    position: relative;
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
+
+    @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
+        min-height: 740px;
+    }
+`;
+
+const Wrapper = styled.div`
+    padding: 80px 50px 40px 50px;
+    max-width: ($max-width + 100px);
+
+    @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
+        padding: 50px 20px 40px 20px;
+    }
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        padding: 0;
+        position: relative;
+    }
+`;
 
 const Intro = () => (
     <React.Fragment>
         <span id="intro" className="anchor" />
-        <section
-            className="intro cv-section animation-section"
-            data-section="intro"
-        >
-            <div className="wrapper">
+        <IntroWrapper>
+            <Wrapper>
                 <Title />
-                <div className="three-col">
-                    <Puzzle />
-                    <Tetris />
-                    <Scores />
-                </div>
-
-                <h2>
-                    <TypingChain>
-                        <TranslatableTypingLi text="computerScience" />
-                        <TranslatableTypingLi text="frontender" />
-                        <TranslatableTypingLi text="fullstack" />
-                    </TypingChain>
-
-                    <TypingChain>
-                        <TypingLi text="JavaScript" />
-                        <TypingLi text="React" />
-                        <TypingLi text="Vue" />
-                        <TypingLi text="Redux" />
-                        <TypingLi text="HTML5" />
-                        <TypingLi text="CSS3" />
-                    </TypingChain>
-
-                    <TypingChain>
-                        <TypingLi text="Ruby" />
-                        <TypingLi text="Rails" />
-                        <TypingLi text="Java" />
-                        <TypingLi text="Python" />
-                        <TypingLi text="PHP" />
-                        <TypingLi text="Node" />
-                        <TranslatableTypingLi text="designPatterns" />
-                    </TypingChain>
-                </h2>
-
-            </div>
-        </section>
+                <IntroColumns />
+                <Skills />
+            </Wrapper>
+        </IntroWrapper>
     </React.Fragment>
 );
 
