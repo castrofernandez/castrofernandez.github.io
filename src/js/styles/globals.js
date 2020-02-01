@@ -14,6 +14,7 @@ export default {
         }
     },
     fonts: {
-        pixel: 'pixel, sans-serif'
+        pixel: 'pixel, sans-serif',
+        pixelCondensed: 'pixel_condensed, sans-serif'
     }
 };

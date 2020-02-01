@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TypingParagraph, TypingLi } from './TypingText.component';
+import { TypingParagraph, TypingMessage, TypingLi } from './TypingText.component';
 import languageContainer from '../../containers/LanguageContainer';
 import Translations from '../../containers/Translations';
 
@@ -28,5 +28,7 @@ const translatableTypingText = (Tag) => {
 };
 
 export const TranslatableTypingParagraph = languageContainer(translatableTypingText(TypingParagraph));
+
+export const TranslatableTypingMessage = languageContainer(translatableTypingText(TypingMessage));
 
 export const TranslatableTypingLi = languageContainer(translatableTypingText(TypingLi));

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import GLOBALS from '../styles/globals';
+import blink from '../styles/blink.keyframe';
 
 const ClockWrapper = styled.p`
     margin: -2px 0 0 0;
@@ -31,12 +32,6 @@ const Seconds = styled.span`
     @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
         font-size: 22px;
         line-height: 40px;
-    }
-`;
-
-const blink = keyframes`
-    50% {
-        opacity: 0;
     }
 `;
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Message from '../../styles/Message.style';
 
 const formatScore = level => `${'0'.repeat(2 - level.length)}${level}`;
 
 const Level = ({ level }) => (
-    <p className="message">
+    <Message>
         <span>{formatScore(level.toString())}</span>
-    </p>
+    </Message>
 );
 
 Level.propTypes = {

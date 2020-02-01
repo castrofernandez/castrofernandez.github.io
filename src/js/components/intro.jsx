@@ -1,16 +1,15 @@
 import React from 'react';
 
 import { TypingParagraph, TypingLi } from './TypingText/TypingText.component';
-import { TranslatableTypingParagraph, TranslatableTypingLi } from './TypingText/TranslatableTypingText.component';
+import { TranslatableTypingLi } from './TypingText/TranslatableTypingText.component';
 
 import Heart from '../../images/heart.svg';
 import HeartSemi from '../../images/heart-semi.svg';
 
 import Puzzle from './Puzzle/Puzzle.component';
 import Tetris from './Tetris/Tetris.container';
-import Score from './Score/Score.container';
-import Level from './Level/Level.container';
 import TypingChain from './TypingText/TypingChain.component';
+import Scores from './Scores';
 
 const Intro = () => (
     <React.Fragment>
@@ -22,7 +21,7 @@ const Intro = () => (
             <div className="wrapper">
                 <h1>
                     <div className="line">
-                        <TypingParagraph text="Juan Castro" />
+                        <TypingParagraph text="<Juan Castro>" />
                         <div>
                             <img alt="" src={Heart} />
                             <img alt="" src={Heart} />
@@ -34,12 +33,7 @@ const Intro = () => (
                 <div className="three-col">
                     <Puzzle />
                     <Tetris />
-                    <div className="scores">
-                        <TranslatableTypingParagraph className="message" text="welcome" />
-                        <TypingParagraph className="message" text="Welcome!" />
-                        <Level />
-                        <Score />
-                    </div>
+                    <Scores />
                 </div>
 
                 <h2>
