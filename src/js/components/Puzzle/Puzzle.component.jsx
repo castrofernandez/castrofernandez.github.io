@@ -1,12 +1,32 @@
 import React, { useRef, useState, useEffect } from 'react';
+import styled from 'styled-components';
+
 import Piece from './Piece.component';
 import Gif from './Gif.component';
 import sizeme from 'sizeme';
+import GLOBALS from '../../styles/globals';
+import { PuzzleWrapper, Picture } from './Puzzle.styles';
 
-import {
-    generateSequence,
-    NUMBER_MOVEMENTS
-} from './Puzzle.sequence';
+import { generateSequence, NUMBER_MOVEMENTS } from './Puzzle.sequence';
+
+const Figure = styled.figure`
+    display: block;
+    position: relative;
+    margin: 0;
+    top: 32px;
+
+    @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
+        top: 8px;
+    }
+
+    @media (max-width: ${GLOBALS.sizes.tablet}) {
+        top: 26px;
+    }
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        top: 0;
+    }
+`;
 
 const PUZZLE_SPEED = 80;
 const GIF_SHOW_TIME = 5000;
@@ -96,15 +116,11 @@ const Puzzle = () => {
     }, [count]);
 
     return (
-        <figure>
+        <Figure>
             <Gif show={showingGif} />
-            <div
-                className="puzzle"
-                ref={puzzleEl}
-                style={{ width: `${width * SIZE}px` }}
-                onClick={clickable ? onClick : () => {}}
-            >
-                <picture>
+            <PuzzleWrapper ref={puzzleEl} style={{ width: `${width * SIZE}px` }}
+                onClick={clickable ? onClick : () => {}}>
+                <Picture>
                     {sequence.coordinates.map((item, i) => {
                         return (
                             <Piece
@@ -115,9 +131,9 @@ const Puzzle = () => {
                             />
                         );
                     })}
-                </picture>
-            </div>
-        </figure>
+                </Picture>
+            </PuzzleWrapper>
+        </Figure>
     );
 };
 
