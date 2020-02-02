@@ -6,36 +6,19 @@ const Img = styled.img`
     flex: 0 0 auto;
     width: 25%;
     height: 25%;
-    transition: all .05s ease-out;
-
-    &.positioned {
-        position: absolute;
-    }
 `;
 
-const getImage = id => require(`../../../images/puzzle/${id}.png`);
+const getImage = (id) => require(`../../../images/puzzle/${id.toString()}.png`);
 
-const Piece = ({ id, width, coordinates }) => {
-    const [left, top] = coordinates;
+const Piece = ({ id, order }) => {
     return (
-        <Img
-            alt=""
-            className="positioned"
-            src={getImage(id)}
-            style={{
-                width: `${width}px`,
-                height: `${width}px`,
-                top: `${top}px`,
-                left: `${left}px`
-            }}
-        />
+        <Img src={getImage(id)} style={{ order }} />
     );
 };
 
 Piece.propTypes = {
-    id: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
-    coordinates: PropTypes.array.isRequired
+    id: PropTypes.number.isRequired,
+    order: PropTypes.number.isRequired
 };
 
 export default Piece;

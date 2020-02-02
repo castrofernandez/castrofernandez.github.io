@@ -1,126 +1,71 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import Piece from './Piece.component';
-import Gif from './Gif.component';
-import sizeme from 'sizeme';
-import { PuzzleWrapper, Picture } from './Puzzle.styles';
-
-import { generateSequence, NUMBER_MOVEMENTS } from './Puzzle.sequence';
+import { shuffle, swapPieces } from './Puzzle.sequence';
+import JuanCastro from '../../../images/juan-castro.gif';
 
 const Figure = styled.figure`
-    display: block;
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin: 0;
 `;
 
-const PUZZLE_SPEED = 80;
+const Gif = styled.img`
+    width: 100%;
+`;
+
+const NUMBER_OF_MOVES = 35;
+const SPEED = 80;
 const GIF_SHOW_TIME = 5000;
-const SIZE = 4;
 
-const round = number => Math.round(number / SIZE) * SIZE;
+const isMoving = (moving, count) => moving && count < NUMBER_OF_MOVES;
 
-const getMobileWidth = () =>
-    round(window.innerWidth > 0 ? window.innerWidth : screen.width);
+const getPiece = (id, index) => (<Piece key={id} id={id} order={index} />);
 
-const getPuzzleWidth = puzzle => {
-    return sizeme.isMobile() ? getMobileWidth() : round(puzzle.offsetWidth);
-};
+const getPieces = (coordinates) => coordinates.map((id, index) => getPiece(id, index));
 
-const getPieceWidth = puzzle => getPuzzleWidth(puzzle) / SIZE;
-
-const movePiece = (coordinates, [previous, next]) => {
-    const current = coordinates[previous];
-    coordinates[previous] = [...coordinates[next]];
-    coordinates[next] = current;
-};
+const getGif = () => (<Gif alt="Juan Castro" id="gif" src={JuanCastro} />);
 
 const Puzzle = () => {
-    const puzzleEl = useRef(null);
-    const [width, setWidth] = useState(getPieceWidth(puzzleEl));
-    const [sequence, setSequence] = useState({ coordinates: [] });
-    const [count, setCount] = useState(null);
-    const [interval, setInterval] = useState(null);
-    const [clickable, setClickable] = useState(false);
-    const [showingGif, setShowingGif] = useState(false);
+    const [moving, setMoving] = useState(true);
+    const [count, setCount] = useState(0);
+    const [data, setData] = useState(shuffle());
+    const [delay, setDelay] = useState(null);
 
-    const hideGif = () => {
-        setClickable(false);
-        setShowingGif(false);
+    const move = () => {
+        swapPieces(data.coordinates, data.moves[count]);
+        setCount(count + 1);
     };
 
-    const onClick = () => {
-        hideGif();
-        clearInterval(interval);
-        setSequence(generateSequence(width));
-        setCount(-1);
+    const registerMove = () => {
+        clearTimeout(delay);
+        setDelay(setTimeout(move, SPEED));
     };
 
     const showGif = () => {
-        setClickable(true);
-        setShowingGif(true);
-
-        setTimeout(() => setShowingGif(false), GIF_SHOW_TIME);
+        setMoving(false);
+        setTimeout(() => setMoving(true), GIF_SHOW_TIME);
     };
 
-    const animateMovement = counter => {
-        if (counter < NUMBER_MOVEMENTS) {
-            const timeout = setTimeout(() => {
-                movePiece(sequence.coordinates, sequence.movements[counter]);
-                setCount(counter);
-            }, PUZZLE_SPEED);
+    const animate = () => isMoving(moving, count) ? registerMove() : showGif();
 
-            setInterval(timeout);
-        } else {
-            showGif();
-        }
-    };
-
-    const handleResize = () => {
-        setWidth(getPieceWidth(puzzleEl.current.offsetWidth));
-    };
-
-    const startPuzzle = pieceWidth => {
-        hideGif();
-        setWidth(pieceWidth);
-        setSequence(generateSequence(pieceWidth));
-        setCount(-1);
+    const onClick = () => {
+        clearTimeout(delay);
+        setMoving(true);
+        setCount(0);
+        setData(shuffle());
     };
 
     useEffect(() => {
-        startPuzzle(getPieceWidth(puzzleEl.current));
-
-        window.addEventListener('resize', handleResize);
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, [puzzleEl]);
-
-    useEffect(() => {
-        if (sequence.coordinates.length) {
-            animateMovement(count + 1);
-        }
+        animate();
     }, [count]);
 
     return (
-        <Figure>
-            <Gif show={showingGif} />
-            <PuzzleWrapper ref={puzzleEl} style={{ width: `${width * SIZE}px` }}
-                onClick={clickable ? onClick : () => {}}>
-                <Picture>
-                    {sequence.coordinates.map((item, i) => {
-                        return (
-                            <Piece
-                                id={`${i + 1}`}
-                                key={i + 1}
-                                width={width}
-                                coordinates={item}
-                            />
-                        );
-                    })}
-                </Picture>
-            </PuzzleWrapper>
-        </Figure>
-    );
+        <Figure onClick={onClick}>
+            { moving ? getPieces(data.coordinates) : getGif() }
+        </Figure>);
 };
 
 export default Puzzle;

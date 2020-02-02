@@ -1,70 +1,55 @@
-import Movement, { INITIAL_GAP, SIZE } from './Puzzle.movement';
+const SIZE = 4;
+const INITIAL_GAP = { x: 3, y: 0 };
+const NUMBER_OF_MOVES = 35;
 
-const NUMBER_MOVEMENTS = 25;
-
-const swap = (list, a, b) => {
-    const aux = list[a];
-    list[a] = list[b];
-    list[b] = aux;
-};
-
-const equals = ([a1, a2], [b1, b2]) => a1 === b1 && a2 === b2;
-
-const getMovement = (c1, c2) => [Movement.toIndex(c1), Movement.toIndex(c2)];
-
-const normaliseMovement = (coordinates, [a, b]) => [
-    coordinates[a],
-    coordinates[b]
+const MOVES = [
+    ({ x, y }) => ({ x, y: y - 1 }), // UP
+    ({ x, y }) => ({ x, y: y + 1 }), // DOWN
+    ({ x, y }) => ({ x: x - 1, y }), // LEFT
+    ({ x, y }) => ({ x: x + 1, y }) // RIGHT
 ];
 
-const getNextMovement = (previousGap, coordinates) => {
-    const gap = Movement.getNextRandomMovement(previousGap);
+const MOVE_LENGTH = MOVES.length;
 
-    return {
-        gap,
-        gapIndex: Movement.toIndex(gap),
-        previousGap: Movement.toIndex(previousGap),
-        movement: normaliseMovement(coordinates, getMovement(previousGap, gap))
-    };
+const toIndex = ({ x, y }) => y * SIZE + x;
+
+const getRandomIndex = () => Math.floor(Math.random() * MOVE_LENGTH);
+
+const makeMovement = (gap) => MOVES[getRandomIndex()](gap);
+
+const isIndexInBounds = (index) => index >= 0 && index < SIZE;
+
+const isPositionInBounds = ({ x, y }) => isIndexInBounds(x) && isIndexInBounds(y);
+
+const isInverseMove = ([x1, y1] = [], [x2, y2] = []) => x1 === y2 && y1 === x2;
+
+const getPlain = (a, b) => [toIndex(a), toIndex(b)];
+
+const isValid = (prev, next, gap) => isPositionInBounds(next) && !isInverseMove(getPlain(gap, next), prev);
+
+const iterateMove = (prev, next, gap) => isValid(prev, next, gap) ? next : iterateMove(prev, makeMovement(gap), gap);
+
+const getNextRandomMove = (previous = [], gap) => iterateMove(previous, { x: -1, y: -1 }, gap);
+
+const generateCoordinates = () => Array(SIZE * SIZE).fill().map((_, i) => i + 1);
+
+const generateMoves = (gap) => Array(NUMBER_OF_MOVES).fill().reduce((result, _) => {
+    const previous = { ...gap };
+    gap = getNextRandomMove(result[result.length - 1], gap);
+    return [...result, getPlain(previous, gap)];
+}, []);
+
+export const swapPieces = (coordinates, [a, b]) => {
+    const piece = coordinates[a];
+    coordinates[a] = coordinates[b];
+    coordinates[b] = piece;
 };
 
-const getNewGapPosition = (coordinates, gap, previousMovement = []) => {
-    let movement = getNextMovement(gap, coordinates);
+const movePieces = (coordinates, moves) => moves.forEach(move => swapPieces(coordinates, move));
 
-    while (equals(movement.movement, previousMovement)) {
-        movement = getNextMovement(gap, coordinates);
-    }
-
-    return movement;
+const generate = (coordinates, moves) => {
+    movePieces(coordinates, moves);
+    return { coordinates, moves: moves.reverse() };
 };
 
-const generateCoordinates = () => Array(SIZE * SIZE).fill().map((_, i) => i);
-
-const getInitialCoordinates = width => {
-    return Array(SIZE).fill().reduce((result, _, i) => {
-        return Array(SIZE).fill().reduce((result, _, j) => {
-            return [...result, [j * width, i * width]];
-        }, result);
-    }, []);
-};
-
-const generateSequence = (width) => {
-    const indices = generateCoordinates();
-    const coordinates = getInitialCoordinates(width);
-    let change = { gap: INITIAL_GAP };
-
-    const movements = Array(NUMBER_MOVEMENTS).fill().map(_ => {
-        change = getNewGapPosition(indices, change.gap, change.movement);
-        swap(indices, change.previousGap, change.gapIndex);
-        swap(coordinates, ...change.movement);
-        return change.movement;
-    });
-
-    return { movements: movements.reverse(), coordinates };
-};
-
-export {
-    getInitialCoordinates,
-    generateSequence,
-    NUMBER_MOVEMENTS
-};
+export const shuffle = () => generate(generateCoordinates(), generateMoves(INITIAL_GAP));
