@@ -9,6 +9,7 @@ const mustBeShown = (status, typed = '') => status !== STATUS.WAITING && typed.l
 const getWrapperClass = (status, typed) => mustBeShown(status, typed) ? TYPING_CLASS : '';
 const isTyping = (status) => status === STATUS.TYPING;
 const isNotWaiting = (status) => status !== STATUS.WAITING && status !== STATUS.STARTING;
+const getContent = (content) => (<span className="writen">{content}</span>);
 
 const typingDefault = (Tag) => {
     const InnerTypingText = ({
@@ -20,8 +21,6 @@ const typingDefault = (Tag) => {
         const [status, setStatus] = useState(initialStatus);
 
         const getClass = (suffix) => `${className} typing ${status.toLowerCase()} ${suffix}`;
-
-        const getContent = (content) => (<span className="writen">{content}</span>);
 
         const wrapRender = (style, content) => (<Tag className={getClass(style)}>{getContent(content)}</Tag>);
 
