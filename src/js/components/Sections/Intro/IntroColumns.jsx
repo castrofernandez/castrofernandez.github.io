@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Puzzle from './Puzzle/Puzzle.component';
-import Tetris from './Tetris/Tetris.container';
+import Puzzle from '../../Puzzle/Puzzle.component';
+import Tetris from '../../Tetris/Tetris.container';
 import Scores from './Scores';
-import GLOBALS from '../styles/globals';
+import GLOBALS from '../../../styles/globals';
 
 const Columns = styled.div`
     display: flex;

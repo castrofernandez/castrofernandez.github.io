@@ -2,10 +2,10 @@ import React from 'react';
 
 import MobileMenu from './Mobile.menu';
 import Header from './Header';
-import Intro from './Intro';
-import Experience from './Experience';
-import Studies from './Studies';
-import Projects from './Projects';
+import Intro from './Sections/Intro/Intro';
+import Experience from './Sections/Experience/Experience';
+import Studies from './Sections/Studies';
+import Projects from './Sections/Projects';
 import Footer from './Footer';
 
 export default class App extends React.Component {

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import IntroColumns from './IntroColumns';
 import Title from './Title';
 import Skills from './Skills';
-import GLOBALS from '../styles/globals';
+import GLOBALS from '../../../styles/globals';
 
 const IntroWrapper = styled.section`
     background-color: #fff;

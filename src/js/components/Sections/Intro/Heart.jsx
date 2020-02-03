@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import HeartFull from '../../images/heart.svg';
-import HeartSemi from '../../images/heart-semi.svg';
-import GLOBALS from '../styles/globals';
-import fade from '../styles/fade.keyframe';
+import HeartFull from '../../../../images/heart.svg';
+import HeartSemi from '../../../../images/heart-semi.svg';
+import GLOBALS from '../../../styles/globals';
+import fade from '../../../styles/fade.keyframe';
 
 const HeartStyled = styled.img`
     display: inline-block;

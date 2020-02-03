@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { TypingMessage } from './TypingText/TypingText.component';
-import { TranslatableTypingMessage } from './TypingText/TranslatableTypingText.component';
-import Score from './Score/Score.container';
-import Level from './Level/Level.container';
+import { TypingMessage } from '../../TypingText/TypingText.component';
+import { TranslatableTypingMessage } from '../../TypingText/TranslatableTypingText.component';
+import Score from '../../Score/Score.container';
+import Level from '../../Level/Level.container';
 
 const ScoreWrapper = styled.div`
     text-align: right;
