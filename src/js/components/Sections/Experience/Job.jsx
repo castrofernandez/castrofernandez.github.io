@@ -30,41 +30,45 @@ const Where = styled.h3`
     }
 
     .link {
-      a {
-        color: ${GLOBALS.colours.link.default};
+      i {
+          font-style: normal;
+      }
 
-        &:hover {
-          color: ${GLOBALS.colours.link.hover};
-        }
+      a, i {
+            color: ${GLOBALS.colours.link.default};
+
+            &:hover {
+              color: ${GLOBALS.colours.link.hover};
+            }
       }
       
       &:before {
-        content: 'def';
-        color: ${GLOBALS.colours.ide.keyword};
-        margin-right: 20px;
-        text-decoration: none;
+          content: 'def';
+          color: ${GLOBALS.colours.ide.keyword};
+          margin-right: 20px;
+          text-decoration: none;
       }
 
       &:after {
-        content: 'do';
-        color: ${GLOBALS.colours.ide.keyword};
-        margin-left: 20px;
-        text-decoration: none;
+          content: 'do';
+          color: ${GLOBALS.colours.ide.keyword};
+          margin-left: 20px;
+          text-decoration: none;
       }
     }
 `;
 
-const Job = ({ focused = false, title, link }) => (
+const getLink = (link, title) => <a href={link} rel="nofollow">{title}</a>;
+
+const Job = ({ focused = false, title, link, position, from, to, description, technologies }) => (
     <JobWrapper>
         <Where className={`line ${focused ? 'focused' : ''}`}>
             <span className="link">
-                <a href={link} rel="nofollow">
-                    {title}
-                </a>
+                { link ? getLink(link, title) : <i>{title}</i> }
             </span>
             { focused ? (<span className="cursor" />) : (<React.Fragment />) }
         </Where>
-        <JobData />
+        <JobData position={position} from={from} to={to} description={description} technologies={technologies} />
         <span className="end line" />
         <span className="line empty" />
     </JobWrapper>
@@ -73,8 +77,12 @@ const Job = ({ focused = false, title, link }) => (
 Job.propTypes = {
     focused: PropTypes.bool,
     title: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired
+    link: PropTypes.string,
+    position: PropTypes.string.isRequired,
+    from: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    to: PropTypes.number,
+    technologies: PropTypes.object.isRequired
 };
-
 
 export default Job;

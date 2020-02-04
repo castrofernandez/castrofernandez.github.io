@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import GLOBALS from '../../../styles/globals';
 
 export const basicContent = css`
@@ -43,5 +43,52 @@ export const trailComma = css`
     &:after {
         content: ',';
         margin-left: -2px;
+    }
+`;
+
+const unindent = css`
+    &.unindent {
+        margin-left: -40px;
+
+        @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
+            margin-left: -20px;
+        }
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            margin-left: 0;
+            margin-top: 0;
+        }
+    }
+`;
+
+export const ArrayStart = styled.span`
+    display: block;
+    margin-top: 15px;
+    ${line};
+
+    &:after {
+        content: '[';
+    }
+
+    ${unindent};
+`;
+
+export const ArrayEnd = styled.span`
+    display: block;
+    margin-top: 15px;
+    ${line};
+
+    &:after {
+        content: ']';
+    }
+
+    ${unindent};
+`;
+
+export const Symbol = styled.span`
+    color: ${GLOBALS.colours.ide.number};
+
+    &:before {
+        content: ':';
     }
 `;

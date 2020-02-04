@@ -32,3 +32,5 @@ export const TranslatableTypingParagraph = languageContainer(translatableTypingT
 export const TranslatableTypingMessage = languageContainer(translatableTypingText(TypingMessage));
 
 export const TranslatableTypingLi = languageContainer(translatableTypingText(TypingLi));
+
+export const TranslatableTypingSpan = languageContainer(translatableTypingText('span'));

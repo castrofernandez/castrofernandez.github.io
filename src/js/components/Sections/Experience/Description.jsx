@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { basicContent, line, trailComma } from './BasicContent';
 import String from './String';
 import Desc from './Desc';
+import TranslatableTypingSpan from '../../Translatable/Translatable.container';
 
 const DescriptionWrapper = styled.h4`
     ${basicContent};
@@ -11,16 +13,17 @@ const DescriptionWrapper = styled.h4`
     ${trailComma};
 `;
 
-const Position = () => (
+const Description = ({ description }) => (
     <DescriptionWrapper>
         <Desc>description</Desc>
-        <String
-            data-es="Desarrollo web y mantenimiento de producto"
-            data-ast="Desenvuelvo web y caltenimientu de productu"
-        >
-            Web development and application maintenance
+        <String>
+            <TranslatableTypingSpan text={description} />
         </String>
     </DescriptionWrapper>
 );
 
-export default Position;
+Description.propTypes = {
+    description: PropTypes.string.isRequired
+};
+
+export default Description;
