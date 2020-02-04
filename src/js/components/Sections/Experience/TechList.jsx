@@ -60,8 +60,8 @@ const TechList = ({ technologies }) => (
                         lists.map((list, index) => (
                             <ArrayInline key={index}>
                                 {
-                                    list.map((symbol) => (
-                                        <li key={symbol}><Symbol>{symbol}</Symbol></li>
+                                    list.map((symbol, index) => (
+                                        <li key={index}><Symbol>{symbol}</Symbol></li>
                                     ))
                                 }
                             </ArrayInline>
