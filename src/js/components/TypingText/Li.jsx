@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import GLOBALS from './globals';
+import GLOBALS from '../../styles/globals';
 
 const Li = styled.li`
     flex: 0 0 auto;

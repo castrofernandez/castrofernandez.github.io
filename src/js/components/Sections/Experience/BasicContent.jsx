@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import GLOBALS from './globals';
+import GLOBALS from '../../../styles/globals';
 
 export const basicContent = css`
     font-size: 30px;

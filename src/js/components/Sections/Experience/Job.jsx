@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
-import { basicContent, line } from '../../../styles/basic.content.css';
+import { basicContent, line } from './BasicContent';
 import JobData from './JobData';
 
 const JobWrapper = styled.article`

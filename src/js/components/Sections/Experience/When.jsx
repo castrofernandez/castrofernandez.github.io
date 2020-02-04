@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { basicContent, line, trailComma } from '../../../styles/basic.content.css';
+import { basicContent, line, trailComma } from './BasicContent';
 import Number from './Number';
 import Desc from './Desc';
 
