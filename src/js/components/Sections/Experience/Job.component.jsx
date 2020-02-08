@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
 import { basicContent, line } from './BasicContent';
 import JobData from './JobData';
+import scrollObserver from '../Section/ScrollObserver';
 
 const JobWrapper = styled.article`
     ${basicContent};
@@ -60,19 +61,28 @@ const Where = styled.h3`
 
 const getLink = (link, title) => <a href={link} rel="nofollow">{title}</a>;
 
-const Job = ({ focused = false, title, link, position, from, to, description, technologies }) => (
-    <JobWrapper>
-        <Where className={`line ${focused ? 'focused' : ''}`}>
-            <span className="link">
-                { link ? getLink(link, title) : <i>{title}</i> }
-            </span>
-            { focused ? (<span className="cursor" />) : (<React.Fragment />) }
-        </Where>
-        <JobData position={position} from={from} to={to} description={description} technologies={technologies} />
-        <span className="end line" />
-        <span className="line empty" />
-    </JobWrapper>
-);
+const Job = ({ focused = false, title, link, position, from, to, description, technologies, language }) => {
+    const [id] = useState(Date.now());
+    const ref = useRef(null);
+
+    useEffect(() => {
+        scrollObserver.subscribe({ id, element: ref.current, handler: () => console.log(`visible ${title}`) });
+    }, [language]);
+
+    return (
+        <JobWrapper ref={ref}>
+            <Where className={`line ${focused ? 'focused' : ''}`}>
+                <span className="link">
+                    { link ? getLink(link, title) : <i>{title}</i> }
+                </span>
+                { focused ? (<span className="cursor" />) : (<React.Fragment />) }
+            </Where>
+            <JobData position={position} from={from} to={to} description={description} technologies={technologies} />
+            <span className="end line" />
+            <span className="line empty" />
+        </JobWrapper>
+    );
+};
 
 Job.propTypes = {
     focused: PropTypes.bool,
@@ -82,7 +92,8 @@ Job.propTypes = {
     from: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     to: PropTypes.number,
-    technologies: PropTypes.object.isRequired
+    technologies: PropTypes.object.isRequired,
+    language: PropTypes.string.isRequired
 };
 
 export default Job;

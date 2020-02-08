@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
-import Section from '../Section';
+import Section from '../Section/Section';
 import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTypingText.component';
 import Ide from './Ide';
 import Bar from './Bar';
@@ -60,7 +60,7 @@ const Title = styled(TranslatableTypingParagraph)`
 `;
 
 const Experience = () => (
-    <Section id="intro">
+    <Section id="experience">
         <ExperienceWrapper>
             <Wrapper>
                 <h2 className="section-title"><Title text="experience" /></h2>

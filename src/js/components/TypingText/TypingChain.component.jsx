@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import languageContainer from '../../containers/LanguageContainer';
 import GLOBALS from '../../styles/globals';
-import { STATUS } from './TypingStatus';
+// import { STATUS } from './TypingStatus';
 
 const Chain = styled.ul`
     flex: 0 0 auto;
@@ -63,28 +63,28 @@ const Chain = styled.ul`
 
 const SPEED = 20;
 
-const getMovementStatus = (i, index) => i === index ? STATUS.STARTING : STATUS.WAITING;
-const getStatus = (i, index, paused) => paused ? STATUS.PAUSED : getMovementStatus(i, index);
+// const getMovementStatus = (i, index) => i === index ? STATUS.STARTING : STATUS.WAITING;
+// const getStatus = (i, index, paused) => paused ? STATUS.PAUSED : getMovementStatus(i, index);
 
 const TypingChain = ({ children, language }) => {
     const [index, setIndex] = useState(0);
     const [currentLanguage, setCurrentLanguage] = useState(language);
-    const [paused, setPaused] = useState(false);
     const finishedHandler = () => setIndex(index + 1);
 
     useEffect(() => {
         if (language !== currentLanguage) {
             setIndex(0);
-            setPaused(true);
             setCurrentLanguage(language);
         }
     }, [language]);
 
+    const getChildrenToRender = () => children.slice(0, index + 1);
+
     return (
         <Chain>
             {
-                React.Children.map(children, (child, i) => React.cloneElement(child, {
-                    initialStatus: getStatus(i, index, paused),
+                React.Children.map(getChildrenToRender(), (child, i) => React.cloneElement(child, {
+                    key: `${language}${i}`,
                     finishedHandler,
                     speed: SPEED
                 }))

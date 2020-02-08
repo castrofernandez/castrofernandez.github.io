@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import GLOBALS from '../../styles/globals';
+import GLOBALS from '../../../styles/globals';
 
 const SectionWrapper = styled.section`
     .section-title {

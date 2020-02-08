@@ -1,49 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+
 import { STATUS } from './TypingStatus';
+import scrollObserver from '../Sections/Section/ScrollObserver';
 
 const SPEED = 80;
 const TYPING_CLASS = 'started';
 
-const mustBeShown = (status, typed = '') => status !== STATUS.WAITING && typed.length > 0;
-const getWrapperClass = (status, typed) => mustBeShown(status, typed) ? TYPING_CLASS : '';
-const isTyping = (status) => status === STATUS.TYPING;
+const mustBeShown = (typed = '') => typed.length > 0;
+const getWrapperClass = (typed) => mustBeShown(typed) ? TYPING_CLASS : '';
+const isTyping = (inViewPort = false, status) => inViewPort && status === STATUS.TYPING;
 const isNotWaiting = (status) => status !== STATUS.WAITING && status !== STATUS.STARTING;
 const getContent = (content) => (<span className="writen">{content}</span>);
 
 const typingDefault = (Tag) => {
-    const InnerTypingText = ({
-        text, className = '', speed = SPEED, initialStatus = STATUS.STARTING, finishedHandler = () => {}
-    }) => {
+    const InnerTypingText = ({ text, className = '', speed = SPEED, finishedHandler = () => {} }) => {
+        const [id] = useState(Date.now());
+        const ref = useRef(null);
+        const [inViewPort, setInViewPort] = useState(false);
         const [toType, setToType] = useState(text.split(''));
         const [typed, setTyped] = useState('');
-        const [timeoutHandler, setTimeoutHandler] = useState(null);
-        const [status, setStatus] = useState(initialStatus);
+        const timeoutRef = useRef(null);
+        const [status, setStatus] = useState(STATUS.STARTING);
 
         const getClass = (suffix) => `${className} typing ${status.toLowerCase()} ${suffix}`;
 
-        const wrapRender = (style, content) => (<Tag className={getClass(style)}>{getContent(content)}</Tag>);
+        const wrapRender = (style, content) => (
+            <Tag ref={ref} className={getClass(style)}>{getContent(content)}</Tag>);
 
-        const typingRender = () => wrapRender(getWrapperClass(status, typed), typed);
-
-        const pausedRender = () => wrapRender(TYPING_CLASS, text);
+        const typingRender = () => wrapRender(getWrapperClass(typed), typed);
 
         const updateStatus = (newStatus) => newStatus === STATUS.STARTING ? setStatus(STATUS.TYPING) : undefined;
 
-        const doType = ([first, ...remainder] = []) => setTimeoutHandler(setTimeout(() => {
-            setToType(remainder);
-            setTyped([...typed, first]);
-        }, speed));
+        const doType = ([first, ...remainder] = []) => {
+            timeoutRef.current = setTimeout(() => {
+                setToType(remainder);
+                setTyped([...typed, first]);
+            }, speed);
+        };
 
         const finishTyping = () => {
             setStatus(STATUS.FINISHED);
             finishedHandler();
         };
 
-        const processTyping = () => (toType.length > 0) ? doType(toType) : finishTyping();
+        // const processTyping = (stopped) => {
+        //     return !stopped && toType.length > 0 ? doType(toType, stopped) : finishTyping();
+        // };
 
         const clearTyping = () => {
-            clearTimeout(timeoutHandler);
+            console.log(timeoutRef.current);
+            clearTimeout(timeoutRef.current);
             setToType('');
             setTyped(text);
             finishTyping();
@@ -51,24 +58,33 @@ const typingDefault = (Tag) => {
 
         const stopAnimationIfLanguageHasChangedHandler = () => isNotWaiting(status) ? clearTyping() : undefined;
 
-        const typingHandler = () => isTyping(status) ? processTyping() : undefined;
-
         useEffect(() => updateStatus(status), [status]);
 
-        useEffect(() => updateStatus(initialStatus), [initialStatus]);
-
-        useEffect(typingHandler, [typed, status]);
+        useEffect(() => {
+            if (isTyping(inViewPort, status)) {
+                if (toType.length > 0) {
+                    doType(toType);
+                } else {
+                    finishTyping();
+                }
+            }
+        }, [typed, status, inViewPort]);
 
         useEffect(stopAnimationIfLanguageHasChangedHandler, [text]);
 
-        return initialStatus === STATUS.PAUSED ? pausedRender() : typingRender();
+        useEffect(() => {
+            scrollObserver.subscribe({ id, element: ref.current, handler: () => setInViewPort(true) });
+
+            return () => clearTyping();
+        }, []);
+
+        return typingRender();
     };
 
     InnerTypingText.propTypes = {
         text: PropTypes.string.isRequired,
         className: PropTypes.string,
         speed: PropTypes.number,
-        initialStatus: PropTypes.string,
         finishedHandler: PropTypes.func
     };
 

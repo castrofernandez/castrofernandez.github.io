@@ -3,5 +3,6 @@ export const STATUS = {
     STARTING: 'STARTING',
     TYPING: 'TYPING',
     FINISHED: 'FINISHED',
-    PAUSED: 'PAUSED'
+    PAUSED: 'PAUSED',
+    STOPPED: 'STOPPED'
 };

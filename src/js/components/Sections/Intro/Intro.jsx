@@ -5,6 +5,7 @@ import IntroColumns from './IntroColumns';
 import Title from './Title';
 import Skills from './Skills';
 import GLOBALS from '../../../styles/globals';
+import Section from '../Section/Section';
 
 const IntroWrapper = styled.section`
     background-color: #fff;
@@ -34,8 +35,7 @@ const Wrapper = styled.div`
 `;
 
 const Intro = () => (
-    <React.Fragment>
-        <span id="intro" className="anchor" />
+    <Section id="intro">
         <IntroWrapper>
             <Wrapper>
                 <Title />
@@ -43,7 +43,7 @@ const Intro = () => (
                 <Skills />
             </Wrapper>
         </IntroWrapper>
-    </React.Fragment>
+    </Section>
 );
 
 export default Intro;
