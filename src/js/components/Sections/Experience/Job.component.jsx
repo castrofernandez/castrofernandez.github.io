@@ -6,9 +6,16 @@ import GLOBALS from '../../../styles/globals';
 import { basicContent, line } from './BasicContent';
 import JobData from './JobData';
 import scrollObserver from '../Section/ScrollObserver';
+import fade from '../../../styles/fade.keyframe';
 
 const JobWrapper = styled.article`
     ${basicContent};
+    opacity: 0;
+    
+    &.scrolled {
+        animation: ${fade} 1s linear;
+        opacity: 1;
+    }
 
     .line {
         ${line};
@@ -63,14 +70,18 @@ const getLink = (link, title) => <a href={link} rel="nofollow">{title}</a>;
 
 const Job = ({ focused = false, title, link, position, from, to, description, technologies, language }) => {
     const [id] = useState(Date.now());
+    const [scrolled, setScrolled] = useState(false);
     const ref = useRef(null);
 
     useEffect(() => {
-        scrollObserver.subscribe({ id, element: ref.current, handler: () => console.log(`visible ${title}`) });
+        scrollObserver.subscribe({ id, element: ref.current, handler: () => {
+            console.log(`visible ${title}`);
+            setScrolled(true);
+        } });
     }, [language]);
 
     return (
-        <JobWrapper ref={ref}>
+        <JobWrapper className={scrolled ? 'scrolled' : ''} ref={ref}>
             <Where className={`line ${focused ? 'focused' : ''}`}>
                 <span className="link">
                     { link ? getLink(link, title) : <i>{title}</i> }
