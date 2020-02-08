@@ -34,13 +34,12 @@ const HeartStyled = styled.img`
 `;
 
 const Heart = ({ intensity = 'full' }) => {
-    const [id] = useState(Date.now());
     const [scrolled, setScrolled] = useState(false);
     const ref = useRef(null);
 
     const handler = () => setScrolled(true);
 
-    useEffect(() => scrollObserver.subscribe({ id, element: ref.current, handler }), []);
+    useEffect(() => scrollObserver.subscribe({ element: ref.current, handler }), []);
 
     return (
         <HeartStyled

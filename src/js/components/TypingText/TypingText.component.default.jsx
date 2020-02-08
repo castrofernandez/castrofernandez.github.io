@@ -15,7 +15,6 @@ const getContent = (content) => (<span className="writen">{content}</span>);
 
 const typingDefault = (Tag) => {
     const InnerTypingText = ({ text, className = '', speed = SPEED, finishedHandler = () => {} }) => {
-        const [id] = useState(Date.now());
         const ref = useRef(null);
         const [inViewPort, setInViewPort] = useState(false);
         const [toType, setToType] = useState(text.split(''));
@@ -44,12 +43,7 @@ const typingDefault = (Tag) => {
             finishedHandler();
         };
 
-        // const processTyping = (stopped) => {
-        //     return !stopped && toType.length > 0 ? doType(toType, stopped) : finishTyping();
-        // };
-
         const clearTyping = () => {
-            console.log(timeoutRef.current);
             clearTimeout(timeoutRef.current);
             setToType('');
             setTyped(text);
@@ -73,7 +67,7 @@ const typingDefault = (Tag) => {
         useEffect(stopAnimationIfLanguageHasChangedHandler, [text]);
 
         useEffect(() => {
-            scrollObserver.subscribe({ id, element: ref.current, handler: () => setInViewPort(true) });
+            scrollObserver.subscribe({ element: ref.current, handler: () => setInViewPort(true) });
 
             return () => clearTyping();
         }, []);

@@ -6,16 +6,16 @@ const isInViewPort = (element) => checkLocation(element.getBoundingClientRect())
 
 const checkOffset = (insideViewport = false, handler = () => {}) => insideViewport ? handler() : false;
 
-const evaluate = ({ element, handler }) => checkOffset(isInViewPort(element), handler);
+const evaluate = ({ element = {}, handler = () => {} } = {}) => checkOffset(isInViewPort(element), handler);
 
 class Observer {
     constructor() {
-        this.subscribers = {};
+        this.subscribers = [];
     }
 
-    subscribe({ id, element = {}, handler = () => {} } = {}) {
-        this.subscribers[id] = { element, handler };
-        evaluate(this.subscribers[id]);
+    subscribe(data = {}) {
+        this.subscribers.push(data);
+        evaluate(data);
     }
 
     onScroll() {

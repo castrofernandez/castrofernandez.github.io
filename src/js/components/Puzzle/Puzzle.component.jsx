@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 
 import Piece from './Piece.component';
 import { shuffle, swapPieces } from './Puzzle.sequence';
 import JuanCastro from '../../../images/juan-castro.gif';
+import scrollObserver from '../Sections/Section/ScrollObserver';
 
 const Figure = styled.figure`
     display: flex;
@@ -29,10 +30,12 @@ const getPieces = (coordinates) => coordinates.map((id, index) => getPiece(id, i
 const getGif = () => (<Gif alt="Juan Castro" id="gif" src={JuanCastro} />);
 
 const Puzzle = () => {
+    const ref = useRef(null);
     const [moving, setMoving] = useState(true);
     const [count, setCount] = useState(0);
     const [data, setData] = useState(shuffle());
     const [delay, setDelay] = useState(null);
+    const [scrolled, setScrolled] = useState(false);
 
     const move = () => {
         swapPieces(data.coordinates, data.moves[count]);
@@ -58,14 +61,17 @@ const Puzzle = () => {
         setData(shuffle());
     };
 
-    useEffect(() => {
-        animate();
-    }, [count]);
+    const render = () => moving ? getPieces(data.coordinates) : getGif();
+
+    useEffect(() => scrolled ? animate() : undefined, [count, scrolled]);
+
+    useEffect(() => scrollObserver.subscribe({ element: ref.current, handler: () => setScrolled(true) }), []);
 
     return (
-        <Figure onClick={onClick}>
-            { moving ? getPieces(data.coordinates) : getGif() }
-        </Figure>);
+        <Figure ref={ref} onClick={onClick}>
+            { scrolled ? render() : <React.Fragment /> }
+        </Figure>
+    );
 };
 
 export default Puzzle;

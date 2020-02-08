@@ -69,13 +69,12 @@ const Where = styled.h3`
 const getLink = (link, title) => <a href={link} rel="nofollow">{title}</a>;
 
 const Job = ({ focused = false, title, link, position, from, to, description, technologies, language }) => {
-    const [id] = useState(Date.now());
     const [scrolled, setScrolled] = useState(false);
     const ref = useRef(null);
 
     const handler = () => setScrolled(true);
 
-    useEffect(() => scrollObserver.subscribe({ id, element: ref.current, handler }), [language]);
+    useEffect(() => scrollObserver.subscribe({ element: ref.current, handler }), [language]);
 
     return (
         <JobWrapper className={scrolled ? 'scrolled' : ''} ref={ref}>
