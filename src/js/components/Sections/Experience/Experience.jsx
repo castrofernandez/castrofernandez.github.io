@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
-import Section from '../Section/Section';
+import Section from '../Section/Section.container';
 import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTypingText.component';
 import Ide from './Ide';
-import Bar from './Bar';
+import Bar from './Bar.container';
 
 const ExperienceWrapper = styled.div`
     counter-reset: line;

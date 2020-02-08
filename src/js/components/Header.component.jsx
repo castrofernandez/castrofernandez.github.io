@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
 import LanguageSelector from './LanguageSelector/LanguageSelector.container';
 import SectionSelector from './SectionSelector';
 import Clock from './Clock';
 import Burger from './Burger';
+import GLOBALS from '../styles/globals';
 
 const slide = keyframes`
     0% {
@@ -25,16 +27,23 @@ const HeaderWrapper = styled.header`
     z-index: 100;
     animation: ${slide} 0.5s linear;
     animation-fill-mode: forwards;
+
+    &.section-intro {
+        background-color: #fff;
+    }
+
+    &.section-experience {
+        background-color: ${GLOBALS.colours.text.default};
+    }
 `;
 
 const NavWrapper = styled.nav`
     display: flex;
     justify-content: space-between;
-    background-color: #fff;
 `;
 
-const Header = () => (
-    <HeaderWrapper>
+const Header = ({ section }) => (
+    <HeaderWrapper className={`section-${section}`}>
         <NavWrapper>
             <Burger />
             <SectionSelector />
@@ -43,5 +52,9 @@ const Header = () => (
         </NavWrapper>
     </HeaderWrapper>
 );
+
+Header.propTypes = {
+    section: PropTypes.string.isRequired
+};
 
 export default Header;

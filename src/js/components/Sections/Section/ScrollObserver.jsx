@@ -2,24 +2,38 @@ const getViewPortHeight = () => window.innerHeight || document.documentElement.c
 
 const checkLocation = ({ top, bottom }) => (top > 0 || bottom > 0) && top < getViewPortHeight();
 
-const isInViewPort = (element) => checkLocation(element.getBoundingClientRect());
+const getRect = (element) => element.getBoundingClientRect();
 
-const checkOffset = (insideViewport = false, handler = () => {}) => insideViewport ? handler() : false;
+const getData = ({ top, bottom }) => ({ top, bottom });
 
-const evaluate = ({ element = {}, handler = () => {} } = {}) => checkOffset(isInViewPort(element), handler);
+const isInViewPort = (element = {}) => checkLocation(getRect(element));
+
+const getDirection = (previousPosition) => previousPosition - window.scrollY >= 0 ? 'UP' : 'DOWN';
+
+const getElementData = (el, previousPos) => ({ ...getData(getRect(el)), direction: getDirection(previousPos) });
 
 class Observer {
     constructor() {
         this.subscribers = [];
+        this.previousScrollPosition = 0;
     }
 
     subscribe(data = {}) {
         this.subscribers.push(data);
-        evaluate(data);
+        this.evaluate([data]);
+    }
+
+    evaluate(elements = []) {
+        Object.values(elements)
+            .filter(({ element }) => isInViewPort(element))
+            .forEach(({ element, handler = () => {} }) => {
+                handler(getElementData(element, this.previousScrollPosition));
+            });
     }
 
     onScroll() {
-        Object.values(this.subscribers).forEach((subscriber) => evaluate(subscriber));
+        this.evaluate(this.subscribers);
+        this.previousScrollPosition = window.scrollY;
     }
 }
 

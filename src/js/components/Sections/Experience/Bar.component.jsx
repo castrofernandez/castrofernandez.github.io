@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
@@ -17,8 +18,19 @@ const BarWrapper = styled.span`
     position: relative;
     z-index: 30;
 
+    &.section-experience {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
     @media (max-width: ${GLOBALS.sizes.mobile}) {
         font-size: 12px;
+
+        &.section-experience {
+            position: relative;
+        }
     }
 
     > * {
@@ -35,6 +47,10 @@ const BarWrapper = styled.span`
     }
 `;
 
-const Bar = () => <BarWrapper />;
+const Bar = ({ section }) => <BarWrapper className={`section-${section}`} />;
+
+Bar.propTypes = {
+    section: PropTypes.string.isRequired
+};
 
 export default Bar;

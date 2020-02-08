@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import languageContainer from '../../containers/LanguageContainer';
+import languageContainer from '../../containers/Language.container';
 import GLOBALS from '../../styles/globals';
 // import { STATUS } from './TypingStatus';
 

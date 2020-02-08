@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TypingParagraph, TypingMessage, TypingLi } from './TypingText.component';
-import languageContainer from '../../containers/LanguageContainer';
+import languageContainer from '../../containers/Language.container';
 import Translations from '../../containers/Translations';
 
 const translate = (language, key) => Translations.getTranslationHTML(language, key);

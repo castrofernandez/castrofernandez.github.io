@@ -5,7 +5,7 @@ import IntroColumns from './IntroColumns';
 import Title from './Title';
 import Skills from './Skills';
 import GLOBALS from '../../../styles/globals';
-import Section from '../Section/Section';
+import Section from '../Section/Section.container';
 
 const IntroWrapper = styled.section`
     background-color: #fff;
