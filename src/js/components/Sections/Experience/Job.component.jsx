@@ -73,12 +73,9 @@ const Job = ({ focused = false, title, link, position, from, to, description, te
     const [scrolled, setScrolled] = useState(false);
     const ref = useRef(null);
 
-    useEffect(() => {
-        scrollObserver.subscribe({ id, element: ref.current, handler: () => {
-            console.log(`visible ${title}`);
-            setScrolled(true);
-        } });
-    }, [language]);
+    const handler = () => setScrolled(true);
+
+    useEffect(() => scrollObserver.subscribe({ id, element: ref.current, handler }), [language]);
 
     return (
         <JobWrapper className={scrolled ? 'scrolled' : ''} ref={ref}>
