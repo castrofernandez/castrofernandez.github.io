@@ -1,3 +1,10 @@
+const white = '#fff';
+const textLight = '#4a4a4a';
+const textDefault = '#272727';
+
+const primary = '#F14848';
+const secondary = '#00FEFE';
+
 export default {
     sizes: {
         mobile: '767px',
@@ -6,12 +13,12 @@ export default {
         smallDesktop: '1300px'
     },
     colours: {
-        primary: '#F14848',
-        secondary: '#00FEFE',
+        primary,
+        secondary,
         text: {
-            default: '#272727',
+            default: textDefault,
             light: '#343434',
-            lighter: '#4a4a4a',
+            lighter: textLight,
             lightest: '#c8c8c8'
         },
         link: {
@@ -22,6 +29,16 @@ export default {
             keyword: 'rgba(0, 254, 254, 0.2)',
             number: '#FA58D0',
             key: 'rgba(255, 255, 255, 0.6)'
+        },
+        sections: {
+            intro: {
+                fore: textLight,
+                back: white
+            },
+            experience: {
+                fore: secondary,
+                back: textDefault
+            }
         }
     },
     fonts: {

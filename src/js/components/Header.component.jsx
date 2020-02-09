@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components';
 
 import LanguageSelector from './LanguageSelector/LanguageSelector.container';
 import SectionSelector from './SectionSelector';
-import Clock from './Clock';
+import Clock from './Clock.container';
 import Burger from './Burger';
 import GLOBALS from '../styles/globals';
 
@@ -29,17 +29,18 @@ const HeaderWrapper = styled.header`
     animation-fill-mode: forwards;
 
     &.section-intro {
-        background-color: #fff;
+        background-color: ${GLOBALS.colours.sections.intro.back};
     }
 
     &.section-experience {
-        background-color: ${GLOBALS.colours.text.default};
+        background-color: ${GLOBALS.colours.sections.experience.back};
     }
 `;
 
 const NavWrapper = styled.nav`
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `;
 
 const Header = ({ section }) => (

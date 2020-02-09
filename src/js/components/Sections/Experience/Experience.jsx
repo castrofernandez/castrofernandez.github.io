@@ -9,8 +9,8 @@ import Bar from './Bar.container';
 
 const ExperienceWrapper = styled.div`
     counter-reset: line;
-    background-color: ${GLOBALS.colours.text.default};
-    color: #fff;
+    background-color: ${GLOBALS.colours.sections.experience.back};
+    color: ${GLOBALS.colours.sections.experience.fore};
     position: relative;
     overflow: hidden;
 `;

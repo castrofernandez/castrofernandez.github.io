@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import GLOBALS from '../styles/globals';
 import blink from '../styles/blink.keyframe';
 
 const ClockWrapper = styled.p`
     margin: -2px 0 0 0;
-    color: ${GLOBALS.colours.text.lighter};
     height: 70px;
+
+    &.section-intro {
+        color: ${GLOBALS.colours.sections.intro.fore};
+    }
+
+    &.section-experience {
+        color: ${GLOBALS.colours.sections.experience.fore};
+    }
 
     @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
         height: 40px;
@@ -51,7 +59,7 @@ const Blinker = styled.span`
 
 const formatTime = (value) => value.length < 2 ? '0' + value : value;
 
-const Clock = () => {
+const Clock = ({ section }) => {
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
@@ -63,13 +71,17 @@ const Clock = () => {
     }, []);
 
     return (
-        <ClockWrapper>
+        <ClockWrapper className={`section-${section}`}>
             <Time>{formatTime(time.getHours().toString())}</Time>
             <Blinker />
             <Time>{formatTime(time.getMinutes().toString())}</Time>
             <Seconds>{formatTime(time.getSeconds().toString())}</Seconds>
         </ClockWrapper>
     );
+};
+
+Clock.propTypes = {
+    section: PropTypes.string.isRequired
 };
 
 export default Clock;
