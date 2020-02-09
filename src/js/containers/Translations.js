@@ -4,7 +4,7 @@ class Translations {
     constructor() {
         this.translations = {
             ast: {
-                home: 'entamu',
+                intro: 'entamu',
                 experience: 'esperiencia',
                 studies: 'estudios',
                 projects: 'proyeutos',
@@ -32,7 +32,7 @@ class Translations {
                 algorithms: 'Algoritmia'
             },
             es: {
-                home: 'inicio',
+                intro: 'inicio',
                 experience: 'experiencia',
                 studies: 'estudios',
                 projects: 'proyectos',
@@ -60,7 +60,7 @@ class Translations {
                 algorithms: 'Algoritmia'
             },
             en: {
-                home: 'home',
+                intro: 'home',
                 experience: 'experience',
                 studies: 'studies',
                 projects: 'projects',

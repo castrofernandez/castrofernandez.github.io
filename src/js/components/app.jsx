@@ -4,7 +4,7 @@ import MobileMenu from './Mobile.menu';
 import Header from './Header.container';
 import Intro from './Sections/Intro/Intro';
 import Experience from './Sections/Experience/Experience';
-import Studies from './Sections/Studies';
+import Studies from './Sections/Studies/Studies';
 import Projects from './Sections/Projects';
 import Footer from './Footer';
 

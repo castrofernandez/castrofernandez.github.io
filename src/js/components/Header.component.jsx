@@ -47,7 +47,7 @@ const Header = ({ section }) => (
     <HeaderWrapper className={`section-${section}`}>
         <NavWrapper>
             <Burger />
-            <SectionSelector />
+            <SectionSelector section={section} />
             <Clock />
             <LanguageSelector />
         </NavWrapper>

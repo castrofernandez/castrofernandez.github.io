@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import GLOBALS from '../styles/globals';
 import Translatable from './Translatable/Translatable.container';
@@ -29,31 +30,24 @@ const Li = styled.li`
       }
 `;
 
-const SectionSelector = () => {
-    return (
-        <NavWrapper>
-            <Li className="active">
-                <SelectorItem href="#intro">
-                    <Translatable text="home" />
-                </SelectorItem>
-            </Li>
-            <Li>
-                <SelectorItem href="#experience">
-                    <Translatable text="experience" />
-                </SelectorItem>
-            </Li>
-            <Li>
-                <SelectorItem href="#studies">
-                    <Translatable text="studies" />
-                </SelectorItem>
-            </Li>
-            <Li>
-                <SelectorItem href="#projects">
-                    <Translatable text="projects" />
-                </SelectorItem>
-            </Li>
-        </NavWrapper>
-    );
+const sections = ['intro', 'experience', 'studies', 'projects'];
+
+const SectionSelector = ({ section }) => (
+    <NavWrapper>
+        {
+            sections.map((s) => (
+                <Li className={s === section ? 'active' : ''}>
+                    <SelectorItem href={`#${s}`}>
+                        <Translatable text={s} />
+                    </SelectorItem>
+                </Li>
+            ))
+        }
+    </NavWrapper>
+);
+
+SectionSelector.propTypes = {
+    section: PropTypes.string.isRequired
 };
 
 export default SectionSelector;

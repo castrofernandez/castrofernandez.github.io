@@ -49,7 +49,7 @@ const Section = ({ id, children, changeSection }) => {
 
     return (
         <SectionWrapper ref={ref}>
-            <span id="intro" className="anchor" />
+            <span id={id} className="anchor" />
             { children }
         </SectionWrapper>
     );

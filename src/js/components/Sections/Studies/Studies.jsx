@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import GLOBALS from '../../styles/globals';
-import Section from './Section/Section.container';
-import { TranslatableTypingParagraph } from '../TypingText/TranslatableTypingText.component';
+import GLOBALS from '../../../styles/globals';
+import Section from '../Section/Section.container';
+import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTypingText.component';
 
 const StudiesWrapper = styled.div`
     background-color: ${GLOBALS.colours.sections.studies.back};
