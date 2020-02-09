@@ -38,6 +38,10 @@ export default {
             experience: {
                 fore: secondary,
                 back: textDefault
+            },
+            studies: {
+                fore: white,
+                back: '#00CBD5'
             }
         }
     },

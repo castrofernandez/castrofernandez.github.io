@@ -6,7 +6,9 @@ import GLOBALS from '../../../styles/globals';
 import scrollObserver from './ScrollObserver';
 
 const SectionWrapper = styled.section`
-    min-height: 100vh;
+    > div {
+        min-height: 100vh;
+    }
 
     .section-title {
         display: inline-block;
@@ -18,6 +20,20 @@ const SectionWrapper = styled.section`
             font-size: 36px;
             line-height: 30px;
             margin-bottom: 20px;
+        }
+    }
+
+    .wrapper {
+        padding: 120px 70px 80px 70px;
+        position: relative;
+        z-index: 2;
+
+        @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
+            padding: 80px 40px 40px 90px;
+        }
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            padding: 80px 20px 20px 20px;
         }
     }
 `;

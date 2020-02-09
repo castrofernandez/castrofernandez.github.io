@@ -16,6 +16,10 @@ const ClockWrapper = styled.p`
         color: ${GLOBALS.colours.sections.experience.fore};
     }
 
+    &.section-studies {
+        color: ${GLOBALS.colours.sections.studies.fore};
+    }
+
     @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
         height: 40px;
     }
