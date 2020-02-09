@@ -27,6 +27,7 @@ const SectionWrapper = styled.section`
         padding: 120px 70px 80px 70px;
         position: relative;
         z-index: 2;
+        font-size: 26px;
 
         @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
             padding: 80px 40px 40px 90px;

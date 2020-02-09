@@ -41,7 +41,9 @@ export default {
             },
             studies: {
                 fore: white,
-                back: '#00CBD5'
+                back: '#00CBD5',
+                prompt: '#00B2BE',
+                input: 'rgba(255, 255, 255, 0.4)'
             }
         }
     },

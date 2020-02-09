@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import GLOBALS from '../../../styles/globals';
 import Section from '../Section/Section.container';
 import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTypingText.component';
+import Command from './Command';
 
 const StudiesWrapper = styled.div`
     background-color: ${GLOBALS.colours.sections.studies.back};
@@ -35,6 +36,9 @@ const Studies = () => (
                         <TitlePrimary text="studies" />
                     </Title>
                 </h2>
+                <article>
+                    <Command text="cd Studies/University" />
+                </article>
             </div>
         </StudiesWrapper>
     </Section>

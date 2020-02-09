@@ -36,7 +36,7 @@ const SectionSelector = ({ section }) => (
     <NavWrapper>
         {
             sections.map((s) => (
-                <Li className={s === section ? 'active' : ''}>
+                <Li key={s} className={s === section ? 'active' : ''}>
                     <SelectorItem href={`#${s}`}>
                         <Translatable text={s} />
                     </SelectorItem>
