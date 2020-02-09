@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { TypingParagraph } from '../../TypingText/TypingText.component';
 import Heart from './Heart';
-import Bar from '../../Bar';
+import Bar from './Bar';
 import GLOBALS from '../../../styles/globals';
 
 const H1 = styled.h1`
