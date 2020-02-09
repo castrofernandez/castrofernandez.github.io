@@ -14,6 +14,10 @@ const Prompt = styled.span`
     }
 `;
 
+const CommandWrapper = styled.div`
+    margin-bottom: 10px;
+`;
+
 const Input = styled.span`
     position: relative;
 
@@ -24,7 +28,7 @@ const Input = styled.span`
 
     &:after {
         background-color: ${GLOBALS.colours.sections.studies.input};
-        position: absolute;
+        position: ${props => props.finished ? 'relative' : 'absolute'};
         content: '';
         width: 15px;
         height: 100%;
@@ -34,27 +38,36 @@ const Input = styled.span`
 
 const SPEED = 50;
 
-const Command = ({ text }) => {
+const Command = ({ showPrompt, text, onFinish = () => {} }) => {
     const [typed, setTyped] = useState('');
+    const [finished, setFinished] = useState(false);
+
+    const handler = ({ text, finished }) => {
+        setTyped(text);
+        setFinished(finished);
+        return finished ? onFinish() : false;
+    };
 
     useEffect(() => {
         new Typer({
             text,
             speed: SPEED,
-            handler: ({ text }) => setTyped(text)
+            handler
         });
     }, [text]);
 
     return (
-        <React.Fragment>
-            <Prompt />
-            <Input text={typed} />
-        </React.Fragment>
+        <CommandWrapper>
+            { showPrompt ? <Prompt /> : <React.Fragment /> }
+            <Input text={typed} finished={finished} />
+        </CommandWrapper>
     );
 };
 
 Command.propTypes = {
-    text: PropTypes.string.isRequired
+    showPrompt: PropTypes.bool,
+    text: PropTypes.string.isRequired,
+    onFinish: PropTypes.func.isRequired
 };
 
 export default Command;

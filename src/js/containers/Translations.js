@@ -29,7 +29,9 @@ class Translations {
                 cetsDescription: 'Profesor de clases particulares para universitarios',
                 programming: 'Introducción a la Programación',
                 dataStructures: 'Estructures de datos',
-                algorithms: 'Algoritmia'
+                algorithms: 'Algoritmia',
+                master: 'Máster n\'Inxeniería Web',
+                compilers: 'Compiladores ya intérpretes'
             },
             es: {
                 intro: 'inicio',
@@ -57,7 +59,9 @@ class Translations {
                 cetsDescription: 'Profesor de clases particulares para universitarios',
                 programming: 'Introducción a la Programación',
                 dataStructures: 'Estructuras de datos',
-                algorithms: 'Algoritmia'
+                algorithms: 'Algoritmia',
+                master: 'Máster en Ingeniería Web',
+                compilers: 'Compiladores e intérpretes'
             },
             en: {
                 intro: 'home',
@@ -85,7 +89,9 @@ class Translations {
                 cetsDescription: 'Private lessons teacher for College students',
                 programming: 'Programming Introduction',
                 dataStructures: 'Data Structures',
-                algorithms: 'Algorithms'
+                algorithms: 'Algorithms',
+                master: 'Master in Web Engineering',
+                compilers: 'Compilers and Interpreters'
             }
         };
     }

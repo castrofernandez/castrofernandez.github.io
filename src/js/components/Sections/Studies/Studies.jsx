@@ -4,7 +4,10 @@ import styled from 'styled-components';
 import GLOBALS from '../../../styles/globals';
 import Section from '../Section/Section.container';
 import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTypingText.component';
-import Command from './Command';
+import Shell from './Shell';
+import Study from './Study';
+
+import TranslatableTypingSpan from '../../Translatable/Translatable.container';
 
 const StudiesWrapper = styled.div`
     background-color: ${GLOBALS.colours.sections.studies.back};
@@ -37,7 +40,15 @@ const Studies = () => (
                     </Title>
                 </h2>
                 <article>
-                    <Command text="cd Studies/University" />
+                    <Shell commands={['cd Studies/University', 'ls -la']} length={2}>
+                        <Study title="master" subjects={[
+                            'HTML5', 'CSS3', 'Ruby On Rails', 'Python',
+                            'Java', 'PHP', 'C# .NET', 'Android', 'MySQL', 'jQuery',
+                            <TranslatableTypingSpan text="designPatterns" />,
+                            <TranslatableTypingSpan text="compilers" />,
+                            'TDD'
+                        ]} />
+                    </Shell>
                 </article>
             </div>
         </StudiesWrapper>
