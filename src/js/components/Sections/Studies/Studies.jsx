@@ -44,9 +44,19 @@ const Studies = () => (
                         <Study title="master" subjects={[
                             'HTML5', 'CSS3', 'Ruby On Rails', 'Python',
                             'Java', 'PHP', 'C# .NET', 'Android', 'MySQL', 'jQuery',
+                            'TDD',
                             <TranslatableTypingSpan text="designPatterns" />,
-                            <TranslatableTypingSpan text="compilers" />,
-                            'TDD'
+                            <TranslatableTypingSpan text="compilers" />
+                        ]} />
+                        <Study title="degree" subjects={[
+                            'C++', 'C',
+                            <TranslatableTypingSpan text="algorithms" />,
+                            <TranslatableTypingSpan text="networks" />,
+                            <TranslatableTypingSpan text="dataBases" />,
+                            'SQL',
+                            <TranslatableTypingSpan text="dataStructures" />,
+                            <TranslatableTypingSpan text="softwareEngineering" />,
+                            <TranslatableTypingSpan text="operatingSystems" />
                         ]} />
                     </Shell>
                 </article>

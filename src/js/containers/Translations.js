@@ -31,7 +31,12 @@ class Translations {
                 dataStructures: 'Estructures de datos',
                 algorithms: 'Algoritmia',
                 master: 'Máster n\'Inxeniería Web',
-                compilers: 'Compiladores ya intérpretes'
+                compilers: 'Compiladores ya intérpretes',
+                degree: 'Inxeniería Informática de Sistemes',
+                operatingSystems: 'Sistemes Operativos',
+                networks: 'Redes',
+                dataBases: 'Bases de Datos',
+                softwareEngineering: 'Inxeniería del Software'
             },
             es: {
                 intro: 'inicio',
@@ -61,7 +66,12 @@ class Translations {
                 dataStructures: 'Estructuras de datos',
                 algorithms: 'Algoritmia',
                 master: 'Máster en Ingeniería Web',
-                compilers: 'Compiladores e intérpretes'
+                compilers: 'Compiladores e intérpretes',
+                degree: 'Ingeniería Informática de Sistemas',
+                operatingSystems: 'Sistemas Operativos',
+                networks: 'Redes',
+                dataBases: 'Bases de Datos',
+                softwareEngineering: 'Ingeniería del Software'
             },
             en: {
                 intro: 'home',
@@ -91,7 +101,12 @@ class Translations {
                 dataStructures: 'Data Structures',
                 algorithms: 'Algorithms',
                 master: 'Master in Web Engineering',
-                compilers: 'Compilers and Interpreters'
+                compilers: 'Compilers and Interpreters',
+                degree: 'Computer Engineering',
+                operatingSystems: 'Operating Systems',
+                networks: 'Networks',
+                dataBases: 'Data Bases',
+                softwareEngineering: 'Software Engineering'
             }
         };
     }

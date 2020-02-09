@@ -16,6 +16,14 @@ const Subjects = styled.ul`
     list-style: none;
     text-transform: uppercase;
     padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    li {
+        flex: 0 0 auto;
+        width: 50%;
+    }
 `;
 
 const Study = ({ title, subjects }) => (
@@ -23,8 +31,8 @@ const Study = ({ title, subjects }) => (
         <Title><TranslatableTypingSpan text={title} /></Title>
         <Subjects>
             {
-                subjects.map((subject) => (
-                    <li>{subject}</li>
+                subjects.map((subject, index) => (
+                    <li key={index}>{subject}</li>
                 ))
             }
         </Subjects>
