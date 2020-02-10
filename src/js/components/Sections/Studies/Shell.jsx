@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -9,14 +9,10 @@ const CommandWrapper = styled.div`
 `;
 
 const Shell = ({ children, commands, length }) => {
-    const [finished, setFinished] = useState(false);
-
-    const onFinished = () => setFinished(true);
-
     return (
         <CommandWrapper>
-            <Commands commands={commands} onFinished={onFinished} />
-            <CommandResult finished={finished} length={length}>{children}</CommandResult>
+            <Commands commands={commands} />
+            <CommandResult length={length}>{children}</CommandResult>
         </CommandWrapper>
     );
 };

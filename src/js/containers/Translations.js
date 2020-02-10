@@ -37,7 +37,7 @@ class Translations {
                 networks: 'Redes',
                 dataBases: 'Bases de Datos',
                 softwareEngineering: 'Inxeniería del Software',
-                universityOviedo: 'Universidà d\'Uviéu',
+                universityOviedo: 'Universidá d\'Uviéu',
                 ireland: 'Irlanda',
                 spanish: 'Español',
                 asturian: 'Asturianu',

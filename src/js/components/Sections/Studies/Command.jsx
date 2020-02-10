@@ -36,7 +36,7 @@ const Input = styled.span`
     }
 `;
 
-const SPEED = 50;
+const SPEED = 2;
 
 const Command = ({ showPrompt, text, onFinish = () => {} }) => {
     const [typed, setTyped] = useState('');
