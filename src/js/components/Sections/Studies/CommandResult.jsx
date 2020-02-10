@@ -4,6 +4,14 @@ import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
 
+const Result = styled.div`
+    opacity: 0;
+
+    &.finished {
+        opacity: 1;
+    }
+`;
+
 const Input = styled.span`
     position: relative;
 
@@ -14,18 +22,19 @@ const Input = styled.span`
     }
 `;
 
-const CommandResult = ({ children, length }) => {
+const CommandResult = ({ children, length, finished }) => {
     return (
-        <React.Fragment>
+        <Result className={finished ? 'finished' : ''}>
             <div><Input text={`Total ${length}`} /></div>
             {children}
-        </React.Fragment>
+        </Result>
     );
 };
 
 CommandResult.propTypes = {
     children: PropTypes.node,
-    length: PropTypes.number.isRequired
+    length: PropTypes.number.isRequired,
+    finished: PropTypes.bool
 };
 
 export default CommandResult;

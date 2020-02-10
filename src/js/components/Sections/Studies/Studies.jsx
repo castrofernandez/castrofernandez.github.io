@@ -6,8 +6,13 @@ import Section from '../Section/Section.container';
 import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTypingText.component';
 import Shell from './Shell';
 import Study from './Study';
+import Languages from './Languages';
+import Command from './Command';
 
 import TranslatableTypingSpan from '../../Translatable/Translatable.container';
+import TypingChain from '../../TypingText/TypingChain.component';
+import { TypingLi } from '../../TypingText/TypingText.component';
+import { TranslatableTypingLi } from '../../TypingText/TranslatableTypingText.component';
 
 const StudiesWrapper = styled.div`
     background-color: ${GLOBALS.colours.sections.studies.back};
@@ -39,7 +44,7 @@ const Studies = () => (
                         <TitlePrimary text="studies" />
                     </Title>
                 </h2>
-                <article>
+                <section>
                     <Shell commands={['cd Studies/University', 'ls -la']} length={2}>
                         <Study title="master" subjects={[
                             'HTML5', 'CSS3', 'Ruby On Rails', 'Python',
@@ -47,7 +52,19 @@ const Studies = () => (
                             'TDD',
                             <TranslatableTypingSpan text="designPatterns" />,
                             <TranslatableTypingSpan text="compilers" />
-                        ]} />
+                        ]} locations={
+                            <React.Fragment>
+                                <TypingChain>
+                                    <TranslatableTypingLi text="universityOviedo" link="http://www.uniovi.es/" />
+                                    <TypingLi text="2013" />
+                                </TypingChain>
+                                <TypingChain>
+                                    <TranslatableTypingLi text="ireland" />
+                                    <TypingLi text="CIT - Cork" link="https://www.cit.ie/" />
+                                    <TypingLi text="2013" />
+                                </TypingChain>
+                            </React.Fragment>
+                        } />
                         <Study title="degree" subjects={[
                             'C++', 'C',
                             <TranslatableTypingSpan text="algorithms" />,
@@ -57,9 +74,19 @@ const Studies = () => (
                             <TranslatableTypingSpan text="dataStructures" />,
                             <TranslatableTypingSpan text="softwareEngineering" />,
                             <TranslatableTypingSpan text="operatingSystems" />
-                        ]} />
+                        ]} locations={
+                            <TypingChain>
+                                <TranslatableTypingLi text="universityOviedo" link="http://www.uniovi.es/" />
+                                <TypingLi text="2013" />
+                            </TypingChain>
+                        } />
                     </Shell>
-                </article>
+
+                    <Shell commands={['cd ..', 'cd Languages', 'ls -la']} length={6}>
+                        <Languages />
+                        <Command showPrompt />
+                    </Shell>
+                </section>
             </div>
         </StudiesWrapper>
     </Section>

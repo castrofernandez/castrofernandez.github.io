@@ -36,7 +36,18 @@ class Translations {
                 operatingSystems: 'Sistemes Operativos',
                 networks: 'Redes',
                 dataBases: 'Bases de Datos',
-                softwareEngineering: 'Inxeniería del Software'
+                softwareEngineering: 'Inxeniería del Software',
+                universityOviedo: 'Universidà d\'Uviéu',
+                ireland: 'Irlanda',
+                spanish: 'Español',
+                asturian: 'Asturianu',
+                english: 'Inglés',
+                french: 'Francés',
+                german: 'Alemán',
+                italian: 'Italianu',
+                native: 'Falante nativu',
+                basicKnowledge: 'Conocencies básiques',
+                eoi: 'Escuela Oficial d\'Idiomes'
             },
             es: {
                 intro: 'inicio',
@@ -71,7 +82,18 @@ class Translations {
                 operatingSystems: 'Sistemas Operativos',
                 networks: 'Redes',
                 dataBases: 'Bases de Datos',
-                softwareEngineering: 'Ingeniería del Software'
+                softwareEngineering: 'Ingeniería del Software',
+                universityOviedo: 'Universidad de Oviedo',
+                ireland: 'Irlanda',
+                spanish: 'Español',
+                asturian: 'Asturiano',
+                english: 'Inglés',
+                french: 'Francés',
+                german: 'Alemán',
+                italian: 'Italiano',
+                native: 'Hablante nativo',
+                basicKnowledge: 'Conocimientos básicos',
+                eoi: 'Escuela Oficial de Idiomas'
             },
             en: {
                 intro: 'home',
@@ -106,7 +128,18 @@ class Translations {
                 operatingSystems: 'Operating Systems',
                 networks: 'Networks',
                 dataBases: 'Data Bases',
-                softwareEngineering: 'Software Engineering'
+                softwareEngineering: 'Software Engineering',
+                universityOviedo: 'University of Oviedo',
+                ireland: 'Ireland',
+                spanish: 'Spanish',
+                asturian: 'Asturian',
+                english: 'English',
+                french: 'French',
+                german: 'German',
+                italian: 'Italian',
+                native: 'Native Speaker',
+                basicKnowledge: 'Basic Knowledge',
+                eoi: 'State Language School'
             }
         };
     }

@@ -11,10 +11,12 @@ const mustBeShown = (typed = '') => typed.length > 0;
 const getWrapperClass = (typed) => mustBeShown(typed) ? TYPING_CLASS : '';
 const isTyping = (inViewPort = false, status) => inViewPort && status === STATUS.TYPING;
 const isNotWaiting = (status) => status !== STATUS.WAITING && status !== STATUS.STARTING;
-const getContent = (content) => (<span className="writen">{content}</span>);
+const getSpan = (content) => (<span className="writen">{content}</span>);
+const getLink = (content, link) => (<a href={link} target="about:blank" className="writen">{content}</a>);
+const getContent = (content, link) => link ? getLink(content, link) : getSpan(content);
 
 const typingDefault = (Tag) => {
-    const InnerTypingText = ({ text, className = '', speed = SPEED, finishedHandler = () => {} }) => {
+    const InnerTypingText = ({ text, className = '', speed = SPEED, finishedHandler = () => {}, link }) => {
         const ref = useRef(null);
         const [inViewPort, setInViewPort] = useState(false);
         const [toType, setToType] = useState(text.split(''));
@@ -25,7 +27,7 @@ const typingDefault = (Tag) => {
         const getClass = (suffix) => `${className} typing ${status.toLowerCase()} ${suffix}`;
 
         const wrapRender = (style, content) => (
-            <Tag ref={ref} className={getClass(style)}>{getContent(content)}</Tag>);
+            <Tag ref={ref} className={getClass(style)}>{getContent(content, link)}</Tag>);
 
         const typingRender = () => wrapRender(getWrapperClass(typed), typed);
 
@@ -79,7 +81,8 @@ const typingDefault = (Tag) => {
         text: PropTypes.string.isRequired,
         className: PropTypes.string,
         speed: PropTypes.number,
-        finishedHandler: PropTypes.func
+        finishedHandler: PropTypes.func,
+        link: PropTypes.string
     };
 
     return InnerTypingText;

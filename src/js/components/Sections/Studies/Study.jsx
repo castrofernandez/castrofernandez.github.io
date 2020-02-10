@@ -23,11 +23,31 @@ const Subjects = styled.ul`
     li {
         flex: 0 0 auto;
         width: 50%;
+        position: relative;
+        padding-left: 27px;
+
+        &:before {
+            position: absolute;
+            left: 0;
+            content: '>>';
+            opacity: 0.6;
+        }
     }
 `;
 
-const Study = ({ title, subjects }) => (
-    <React.Fragment>
+const StudyWrapper = styled.article`
+
+`;
+
+const Where = styled.section`
+    ul {
+        justify-content: flex-end;
+        margin-bottom: 15px;
+    }
+`;
+
+const Study = ({ title, subjects, locations }) => (
+    <StudyWrapper>
         <Title><TranslatableTypingSpan text={title} /></Title>
         <Subjects>
             {
@@ -36,12 +56,16 @@ const Study = ({ title, subjects }) => (
                 ))
             }
         </Subjects>
-    </React.Fragment>
+        <Where>
+            {locations}
+        </Where>
+    </StudyWrapper>
 );
 
 Study.propTypes = {
     title: PropTypes.string.isRequired,
-    subjects: PropTypes.array.isRequired
+    subjects: PropTypes.array.isRequired,
+    locations: PropTypes.node.isRequired
 };
 
 export default Study;

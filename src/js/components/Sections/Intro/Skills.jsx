@@ -20,32 +20,83 @@ const SkillWrapper = styled.h2`
     }
 `;
 
+const SkillLine = styled.div`
+    margin-top: 25px;
+
+    &:nth-child(1) {
+        @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
+            margin-left: 30px;
+        }
+        
+        @media (max-width: ${GLOBALS.sizes.tablet}) {
+            margin-left: 30px;
+        }
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            min-height: 120px;
+            margin: 0 0 10px 0;
+        }
+    }
+
+    &:nth-child(2) {
+        margin-left: 100px;
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            min-height: 80px;
+            margin: 0 0 10px 0;
+        }
+    }
+
+    &:nth-child(3) {
+        margin-left: -50px;
+
+        @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
+            margin-left: 0;
+        }
+
+        @media (max-width: ${GLOBALS.sizes.tablet}) {
+            margin-left: 0;
+        }
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            min-height: 120px;
+            margin: 0 0 10px 0;
+        }
+    }
+`;
+
 const Skills = () => (
     <SkillWrapper>
-        <TypingChain>
-            <TranslatableTypingLi text="computerScience" />
-            <TranslatableTypingLi text="frontender" />
-            <TranslatableTypingLi text="fullstack" />
-        </TypingChain>
+        <SkillLine>
+            <TypingChain>
+                <TranslatableTypingLi text="computerScience" />
+                <TranslatableTypingLi text="frontender" />
+                <TranslatableTypingLi text="fullstack" />
+            </TypingChain>
+        </SkillLine>
 
-        <TypingChain>
-            <TypingLi text="JavaScript" />
-            <TypingLi text="React" />
-            <TypingLi text="Vue" />
-            <TypingLi text="Redux" />
-            <TypingLi text="HTML5" />
-            <TypingLi text="CSS3" />
-        </TypingChain>
+        <SkillLine>
+            <TypingChain>
+                <TypingLi text="JavaScript" />
+                <TypingLi text="React" />
+                <TypingLi text="Vue" />
+                <TypingLi text="Redux" />
+                <TypingLi text="HTML5" />
+                <TypingLi text="CSS3" />
+            </TypingChain>
+        </SkillLine>
 
-        <TypingChain>
-            <TypingLi text="Ruby" />
-            <TypingLi text="Rails" />
-            <TypingLi text="Java" />
-            <TypingLi text="Python" />
-            <TypingLi text="PHP" />
-            <TypingLi text="Node" />
-            <TranslatableTypingLi text="designPatterns" />
-        </TypingChain>
+        <SkillLine>
+            <TypingChain>
+                <TypingLi text="Ruby" />
+                <TypingLi text="Rails" />
+                <TypingLi text="Java" />
+                <TypingLi text="Python" />
+                <TypingLi text="PHP" />
+                <TypingLi text="Node" />
+                <TranslatableTypingLi text="designPatterns" />
+            </TypingChain>
+        </SkillLine>
     </SkillWrapper>
 );
 

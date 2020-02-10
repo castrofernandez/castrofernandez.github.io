@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Commands from './Commands';
 import CommandResult from './CommandResult';
+
+const CommandWrapper = styled.div`
+`;
 
 const Shell = ({ children, commands, length }) => {
     const [finished, setFinished] = useState(false);
@@ -10,10 +14,10 @@ const Shell = ({ children, commands, length }) => {
     const onFinished = () => setFinished(true);
 
     return (
-        <React.Fragment>
+        <CommandWrapper>
             <Commands commands={commands} onFinished={onFinished} />
-            { finished ? <CommandResult length={length}>{children}</CommandResult> : <React.Fragment /> }
-        </React.Fragment>
+            <CommandResult finished={finished} length={length}>{children}</CommandResult>
+        </CommandWrapper>
     );
 };
 

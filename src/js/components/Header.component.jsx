@@ -35,6 +35,10 @@ const HeaderWrapper = styled.header`
     &.section-experience {
         background-color: ${GLOBALS.colours.sections.experience.back};
     }
+
+    &.section-studies {
+        background-color: ${GLOBALS.colours.sections.studies.back};
+    }
 `;
 
 const NavWrapper = styled.nav`

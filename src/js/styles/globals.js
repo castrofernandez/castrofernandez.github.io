@@ -1,5 +1,5 @@
-const white = '#fff';
-const textLight = '#4a4a4a';
+const white = '#FFFFFF';
+const textLight = '#4A4A4A';
 const textDefault = '#272727';
 
 const primary = '#F14848';

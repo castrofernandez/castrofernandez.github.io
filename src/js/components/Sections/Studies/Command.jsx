@@ -66,8 +66,8 @@ const Command = ({ showPrompt, text, onFinish = () => {} }) => {
 
 Command.propTypes = {
     showPrompt: PropTypes.bool,
-    text: PropTypes.string.isRequired,
-    onFinish: PropTypes.func.isRequired
+    text: PropTypes.string,
+    onFinish: PropTypes.func
 };
 
 export default Command;

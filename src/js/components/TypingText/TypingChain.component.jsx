@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import languageContainer from '../../containers/Language.container';
 import GLOBALS from '../../styles/globals';
-// import { STATUS } from './TypingStatus';
 
 const Chain = styled.ul`
     flex: 0 0 auto;
@@ -18,56 +17,12 @@ const Chain = styled.ul`
     @media (max-width: ${GLOBALS.sizes.mobile}) {
         flex-wrap: wrap;
     }
-
-    &:nth-child(1) {
-        @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
-            margin-left: 30px;
-        }
-        
-        @media (max-width: ${GLOBALS.sizes.tablet}) {
-            margin-left: 30px;
-        }
-
-        @media (max-width: ${GLOBALS.sizes.mobile}) {
-            min-height: 120px;
-            margin: 0 0 10px 0;
-        }
-    }
-
-    &:nth-child(2) {
-        margin-left: 100px;
-
-        @media (max-width: ${GLOBALS.sizes.mobile}) {
-            min-height: 80px;
-            margin: 0 0 10px 0;
-        }
-    }
-
-    &:nth-child(3) {
-        margin-left: -50px;
-
-        @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
-            margin-left: 0;
-        }
-
-        @media (max-width: ${GLOBALS.sizes.tablet}) {
-            margin-left: 0;
-        }
-
-        @media (max-width: ${GLOBALS.sizes.mobile}) {
-            min-height: 120px;
-            margin: 0 0 10px 0;
-        }
-    }
 `;
 
 const SPEED = 20;
 
-// const getMovementStatus = (i, index) => i === index ? STATUS.STARTING : STATUS.WAITING;
-// const getStatus = (i, index, paused) => paused ? STATUS.PAUSED : getMovementStatus(i, index);
-
-const TypingChain = ({ children, language }) => {
-    const [index, setIndex] = useState(0);
+const TypingChain = ({ children, language, waiting = false }) => {
+    const [index, setIndex] = useState(waiting ? -1 : 0);
     const [currentLanguage, setCurrentLanguage] = useState(language);
     const finishedHandler = () => setIndex(index + 1);
 
@@ -76,7 +31,7 @@ const TypingChain = ({ children, language }) => {
             setIndex(0);
             setCurrentLanguage(language);
         }
-    }, [language]);
+    }, [language, waiting]);
 
     const getChildrenToRender = () => children.slice(0, index + 1);
 
@@ -95,7 +50,8 @@ const TypingChain = ({ children, language }) => {
 
 TypingChain.propTypes = {
     children: PropTypes.node.isRequired,
-    language: PropTypes.string.isRequired
+    language: PropTypes.string.isRequired,
+    waiting: PropTypes.bool
 };
 
 export default languageContainer(TypingChain);
