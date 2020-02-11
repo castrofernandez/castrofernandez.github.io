@@ -47,7 +47,16 @@ class Translations {
                 italian: 'Italianu',
                 native: 'Falante nativu',
                 basicKnowledge: 'Conocencies básiques',
-                eoi: 'Escuela Oficial d\'Idiomes'
+                eoi: 'Escuela Oficial d\'Idiomes',
+                title: 'títulu',
+                tasks: 'xeres',
+                wwwfTasks: 'Xestión del proyectu. Integración d\'interfaces d\'usuariu y desenvolvimientu d\'arquitectura en WordPress.',
+                a4aiTasks: 'Responsable del proyeutu. Diseñu, implementación y puesta en funcionamientu.',
+                windexTasks: 'Responsable del proyeutu. Diseñu, implementación y puesta en funcionamientu.',
+                circoTasks: 'Responsable del proyeutu. Diseñu, implementación y puesta en funcionamientu.',
+                wescountryTasks: 'Responsable del proyeutu. Diseñu, implementación y puesta en funcionamientu.',
+                landportalTasks: 'Responsable del proyeutu. Diseñu, implementación y puesta en funcionamientu.',
+                wfTasks: 'Responsable d\'interfaces d\'usuariu. Diseñu, implementación y puesta en funcionamientu.'
             },
             es: {
                 intro: 'inicio',
@@ -93,7 +102,16 @@ class Translations {
                 italian: 'Italiano',
                 native: 'Hablante nativo',
                 basicKnowledge: 'Conocimientos básicos',
-                eoi: 'Escuela Oficial de Idiomas'
+                eoi: 'Escuela Oficial de Idiomas',
+                title: 'título',
+                tasks: 'tareas',
+                wwwfTasks: 'Gestión del proyecto. Integración de interfaces de usuario y desarrollo de arquitectura en WordPress.',
+                a4aiTasks: 'Responsable del proyecto. Diseño, implementación y puesta en funcionamiento.',
+                windexTasks: 'Responsable del proyecto. Diseño, implementación y puesta en funcionamiento.',
+                circoTasks: 'Responsable del proyecto. Diseño, implementación y puesta en funcionamiento.',
+                wescountryTasks: 'Responsable del proyecto. Diseño, implementación y puesta en funcionamiento.',
+                landportalTasks: 'Responsable del proyecto. Diseño, implementación y puesta en funcionamiento.',
+                wfTasks: 'Responsable de interfaces de usuario. Diseño, implementación y puesta en funcionamiento.'
             },
             en: {
                 intro: 'home',
@@ -139,7 +157,16 @@ class Translations {
                 italian: 'Italian',
                 native: 'Native Speaker',
                 basicKnowledge: 'Basic Knowledge',
-                eoi: 'State Language School'
+                eoi: 'State Language School',
+                title: 'title',
+                tasks: 'tasks',
+                wwwfTasks: 'Project responsible. UX integration and WordPress architecture development.',
+                a4aiTasks: 'Project responsible. Design, development and deployment.',
+                windexTasks: 'Project responsible. Design, development and deployment.',
+                circoTasks: 'Project responsible. Design, development and deployment.',
+                wescountryTasks: 'Project responsible. Design, development and deployment.',
+                landportalTasks: 'Project responsible. Design, development and deployment.',
+                wfTasks: 'UX Project responsible. Design, development and deployment.'
             }
         };
     }

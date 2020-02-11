@@ -39,6 +39,10 @@ const HeaderWrapper = styled.header`
     &.section-studies {
         background-color: ${GLOBALS.colours.sections.studies.back};
     }
+
+    &.section-projects {
+        background-color: ${GLOBALS.colours.sections.projects.back};
+    }
 `;
 
 const NavWrapper = styled.nav`

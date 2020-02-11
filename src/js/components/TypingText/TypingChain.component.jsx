@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import languageContainer from '../../containers/Language.container';
-import GLOBALS from '../../styles/globals';
 
 const Chain = styled.ul`
     flex: 0 0 auto;
@@ -12,11 +11,7 @@ const Chain = styled.ul`
     list-style: none;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-
-    @media (max-width: ${GLOBALS.sizes.mobile}) {
-        flex-wrap: wrap;
-    }
+    flex-wrap: wrap;
 `;
 
 const SPEED = 20;

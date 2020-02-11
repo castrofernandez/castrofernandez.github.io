@@ -1,3 +1,5 @@
+import { lighten } from 'polished';
+
 const white = '#FFFFFF';
 const textLight = '#4A4A4A';
 const textDefault = '#272727';
@@ -44,6 +46,11 @@ export default {
                 back: '#00CBD5',
                 prompt: '#00B2BE',
                 input: 'rgba(255, 255, 255, 0.4)'
+            },
+            projects: {
+                fore: primary,
+                back: textDefault,
+                box: lighten(0.1, textDefault)
             }
         }
     },

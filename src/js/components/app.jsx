@@ -5,7 +5,7 @@ import Header from './Header.container';
 import Intro from './Sections/Intro/Intro';
 import Experience from './Sections/Experience/Experience';
 import Studies from './Sections/Studies/Studies';
-import Projects from './Sections/Projects';
+import Projects from './Sections/Projects/Projects';
 import Footer from './Footer';
 
 export default class App extends React.Component {
