@@ -58,7 +58,8 @@ const es = {
     landportalTasks:
         'Responsable del proyecto. Diseño, implementación y puesta en funcionamiento.',
     wfTasks:
-        'Responsable de interfaces de usuario. Diseño, implementación y puesta en funcionamiento.'
+        'Responsable de interfaces de usuario. Diseño, implementación y puesta en funcionamiento.',
+    fechu: 'Hecho en Asturias'
 };
 
 export default es;

@@ -52,7 +52,8 @@ const en = {
     circoTasks: 'Project responsible. Design, development and deployment.',
     wescountryTasks: 'Project responsible. Design, development and deployment.',
     landportalTasks: 'Project responsible. Design, development and deployment.',
-    wfTasks: 'UX Project responsible. Design, development and deployment.'
+    wfTasks: 'UX Project responsible. Design, development and deployment.',
+    fechu: 'Made in Asturias'
 };
 
 export default en;

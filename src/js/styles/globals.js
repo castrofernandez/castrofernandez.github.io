@@ -6,6 +6,8 @@ const textDefault = '#272727';
 
 const primary = '#F14848';
 const secondary = '#00FEFE';
+const terminalBack = '#00CBD5';
+const prompt = '#00B2BE';
 
 export default {
     sizes: {
@@ -17,6 +19,7 @@ export default {
     colours: {
         primary,
         secondary,
+        white,
         text: {
             default: textDefault,
             light: '#343434',
@@ -43,14 +46,21 @@ export default {
             },
             studies: {
                 fore: white,
-                back: '#00CBD5',
-                prompt: '#00B2BE',
+                back: terminalBack,
+                prompt,
                 input: 'rgba(255, 255, 255, 0.4)'
             },
             projects: {
                 fore: primary,
                 back: textDefault,
                 box: lighten(0.1, textDefault)
+            },
+            footer: {
+                fore: prompt,
+                back: terminalBack,
+                twitter: '#1dA1F2',
+                linkedin: '#0077b5',
+                github: textDefault
             }
         }
     },

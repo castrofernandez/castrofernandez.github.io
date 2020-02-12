@@ -12,3 +12,5 @@ export const TypingParagraph = typingDefault(P);
 export const TypingMessage = typingDefault(Message);
 
 export const TypingLi = typingDefault(Li);
+
+export const TypingSpan = typingDefault('span');

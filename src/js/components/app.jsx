@@ -6,7 +6,7 @@ import Intro from './Sections/Intro/Intro';
 import Experience from './Sections/Experience/Experience';
 import Studies from './Sections/Studies/Studies';
 import Projects from './Sections/Projects/Projects';
-import Footer from './Footer';
+import Footer from './Sections/Footer';
 
 export default class App extends React.Component {
     render() {

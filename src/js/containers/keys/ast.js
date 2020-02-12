@@ -58,7 +58,8 @@ const ast = {
     landportalTasks:
         'Responsable del proyeutu. Diseñu, implementación y puesta en funcionamientu.',
     wfTasks:
-        "Responsable d'interfaces d'usuariu. Diseñu, implementación y puesta en funcionamientu."
+        "Responsable d'interfaces d'usuariu. Diseñu, implementación y puesta en funcionamientu.",
+    fechu: "Fechu n'Asturies"
 };
 
 export default ast;
