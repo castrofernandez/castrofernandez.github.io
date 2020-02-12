@@ -91,7 +91,7 @@ const Projects = () => {
                 <div className="wrapper">
                     <h2 className="section-title"><Title text="projects" /></h2>
                     <ProjectBox>
-                        <Sidebar projects={projects} onChange={(i) => setIndex(i)} />
+                        <Sidebar projects={projects} index={index} onChange={(i) => setIndex(i)} />
                         <Viewer projects={projects} index={index} />
                     </ProjectBox>
                 </div>

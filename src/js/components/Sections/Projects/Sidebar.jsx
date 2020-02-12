@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -41,32 +41,24 @@ const Item = styled.li`
     }
 `;
 
-const Sidebar = ({ projects, onChange }) => {
-    const [index, setIndex] = useState(0);
-
-    const onIndexChange = (i) => {
-        onChange(i);
-        setIndex(i);
-    };
-
-    return (
-        <SidebarWrapper>
-            <Title text="--SELECT--" />
-            <List>
-                {
-                    projects.map(({ name }, i) => ((
-                        <Item key={i} className={i === index ? 'active' : ''} onClick={() => onIndexChange(i)}>
-                            {name}
-                        </Item>
-                    )))
-                }
-            </List>
-        </SidebarWrapper>
-    );
-};
+const Sidebar = ({ projects, index, onChange }) => (
+    <SidebarWrapper>
+        <Title text="--SELECT--" />
+        <List>
+            {
+                projects.map(({ name }, i) => ((
+                    <Item key={i} className={i === index ? 'active' : ''} onClick={() => onChange(i)}>
+                        {name}
+                    </Item>
+                )))
+            }
+        </List>
+    </SidebarWrapper>
+);
 
 Sidebar.propTypes = {
     projects: PropTypes.array.isRequired,
+    index: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired
 };
 
