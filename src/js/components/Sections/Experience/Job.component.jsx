@@ -24,6 +24,7 @@ const JobWrapper = styled.article`
 
 const Where = styled.h3`
     position: relative;
+    top: 4px;
     
     &.focused {
         width: calc(100% + 20px);
@@ -31,6 +32,7 @@ const Where = styled.h3`
         background-color: ${GLOBALS.colours.text.light};
         padding: 5px 0 7px 20px;
         position: relative;
+        top: 10px;
 
         &:before {
           left: -60px;
@@ -38,31 +40,31 @@ const Where = styled.h3`
     }
 
     .link {
-      i {
-          font-style: normal;
-      }
+        i {
+            font-style: normal;
+        }
 
-      a, i {
-            color: ${GLOBALS.colours.link.default};
+        a, i {
+                color: ${GLOBALS.colours.link.default};
 
-            &:hover {
-              color: ${GLOBALS.colours.link.hover};
-            }
-      }
-      
-      &:before {
-          content: 'def';
-          color: ${GLOBALS.colours.ide.keyword};
-          margin-right: 20px;
-          text-decoration: none;
-      }
+                &:hover {
+                color: ${GLOBALS.colours.link.hover};
+                }
+        }
+        
+        &:before {
+            content: 'def';
+            color: ${GLOBALS.colours.ide.keyword};
+            margin-right: 20px;
+            text-decoration: none;
+        }
 
-      &:after {
-          content: 'do';
-          color: ${GLOBALS.colours.ide.keyword};
-          margin-left: 20px;
-          text-decoration: none;
-      }
+        &:after {
+            content: 'do';
+            color: ${GLOBALS.colours.ide.keyword};
+            margin-left: 20px;
+            text-decoration: none;
+        }
     }
 `;
 

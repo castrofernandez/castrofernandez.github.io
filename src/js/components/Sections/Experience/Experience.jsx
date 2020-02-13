@@ -15,6 +15,12 @@ const ExperienceWrapper = styled.div`
     overflow: hidden;
 `;
 
+const Wrapper = styled.div`
+    &.wrapper {
+        padding-left: 100px;
+    }
+`;
+
 const Title = styled(TranslatableTypingParagraph)`
     position: relative;
     color: ${GLOBALS.colours.secondary};
@@ -48,10 +54,10 @@ const Title = styled(TranslatableTypingParagraph)`
 const Experience = () => (
     <Section id="experience">
         <ExperienceWrapper>
-            <div className="wrapper">
+            <Wrapper className="wrapper">
                 <h2 className="section-title"><Title text="experience" /></h2>
                 <Ide />
-            </div>
+            </Wrapper>
             <Bar />
         </ExperienceWrapper>
     </Section>

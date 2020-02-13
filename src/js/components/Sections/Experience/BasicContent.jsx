@@ -17,25 +17,33 @@ export const basicContent = css`
 
 export const line = css`
     display: block;
-    margin-top: 22px;
+    margin: 22px 0 0 0;
     counter-increment: line;
+    font-size: 24px;
 
     @media (max-width: ${GLOBALS.sizes.mobile}) {
         margin-top: 0;
     }
 
     &.empty {
-      min-height: 22px;
+        min-height: 22px;
     }
 
     &:before {
-      width: 40px;
-      content: counter(line);
-      position: absolute;
-      left: -80px;
-      color: ${GLOBALS.colours.text.lighter};
-      text-align: right;
-      user-select: none;
+        width: 40px;
+        content: counter(line);
+        position: absolute;
+        left: -80px;
+        color: ${GLOBALS.colours.text.lighter};
+        text-align: right;
+        user-select: none;
+    }
+
+    &.end {
+        &:after {
+            content: 'end';
+            color: ${GLOBALS.colours.ide.keyword};
+        }
     }
 `;
 
