@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
-import scrollObserver from './ScrollObserver';
+import scrollObserver from '../../ScrollObserver';
 
 const SectionWrapper = styled.section`
     > div {

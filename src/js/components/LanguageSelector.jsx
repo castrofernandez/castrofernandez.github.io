@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import SelectorItem from '../SelectorItem';
-import GLOBALS from '../../styles/globals';
+import SelectorItem from './SelectorItem';
+import GLOBALS from '../styles/globals';
 
-import languageContainer from '../../containers/Language.container';
+import languageContainer from '../containers/Language.container';
 
 const NavWrapper = styled.ul`
     margin: 0;

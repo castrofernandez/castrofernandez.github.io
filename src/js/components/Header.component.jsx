@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
-import LanguageSelector from './LanguageSelector/LanguageSelector';
+import LanguageSelector from './LanguageSelector';
 import SectionSelector from './SectionSelector';
 import Clock from './Clock.container';
 import Burger from './Burger';
@@ -30,6 +30,10 @@ const HeaderWrapper = styled.header`
 
     &.section-intro {
         background-color: ${GLOBALS.colours.sections.intro.back};
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            background-color: transparent;
+        }
     }
 
     &.section-experience {

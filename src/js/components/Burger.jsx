@@ -4,7 +4,11 @@ import GLOBALS from '../styles/globals';
 
 const BurgerLink = styled.a`
     display: none;
-    padding: 15px 0 0 15px;
+    padding: 0 0 0 15px;
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        display: block;
+    }
 `;
 
 const BurgerLine = styled.span`

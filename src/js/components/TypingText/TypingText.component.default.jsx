@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { STATUS } from './TypingStatus';
-import scrollObserver from '../Sections/Section/ScrollObserver';
+import scrollObserver from '../ScrollObserver';
 
 const SPEED = 80;
 const TYPING_CLASS = 'started';

@@ -15,6 +15,11 @@ const Message = styled.p`
         padding: 10px 30px;
         background-color: ${GLOBALS.colours.primary};
         color: #fff;
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            width: 100%;
+            text-align: center;
+        }
     }
 
     &:nth-child(2) {
@@ -47,7 +52,6 @@ const Message = styled.p`
 
     @media (max-width: ${GLOBALS.sizes.mobile}) {
         position: relative;
-        z-index: 100;
     }
 `;
 

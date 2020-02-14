@@ -27,10 +27,6 @@ const ClockWrapper = styled.p`
     @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
         height: 40px;
     }
-
-    @media (max-width: ${GLOBALS.sizes.mobile}) {
-        display: none;
-    }
 `;
 
 const Time = styled.span`

@@ -11,6 +11,10 @@ const NavWrapper = styled.ul`
     list-style: none;
     display: flex;
     flex-direction: row;
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        display: none;
+    }
 `;
 
 const Li = styled.li`

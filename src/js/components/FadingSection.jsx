@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import scrollObserver from './Sections/Section/ScrollObserver';
+import scrollObserver from './ScrollObserver';
 import fade from '../styles/fade.keyframe';
 
 import languageContainer from '../containers/Language.container';

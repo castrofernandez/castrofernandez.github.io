@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 
-import scrollObserver from '../Section/ScrollObserver';
+import scrollObserver from '../../ScrollObserver';
 import GLOBALS from '../../../styles/globals';
 import grow from '../../../styles/grow.keyframe';
 

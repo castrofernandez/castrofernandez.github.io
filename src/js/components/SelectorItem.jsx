@@ -27,6 +27,12 @@ const A = styled.a`
 
     &.squared {
         min-width: 62px;
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            min-width: 45px;
+            font-size: 16px;
+            padding: 0 8px;
+        }
     }
 
     &:hover {

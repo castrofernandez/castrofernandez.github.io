@@ -4,13 +4,29 @@ import styled from 'styled-components';
 import Piece from './Piece.component';
 import { shuffle, swapPieces } from './Puzzle.sequence';
 import JuanCastro from '../../../images/juan-castro.gif';
-import scrollObserver from '../Sections/Section/ScrollObserver';
+import scrollObserver from '../ScrollObserver';
+import GLOBALS from '../../styles/globals';
+
+const Wrapper = styled.div`
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        padding-top: 100%;
+        position: relative;
+    }
+`;
 
 const Figure = styled.figure`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     margin: 0;
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 `;
 
 const Gif = styled.img`
@@ -68,9 +84,11 @@ const Puzzle = () => {
     useEffect(() => scrollObserver.subscribe({ element: ref.current, handler: () => setScrolled(true) }), []);
 
     return (
-        <Figure ref={ref} onClick={onClick}>
-            { scrolled ? render() : <React.Fragment /> }
-        </Figure>
+        <Wrapper>
+            <Figure ref={ref} onClick={onClick}>
+                { scrolled ? render() : <React.Fragment /> }
+            </Figure>
+        </Wrapper>
     );
 };
 
