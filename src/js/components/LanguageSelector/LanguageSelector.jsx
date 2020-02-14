@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import SelectorItem from '../SelectorItem';
 import GLOBALS from '../../styles/globals';
 
+import languageContainer from '../../containers/Language.container';
+
 const NavWrapper = styled.ul`
     margin: 0;
     padding: 0;
@@ -63,4 +65,4 @@ LanguageSelector.propTypes = {
     language: PropTypes.string.isRequired
 };
 
-export default LanguageSelector;
+export default languageContainer(LanguageSelector);

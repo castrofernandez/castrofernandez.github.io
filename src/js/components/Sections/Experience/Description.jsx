@@ -7,6 +7,7 @@ import String from './String';
 import Desc from './Desc';
 
 import Translations from '../../../containers/Translations';
+import languageContainer from '../../../containers/Language.container';
 
 import lineSplitter from './LineSplitter';
 
@@ -54,4 +55,4 @@ Description.propTypes = {
     language: PropTypes.string.isRequired
 };
 
-export default Description;
+export default languageContainer(Description);

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
-import LanguageSelector from './LanguageSelector/LanguageSelector.container';
+import LanguageSelector from './LanguageSelector/LanguageSelector';
 import SectionSelector from './SectionSelector';
 import Clock from './Clock.container';
 import Burger from './Burger';

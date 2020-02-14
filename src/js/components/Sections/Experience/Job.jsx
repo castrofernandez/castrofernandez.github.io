@@ -1,21 +1,15 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
 import { basicContent, line } from './BasicContent';
 import JobData from './JobData';
-import scrollObserver from '../Section/ScrollObserver';
-import fade from '../../../styles/fade.keyframe';
+
+import FadingSection from '../../FadingSection';
 
 const JobWrapper = styled.article`
     ${basicContent};
-    opacity: 0;
-    
-    &.scrolled {
-        animation: ${fade} 1s linear;
-        opacity: 1;
-    }
 
     .line {
         ${line};
@@ -68,16 +62,9 @@ const Where = styled.h3`
 
 const getLink = (link, title) => <a href={link} rel="nofollow">{title}</a>;
 
-const Job = ({ focused = false, title, link, position, from, to, description, technologies, language }) => {
-    const [scrolled, setScrolled] = useState(false);
-    const ref = useRef(null);
-
-    const handler = () => setScrolled(true);
-
-    useEffect(() => scrollObserver.subscribe({ element: ref.current, handler }), [language]);
-
-    return (
-        <JobWrapper className={scrolled ? 'scrolled' : ''} ref={ref}>
+const Job = ({ focused = false, title, link, position, from, to, description, technologies }) => (
+    <FadingSection>
+        <JobWrapper>
             <Where className={`line ${focused ? 'focused' : ''}`}>
                 <span className="link">
                     { link ? getLink(link, title) : <i>{title}</i> }
@@ -88,8 +75,8 @@ const Job = ({ focused = false, title, link, position, from, to, description, te
             <span className="end line" />
             <span className="line empty" />
         </JobWrapper>
-    );
-};
+    </FadingSection>
+);
 
 Job.propTypes = {
     focused: PropTypes.bool,
@@ -99,8 +86,7 @@ Job.propTypes = {
     from: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     to: PropTypes.number,
-    technologies: PropTypes.object.isRequired,
-    language: PropTypes.string.isRequired
+    technologies: PropTypes.object.isRequired
 };
 
 export default Job;

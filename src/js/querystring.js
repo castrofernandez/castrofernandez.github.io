@@ -1,6 +1,6 @@
 import querystringme from 'querystringme';
 
-import { LANGUAGE_LIST } from './components/LanguageSelector/LanguageSelector.component';
+import { LANGUAGE_LIST } from './components/LanguageSelector/LanguageSelector';
 
 const load = () => {
     querystringme.load({

@@ -63,8 +63,8 @@ const Title = () => (
             <Name text="Juan Castro" />
             <div>
                 <Heart intensity="full" />
-                <Heart intensity="full" />
-                <Heart intensity="semi" />
+                <Heart intensity="full" delay={0.5} />
+                <Heart intensity="semi" delay={1} />
             </div>
         </Line>
         <Bar />

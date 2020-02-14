@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
 import Position from './Position';
-import Description from './Description.container';
+import Description from './Description';
 import When from './When';
 import TechList from './TechList';
 import { ArrayStart, ArrayEnd } from './BasicContent';
