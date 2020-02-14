@@ -13,24 +13,31 @@ export const basicContent = css`
         line-height: 26px;
         margin-top: 10px;
     }
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        margin-top: 0;
+    }
 `;
 
 export const line = css`
+    ${basicContent};
     display: block;
-    margin: 22px 0 0 0;
     counter-increment: line;
-    font-size: 24px;
+
+    @media (max-width: ${GLOBALS.sizes.smallDesktop}) {
+        margin-top: 10px;
+    }
 
     @media (max-width: ${GLOBALS.sizes.mobile}) {
         margin-top: 0;
     }
 
     &.empty {
-        min-height: 22px;
+        min-height: 26px;
     }
 
     &:before {
-        width: 40px;
+        width: 48px;
         content: counter(line);
         position: absolute;
         left: -80px;

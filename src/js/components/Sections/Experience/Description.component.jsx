@@ -11,23 +11,23 @@ import Translations from '../../../containers/Translations';
 import lineSplitter from './LineSplitter';
 
 const DescriptionWrapper = styled.h4`
-    ${basicContent};
-    
-    div {
-        ${line};
+    margin: 0;
+`;
 
-        &:first-child {
-            display: inline-block;
-        }
+const Line = styled.div`
+    ${line};
 
-        &:last-child {
-            display: inline-block;
-            ${trailComma};
-        }
+    &:first-child {
+        display: inline-block;
+    }
 
-        &:not(:first-child) {
-            padding-left: 160px;
-        }
+    &:last-child {
+        display: inline-block;
+        ${trailComma};
+    }
+
+    &:not(:first-child) {
+        padding-left: 160px;
     }
 `;
 
@@ -37,13 +37,15 @@ const translate = (language, key) => Translations.getTranslationHTML(language, k
 
 const Description = ({ description, language }) => (
     <DescriptionWrapper>
-        <Desc>description</Desc>
-        <String>
-            {
-                lineSplitter(translate(language, description), MAX_LENGTH)
-                    .map((line, i) => <div key={i}>{line}</div>)
-            }
-        </String>
+        {
+            lineSplitter(translate(language, description), MAX_LENGTH)
+                .map((line, i) => (
+                    <Line key={i}>
+                        { i === 0 ? <Desc>description</Desc> : <React.Fragment /> }
+                        <String>{line}</String>
+                    </Line>
+                ))
+        }
     </DescriptionWrapper>
 );
 

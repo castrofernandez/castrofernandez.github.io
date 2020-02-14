@@ -24,15 +24,13 @@ const JobWrapper = styled.article`
 
 const Where = styled.h3`
     position: relative;
-    top: 4px;
     
     &.focused {
+        top: 6px;
         width: calc(100% + 20px);
         margin-left: -20px;
         background-color: ${GLOBALS.colours.text.light};
         padding: 5px 0 7px 20px;
-        position: relative;
-        top: 10px;
 
         &:before {
           left: -60px;
@@ -47,9 +45,9 @@ const Where = styled.h3`
         a, i {
                 color: ${GLOBALS.colours.link.default};
 
-                &:hover {
+            &:hover {
                 color: ${GLOBALS.colours.link.hover};
-                }
+            }
         }
         
         &:before {
