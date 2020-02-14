@@ -5,6 +5,8 @@ import GLOBALS from '../../../styles/globals';
 import Section from '../Section/Section.container';
 import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTypingText.component';
 
+import FadingSection from '../../FadingSection';
+
 import Sidebar from './Sidebar';
 import Viewer from './Viewer';
 
@@ -89,11 +91,13 @@ const Projects = () => {
         <Section id="projects">
             <ProjectWrapper>
                 <div className="wrapper">
-                    <h2 className="section-title"><Title text="projects" /></h2>
-                    <ProjectBox>
-                        <Sidebar projects={projects} index={index} onChange={(i) => setIndex(i)} />
-                        <Viewer projects={projects} index={index} />
-                    </ProjectBox>
+                    <FadingSection>
+                        <h2 className="section-title"><Title text="projects" /></h2>
+                        <ProjectBox>
+                            <Sidebar projects={projects} index={index} onChange={(i) => setIndex(i)} />
+                            <Viewer projects={projects} index={index} />
+                        </ProjectBox>
+                    </FadingSection>
                 </div>
             </ProjectWrapper>
         </Section>

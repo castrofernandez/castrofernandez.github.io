@@ -7,6 +7,8 @@ import Section from './Section/Section.container';
 import { TypingSpan } from '../TypingText/TypingText.component';
 import TranslatableTypingSpan from '../Translatable/Translatable.container';
 
+import FadingSection from '../FadingSection';
+
 import Asturies from '../../../images/asturies.svg';
 
 const FooterWrapper = styled.footer`
@@ -129,20 +131,22 @@ const Footer = () => (
         <FooterWrapper>
             <Wrapper className="wrapper">
                 <Title className="section-title"><TypingSpan text="Game Over!" /></Title>
-                <Links>
-                    <li>
-                        <Link className="link mail" href="mailto:info@juancastro.es">info@juancastro.es</Link>
-                    </li>
-                    <li>
-                        <Link className="link twitter" rel="me nofollow" href="https://twitter.com/castrofernandez">Twitter</Link>
-                    </li>
-                    <li>
-                        <Link className="link linkedin" rel="me nofollow" href="https://es.linkedin.com/pub/juan-castro-fernández/35/43b/728">Linked<span>In</span></Link>
-                    </li>
-                    <li>
-                        <Link className="link github" rel="me nofollow" href="https://github.com/castrofernandez/">GitHub</Link>
-                    </li>
-                </Links>
+                <FadingSection>
+                    <Links>
+                        <li>
+                            <Link className="link mail" href="mailto:info@juancastro.es">info@juancastro.es</Link>
+                        </li>
+                        <li>
+                            <Link className="link twitter" rel="me nofollow" href="https://twitter.com/castrofernandez">Twitter</Link>
+                        </li>
+                        <li>
+                            <Link className="link linkedin" rel="me nofollow" href="https://es.linkedin.com/pub/juan-castro-fernández/35/43b/728">Linked<span>In</span></Link>
+                        </li>
+                        <li>
+                            <Link className="link github" rel="me nofollow" href="https://github.com/castrofernandez/">GitHub</Link>
+                        </li>
+                    </Links>
+                </FadingSection>
                 <Ending><TypingSpan text="Juan Castro" /></Ending>
             </Wrapper>
             <Bar>

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import GLOBALS from '../../styles/globals';
 
+import FadingSection from '../FadingSection';
+
 const ScoreWrapper = styled.div`
     text-transform: uppercase;
     text-align: right;
@@ -39,8 +41,10 @@ const formatScore = (score) => `${'0'.repeat(4 - score.length)}${score}`;
 
 const Score = ({ score }) => (
     <ScoreWrapper>
-        <Span />
-        <P>{formatScore(score.toString())}</P>
+        <FadingSection>
+            <Span />
+            <P>{formatScore(score.toString())}</P>
+        </FadingSection>
     </ScoreWrapper>
 );
 
