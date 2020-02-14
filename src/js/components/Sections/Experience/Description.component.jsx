@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { basicContent, line, trailComma } from './BasicContent';
+import { line, trailComma } from './BasicContent';
 import String from './String';
 import Desc from './Desc';
 

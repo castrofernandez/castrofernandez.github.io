@@ -48,35 +48,35 @@ const projects = [
     {
         image: WEIN,
         name: 'The Web Index',
-        year: 2015,
+        year: 2014,
         tasks: 'windexTasks',
         skills: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL', 'WordPress']
     },
     {
         image: CIRC,
         name: 'Circo Neuronal',
-        year: 2015,
+        year: 2014,
         tasks: 'circoTasks',
         skills: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'MySQL']
     },
     {
         image: WESC,
         name: 'WesCountry',
-        year: 2015,
+        year: 2014,
         tasks: 'wescountryTasks',
         skills: ['HTML5', 'CSS3', 'JavaScript', 'SVG']
     },
     {
         image: LAND,
         name: 'landportal.info',
-        year: 2015,
+        year: 2013,
         tasks: 'landportalTasks',
-        skills: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'Python', 'MySQL', 'Drupal', 'Bootstrap']
+        skills: ['JavaScript', 'PHP', 'Python', 'MySQL', 'Drupal', 'Bootstrap']
     },
     {
         image: WEBF,
         name: 'Web Foundation',
-        year: 2015,
+        year: 2013,
         tasks: 'wfTasks',
         skills: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'MongoDB']
     }

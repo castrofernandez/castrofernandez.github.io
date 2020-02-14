@@ -24,6 +24,7 @@ const Info = styled.div`
     padding: 15px 25px 20px 25px;
     margin-top: 20px;
     position: relative;
+    min-height: 340px;
 `;
 
 const Year = styled.h4`
