@@ -12,6 +12,8 @@ const getDirection = (previousPosition) => previousPosition - window.scrollY >= 
 
 const getElementData = (el, previousPos) => ({ ...getData(getRect(el)), direction: getDirection(previousPos) });
 
+const getVisibleElements = (elements) => Object.values(elements).filter(({ element }) => isInViewPort(element));
+
 class Observer {
     constructor() {
         this.subscribers = [];
@@ -24,10 +26,9 @@ class Observer {
     }
 
     evaluate(elements = []) {
-        Object.values(elements)
-            .filter(({ element }) => isInViewPort(element))
-            .forEach(({ element, handler = () => {} }) => {
-                handler(getElementData(element, this.previousScrollPosition));
+        getVisibleElements(elements)
+            .forEach(({ element, inViewPort = () => {} }) => {
+                inViewPort(getElementData(element, this.previousScrollPosition));
             });
     }
 

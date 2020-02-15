@@ -23,9 +23,9 @@ const Bar = () => {
     const [scrolled, setScrolled] = useState(false);
     const ref = useRef(null);
 
-    const handler = () => setScrolled(true);
+    const inViewPort = () => setScrolled(true);
 
-    useEffect(() => scrollObserver.subscribe({ element: ref.current, handler }), []);
+    useEffect(() => scrollObserver.subscribe({ element: ref.current, inViewPort }), []);
 
     return (<BarWrapper className={scrolled ? 'scrolled' : ''} ref={ref} />);
 };

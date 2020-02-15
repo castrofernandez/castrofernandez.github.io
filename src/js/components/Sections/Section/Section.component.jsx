@@ -44,9 +44,9 @@ const isSectionFocused = ({ top, bottom } = {}) => top <= 0 && bottom >= 0;
 const Section = ({ id, children, changeSection }) => {
     const ref = useRef(null);
 
-    const handler = (data) => isSectionFocused(data) ? changeSection(id) : false;
+    const inViewPort = (data) => isSectionFocused(data) ? changeSection(id) : false;
 
-    useEffect(() => scrollObserver.subscribe({ element: ref.current, handler }), []);
+    useEffect(() => scrollObserver.subscribe({ element: ref.current, inViewPort }), []);
 
     return (
         <SectionWrapper ref={ref}>
