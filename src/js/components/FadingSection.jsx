@@ -20,9 +20,9 @@ const Fader = ({ children, language, delay = 0 }) => {
     const [scrolled, setScrolled] = useState(false);
     const ref = useRef(null);
 
-    const inViewPort = () => setScrolled(true);
+    const inViewPortHandler = () => setScrolled(true);
 
-    useEffect(() => scrollObserver.subscribe({ element: ref.current, inViewPort }), [language]);
+    useEffect(() => scrollObserver.subscribe({ element: ref.current, inViewPortHandler }), [language]);
 
     return (
         <FadingSection delay={delay} className={scrolled ? 'scrolled' : ''} ref={ref}>

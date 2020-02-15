@@ -81,7 +81,7 @@ const Puzzle = () => {
 
     useEffect(() => scrolled ? animate() : undefined, [count, scrolled]);
 
-    useEffect(() => scrollObserver.subscribe({ element: ref.current, inViewPort: () => setScrolled(true) }), []);
+    useEffect(() => scrollObserver.subscribe({ element: ref.current, inViewPortHandler: () => setScrolled(true) }), []);
 
     return (
         <Wrapper>

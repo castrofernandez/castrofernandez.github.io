@@ -69,7 +69,7 @@ const typingDefault = (Tag) => {
         useEffect(stopAnimationIfLanguageHasChangedHandler, [text]);
 
         useEffect(() => {
-            scrollObserver.subscribe({ element: ref.current, inViewPort: () => setInViewPort(true) });
+            scrollObserver.subscribe({ element: ref.current, inViewPortHandler: () => setInViewPort(true) });
 
             return () => clearTyping();
         }, []);
