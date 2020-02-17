@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import scrolltome from 'scrolltome';
@@ -46,7 +47,7 @@ const getPieces = (coordinates) => coordinates.map((id, index) => getPiece(id, i
 
 const getGif = () => (<Gif alt="Juan Castro" id="gif" src={JuanCastro} />);
 
-const Puzzle = () => {
+const Puzzle = ({ changePuzzle }) => {
     const ref = useRef(null);
     const [moving, setMoving] = useState(true);
     const [count, setCount] = useState(0);
@@ -84,8 +85,11 @@ const Puzzle = () => {
 
     useEffect(() => scrolltome.subscribe({
         element: ref.current,
-        inViewPortHandler: () => setScrolled(true),
-        outOfViewPortHandler: () => console.log('out'),
+        inViewPortHandler: () => {
+            setScrolled(true);
+            changePuzzle(true);
+        },
+        outOfViewPortHandler: () => changePuzzle(false),
         repeat: 'KEEP'
     }), []);
 
@@ -96,6 +100,10 @@ const Puzzle = () => {
             </Figure>
         </Wrapper>
     );
+};
+
+Puzzle.propTypes = {
+    changePuzzle: PropTypes.func.isRequired
 };
 
 export default Puzzle;

@@ -8,6 +8,12 @@ const ClockWrapper = styled.p`
     margin: -2px 0 0 0;
     height: 70px;
 
+    &.section-puzzle {
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            display: none;
+        }
+    }
+
     &.section-intro {
         color: ${GLOBALS.colours.sections.intro.fore};
     }
@@ -63,7 +69,7 @@ const Blinker = styled.span`
 
 const formatTime = (value) => value.length < 2 ? '0' + value : value;
 
-const Clock = ({ section }) => {
+const Clock = ({ section, puzzle }) => {
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
@@ -75,7 +81,7 @@ const Clock = ({ section }) => {
     }, []);
 
     return (
-        <ClockWrapper className={`section-${section}`}>
+        <ClockWrapper className={`section-${puzzle ? 'puzzle' : section}`}>
             <Time>{formatTime(time.getHours().toString())}</Time>
             <Blinker />
             <Time>{formatTime(time.getMinutes().toString())}</Time>
@@ -85,7 +91,8 @@ const Clock = ({ section }) => {
 };
 
 Clock.propTypes = {
-    section: PropTypes.string.isRequired
+    section: PropTypes.string.isRequired,
+    puzzle: PropTypes.bool.isRequired
 };
 
 export default Clock;

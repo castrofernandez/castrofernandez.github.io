@@ -28,12 +28,16 @@ const HeaderWrapper = styled.header`
     animation: ${slide} 0.5s linear;
     animation-fill-mode: forwards;
 
-    &.section-intro {
+    &.section-puzzle {
         background-color: ${GLOBALS.colours.sections.intro.back};
-
+        
         @media (max-width: ${GLOBALS.sizes.mobile}) {
             background-color: transparent;
         }
+    }
+
+    &.section-intro {
+        background-color: ${GLOBALS.colours.sections.intro.back};
     }
 
     &.section-experience {
@@ -55,8 +59,8 @@ const NavWrapper = styled.nav`
     align-items: center;
 `;
 
-const Header = ({ section }) => (
-    <HeaderWrapper className={`section-${section}`}>
+const Header = ({ section, puzzle }) => (
+    <HeaderWrapper className={`section-${puzzle ? 'puzzle' : section}`}>
         <NavWrapper>
             <Burger />
             <SectionSelector section={section} />
@@ -67,7 +71,8 @@ const Header = ({ section }) => (
 );
 
 Header.propTypes = {
-    section: PropTypes.string.isRequired
+    section: PropTypes.string.isRequired,
+    puzzle: PropTypes.bool.isRequired
 };
 
 export default Header;
