@@ -47,7 +47,11 @@ const Section = ({ id, children, changeSection }) => {
 
     const inViewPortHandler = (data) => isSectionFocused(data) ? changeSection(id) : false;
 
-    useEffect(() => scrolltome.subscribe({ element: ref.current, inViewPortHandler, repeat: 'FIRST_IN' }), []);
+    useEffect(() => scrolltome.subscribe({
+        element: ref.current,
+        inViewPortHandler,
+        repeat: 'KEEP'
+    }), []);
 
     return (
         <SectionWrapper ref={ref}>

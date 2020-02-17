@@ -85,7 +85,8 @@ const Puzzle = () => {
     useEffect(() => scrolltome.subscribe({
         element: ref.current,
         inViewPortHandler: () => setScrolled(true),
-        repeat: 'FIRST_IN'
+        outOfViewPortHandler: () => console.log('out'),
+        repeat: 'KEEP'
     }), []);
 
     return (
