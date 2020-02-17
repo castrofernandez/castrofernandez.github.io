@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 
+import scrolltome from 'scrolltome';
+
 import Piece from './Piece.component';
 import { shuffle, swapPieces } from './Puzzle.sequence';
 import JuanCastro from '../../../images/juan-castro.gif';
-import scrollObserver from '../ScrollObserver';
 import GLOBALS from '../../styles/globals';
 
 const Wrapper = styled.div`
@@ -81,7 +82,11 @@ const Puzzle = () => {
 
     useEffect(() => scrolled ? animate() : undefined, [count, scrolled]);
 
-    useEffect(() => scrollObserver.subscribe({ element: ref.current, inViewPortHandler: () => setScrolled(true) }), []);
+    useEffect(() => scrolltome.subscribe({
+        element: ref.current,
+        inViewPortHandler: () => setScrolled(true),
+        repeat: 'FIRST_IN'
+    }), []);
 
     return (
         <Wrapper>

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
+import scrolltome from 'scrolltome';
+
 import { STATUS } from './TypingStatus';
-import scrollObserver from '../ScrollObserver';
 
 const SPEED = 80;
 const TYPING_CLASS = 'started';
@@ -69,7 +70,11 @@ const typingDefault = (Tag) => {
         useEffect(stopAnimationIfLanguageHasChangedHandler, [text]);
 
         useEffect(() => {
-            scrollObserver.subscribe({ element: ref.current, inViewPortHandler: () => setInViewPort(true) });
+            scrolltome.subscribe({
+                element: ref.current,
+                inViewPortHandler: () => setInViewPort(true),
+                repeat: 'FIRST_IN'
+            });
 
             return () => clearTyping();
         }, []);

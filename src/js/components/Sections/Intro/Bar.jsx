@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 
-import scrollObserver from '../../ScrollObserver';
+import scrolltome from 'scrolltome';
+
 import GLOBALS from '../../../styles/globals';
 import grow from '../../../styles/grow.keyframe';
 
@@ -25,7 +26,7 @@ const Bar = () => {
 
     const inViewPortHandler = () => setScrolled(true);
 
-    useEffect(() => scrollObserver.subscribe({ element: ref.current, inViewPortHandler }), []);
+    useEffect(() => scrolltome.subscribe({ element: ref.current, inViewPortHandler, repeat: 'FIRST_IN' }), []);
 
     return (<BarWrapper className={scrolled ? 'scrolled' : ''} ref={ref} />);
 };

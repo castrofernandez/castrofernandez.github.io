@@ -2,8 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import scrolltome from 'scrolltome';
+
 import GLOBALS from '../../../styles/globals';
-import scrollObserver from '../../ScrollObserver';
 
 const SectionWrapper = styled.section`
     > div {
@@ -46,7 +47,7 @@ const Section = ({ id, children, changeSection }) => {
 
     const inViewPortHandler = (data) => isSectionFocused(data) ? changeSection(id) : false;
 
-    useEffect(() => scrollObserver.subscribe({ element: ref.current, inViewPortHandler }), []);
+    useEffect(() => scrolltome.subscribe({ element: ref.current, inViewPortHandler, repeat: 'FIRST_IN' }), []);
 
     return (
         <SectionWrapper ref={ref}>

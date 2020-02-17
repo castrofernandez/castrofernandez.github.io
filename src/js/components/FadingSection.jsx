@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import scrollObserver from './ScrollObserver';
+import scrolltome from 'scrolltome';
 import fade from '../styles/fade.keyframe';
 
 import languageContainer from '../containers/Language.container';
@@ -22,7 +22,7 @@ const Fader = ({ children, language, delay = 0 }) => {
 
     const inViewPortHandler = () => setScrolled(true);
 
-    useEffect(() => scrollObserver.subscribe({ element: ref.current, inViewPortHandler }), [language]);
+    useEffect(() => scrolltome.subscribe({ element: ref.current, inViewPortHandler, repeat: 'FIRST_IN' }), [language]);
 
     return (
         <FadingSection delay={delay} className={scrolled ? 'scrolled' : ''} ref={ref}>
