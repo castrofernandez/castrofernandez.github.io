@@ -17,6 +17,7 @@ const SkillWrapper = styled.h2`
     @media (max-width: ${GLOBALS.sizes.mobile}) {
         margin-top: 10px;
         padding: 0 20px;
+        min-height: 430px;
     }
 `;
 

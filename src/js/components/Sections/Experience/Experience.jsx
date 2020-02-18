@@ -18,6 +18,11 @@ const ExperienceWrapper = styled.div`
 const Wrapper = styled.div`
     &.wrapper {
         padding-left: 100px;
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            padding-top: 50px;
+            padding-left: 20px;
+        }
     }
 `;
 

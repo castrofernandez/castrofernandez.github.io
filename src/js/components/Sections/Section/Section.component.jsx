@@ -35,7 +35,7 @@ const SectionWrapper = styled.section`
         }
 
         @media (max-width: ${GLOBALS.sizes.mobile}) {
-            padding: 80px 20px 20px 20px;
+            padding: 20px;
         }
     }
 `;

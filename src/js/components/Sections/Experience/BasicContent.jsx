@@ -44,12 +44,20 @@ export const line = css`
         color: ${GLOBALS.colours.text.lighter};
         text-align: right;
         user-select: none;
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            display: none;
+        }
     }
 
     &.end {
         &:after {
             content: 'end';
             color: ${GLOBALS.colours.ide.keyword};
+
+            @media (max-width: ${GLOBALS.sizes.mobile}) {
+                display: none;
+            }
         }
     }
 `;

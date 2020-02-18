@@ -26,6 +26,12 @@ const Where = styled.h3`
         background-color: ${GLOBALS.colours.text.light};
         padding: 5px 0 7px 20px;
 
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            margin-left: 0;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
         &:before {
           left: -60px;
         }
