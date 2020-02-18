@@ -8,7 +8,7 @@ import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTyping
 import FadingSection from '../../FadingSection';
 
 import Sidebar from './Sidebar';
-import Viewer from './Viewer';
+import Viewer from './Viewer.container';
 
 const ProjectWrapper = styled.div`
     background-color: ${GLOBALS.colours.sections.projects.back};

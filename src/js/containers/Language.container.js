@@ -6,7 +6,8 @@ import { changeLanguage } from '../actions';
 export default function(component) {
     const mapStateToProps = function(state) {
         return {
-            language: state.language
+            language: state.language,
+            device: state.device
         };
     };
 

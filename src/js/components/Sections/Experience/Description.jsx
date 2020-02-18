@@ -36,10 +36,10 @@ const MAX_LENGTH = 35;
 
 const translate = (language, key) => Translations.getTranslationHTML(language, key);
 
-const Description = ({ description, language }) => (
+const Description = ({ description, language, device }) => (
     <DescriptionWrapper>
         {
-            lineSplitter(translate(language, description), MAX_LENGTH)
+            lineSplitter(translate(language, description), MAX_LENGTH, device)
                 .map((line, i) => (
                     <Line key={i}>
                         { i === 0 ? <Desc>description</Desc> : <React.Fragment /> }
@@ -52,7 +52,8 @@ const Description = ({ description, language }) => (
 
 Description.propTypes = {
     description: PropTypes.string.isRequired,
-    language: PropTypes.string.isRequired
+    language: PropTypes.string.isRequired,
+    device: PropTypes.string.isRequired
 };
 
 export default languageContainer(Description);

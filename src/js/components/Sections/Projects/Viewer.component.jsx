@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import GLOBALS from '../../../styles/globals';
 import TranslatableTypingSpan from '../../Translatable/Translatable.container';
 import { lighten } from 'polished';
-import browserme from 'browserme';
 
 import { TypingLi } from '../../TypingText/TypingText.component';
 import TypingChain from '../../TypingText/TypingChain.component';
@@ -78,13 +77,13 @@ const Skill = styled(TypingLi)`
     }
 `;
 
-const getProjectSlice = (projects, index) => browserme.device.isDesktop() ? [projects[index]] : projects;
+const getProjectSlice = (device, projects, index) => device === 'desktop' ? [projects[index]] : projects;
 
-const Viewer = ({ projects, index }) => {
+const Viewer = ({ projects, index, device }) => {
     return (
         <React.Fragment>
             {
-                getProjectSlice(projects, index).map(({ image, name, year, tasks, skills }, i) => (
+                getProjectSlice(device, projects, index).map(({ image, name, year, tasks, skills }, i) => (
                     <ViewerWrapper key={i}>
                         <img alt={name} src={image} />
                         <Info>
@@ -110,7 +109,8 @@ const Viewer = ({ projects, index }) => {
 
 Viewer.propTypes = {
     projects: PropTypes.array.isRequired,
-    index: PropTypes.number.isRequired
+    index: PropTypes.number.isRequired,
+    device: PropTypes.string.isRequired
 };
 
 export default Viewer;

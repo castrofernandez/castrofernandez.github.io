@@ -7,6 +7,7 @@ import scoreFilter from './score';
 import levelFilter from './level';
 import sectionFilter from './section';
 import puzzleFilter from './puzzle';
+import deviceFilter from './device';
 
 QueryString.load();
 
@@ -16,7 +17,8 @@ const reducers = (state = {}, action) => {
         score: scoreFilter(state.score, action),
         level: levelFilter(state.level, action),
         section: sectionFilter(state.section, action),
-        puzzle: puzzleFilter(state.puzzle, action)
+        puzzle: puzzleFilter(state.puzzle, action),
+        device: deviceFilter(state.device, action)
     };
 };
 

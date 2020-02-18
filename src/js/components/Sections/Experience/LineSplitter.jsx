@@ -1,5 +1,3 @@
-import browserme from 'browserme';
-
 class Line {
     constructor(words = []) {
         this.words = words;
@@ -59,8 +57,8 @@ const doSplit = (text, maxLength) => {
     return lines.toArray();
 };
 
-const split = (text, maxLength = 40) => {
-    return browserme.device.isDesktop() ? doSplit(text, maxLength) : [text];
+const split = (text, maxLength = 40, device) => {
+    return device === 'desktop' ? doSplit(text, maxLength) : [text];
 };
 
 export default split;
