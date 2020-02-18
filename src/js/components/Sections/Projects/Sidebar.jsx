@@ -12,6 +12,10 @@ const SidebarWrapper = styled.aside`
     color: #fff;
     width: 35%;
     margin-right: 30px;
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        display: none;
+    }
 `;
 
 const Title = styled(TypingParagraph)`

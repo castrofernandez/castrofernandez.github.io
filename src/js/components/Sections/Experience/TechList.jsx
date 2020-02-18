@@ -9,6 +9,10 @@ import GLOBALS from '../../../styles/globals';
 const List = styled.ul`
     list-style: none;
     margin: 0;
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        padding-left: 10px;
+    }
 `;
 
 const ArrayInline = styled.ul`
@@ -37,8 +41,16 @@ const ArrayInline = styled.ul`
     li {
         margin-right: 10px;
 
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            margin-right: 5px;
+        }
+
         &:first-child {
             margin-left: 10px;
+
+            @media (max-width: ${GLOBALS.sizes.mobile}) {
+                margin-left: 5px;
+            }
         }
 
         &:not(:last-child):after {

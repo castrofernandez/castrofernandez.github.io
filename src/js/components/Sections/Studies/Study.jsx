@@ -26,6 +26,10 @@ const Subjects = styled.ul`
         position: relative;
         padding-left: 27px;
 
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            width: 100%;
+        }
+
         &:before {
             position: absolute;
             left: 0;
@@ -43,6 +47,13 @@ const Where = styled.section`
     ul {
         justify-content: flex-end;
         margin-bottom: 15px;
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            .typing {
+                font-size: 20px;
+                line-height: 28px;
+            }
+        }
     }
 `;
 

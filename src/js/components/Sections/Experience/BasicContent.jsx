@@ -54,10 +54,6 @@ export const line = css`
         &:after {
             content: 'end';
             color: ${GLOBALS.colours.ide.keyword};
-
-            @media (max-width: ${GLOBALS.sizes.mobile}) {
-                display: none;
-            }
         }
     }
 `;
@@ -113,5 +109,9 @@ export const Symbol = styled.span`
 
     &:before {
         content: ':';
+    }
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        font-size: 18px;
     }
 `;

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import GLOBALS from '../../../styles/globals';
 import TranslatableTypingSpan from '../../Translatable/Translatable.container';
 import { lighten } from 'polished';
+import browserme from 'browserme';
 
 import { TypingLi } from '../../TypingText/TypingText.component';
 import TypingChain from '../../TypingText/TypingChain.component';
@@ -25,6 +26,10 @@ const Info = styled.div`
     margin-top: 20px;
     position: relative;
     min-height: 340px;
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        margin-bottom: 20px;
+    }
 `;
 
 const Year = styled.h4`
@@ -73,27 +78,33 @@ const Skill = styled(TypingLi)`
     }
 `;
 
-const Viewer = ({ projects, index }) => {
-    const { image, name, year, tasks, skills } = projects[index];
+const getProjectSlice = (projects, index) => browserme.device.isDesktop() ? [projects[index]] : projects;
 
+const Viewer = ({ projects, index }) => {
     return (
-        <ViewerWrapper>
-            <img alt={name} src={image} />
-            <Info>
-                <Year>{year}</Year>
-                <Label><TranslatableTypingSpan text="title" /></Label>
-                <Title>{name}</Title>
-                <Label><TranslatableTypingSpan text="tasks" /></Label>
-                <Desc><TranslatableTypingSpan text={tasks} /></Desc>
-                <TypingChain>
-                    {
-                        skills.map((skill, i) => (
-                            <Skill key={i} text={skill} />
-                        ))
-                    }
-                </TypingChain>
-            </Info>
-        </ViewerWrapper>
+        <React.Fragment>
+            {
+                getProjectSlice(projects, index).map(({ image, name, year, tasks, skills }, i) => (
+                    <ViewerWrapper key={i}>
+                        <img alt={name} src={image} />
+                        <Info>
+                            <Year>{year}</Year>
+                            <Label><TranslatableTypingSpan text="title" /></Label>
+                            <Title>{name}</Title>
+                            <Label><TranslatableTypingSpan text="tasks" /></Label>
+                            <Desc><TranslatableTypingSpan text={tasks} /></Desc>
+                            <TypingChain>
+                                {
+                                    skills.map((skill, i) => (
+                                        <Skill key={i} text={skill} />
+                                    ))
+                                }
+                            </TypingChain>
+                        </Info>
+                    </ViewerWrapper>
+                ))
+            }
+        </React.Fragment>
     );
 };
 

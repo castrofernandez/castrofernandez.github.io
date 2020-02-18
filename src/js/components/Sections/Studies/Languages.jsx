@@ -17,10 +17,21 @@ const LanguageList = styled.ul`
     > li {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 15px;
         min-height: 40px;
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .typing {
+                font-size: 20px;
+                line-height: 28px;
+            }
+        }
     }
 `;
 
@@ -30,6 +41,10 @@ const Language = styled.div`
     position: relative;
     padding-left: 27px;
     margin-right: 20px;
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        margin-bottom: 10px;
+    }
 
     &:before {
         position: absolute;

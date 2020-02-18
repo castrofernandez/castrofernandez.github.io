@@ -6,6 +6,10 @@ const Desc = styled.span`
     color: ${GLOBALS.colours.ide.key};
     text-transform: lowercase;
 
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        font-style: italic;
+    }
+
     &:after {
         content: ': ';
     }

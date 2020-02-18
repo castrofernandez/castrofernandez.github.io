@@ -22,6 +22,10 @@ const ProjectBox = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        flex-direction: column;
+    }
 `;
 
 import WWWF from '../../../../images/projects/wwwf.png';
@@ -70,7 +74,7 @@ const projects = [
     },
     {
         image: LAND,
-        name: 'landportal.info',
+        name: 'landportal .info',
         year: 2013,
         tasks: 'landportalTasks',
         skills: ['JavaScript', 'PHP', 'Python', 'MySQL', 'Drupal', 'Bootstrap']

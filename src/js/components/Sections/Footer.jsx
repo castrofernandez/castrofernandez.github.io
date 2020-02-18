@@ -19,10 +19,20 @@ const Wrapper = styled.div`
     &.wrapper {
         padding-top: 80px;
         text-align: center;
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            padding-top: 50px;
+        }
     }
     
     .section-title {
         font-family: ${GLOBALS.fonts.pixelCondensed};
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            margin-bottom: 40px;
+            font-size: 90px;
+            line-height: 75px;
+        }
     }
 `;
 
@@ -35,10 +45,20 @@ const Ending = styled.div`
     font: 400 80px/60px ${GLOBALS.fonts.pixel};
     color: ${GLOBALS.colours.sections.footer.fore};
 
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        font-size: 60px;
+        line-height: 50px;
+        text-align: left;
+    }
+
     &:before {
         content: '</';
         position: relative;
         left: 15px;
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            left: 5px;
+        }
     }
 
     &:after {
@@ -59,6 +79,12 @@ const Bar = styled.div`
     text-transform: uppercase;
     padding: 3px 0;
 
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        padding: 6px 0;
+        font-size: 25px;
+        margin-top: 30px;
+    }
+
     img {
         margin-right: 10px;
     }
@@ -73,10 +99,18 @@ const Links = styled.ul`
     flex-wrap: wrap;
     justify-content: space-between;
 
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        margin-bottom: 20px;
+    }
+
     li {
         width: calc(50% - 15px);
         flex: 0 0 auto;
         margin-bottom: 30px;
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            width: 100%;
+        }
     }
 `;
 
@@ -87,6 +121,10 @@ const Link = styled.a`
     text-decoration: none;
     padding: 12px 25px;
     font-size: 30px;
+
+    @media (max-width: ${GLOBALS.sizes.mobile}) {
+        font-size: 25px;
+    }
 
     &.mail {
         background-color: ${GLOBALS.colours.primary};
