@@ -12,7 +12,7 @@
   "author": "Juan Castro Fernández",
   "license": "MIT",
   "dependencies": {
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "querystringme": "^1.0.9",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
@@ -26,6 +26,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "babel-loader": "^8.0.5",
+    "browserme": "^1.1.0",
     "clean-webpack-plugin": "^1.0.1",
     "css-loader": "^2.1.0",
     "eslint": "^5.14.1",
