@@ -1,7 +1,7 @@
 import CONSTANTS from '../actions/constants';
-import browserme from 'browserme';
+import sizeme from 'sizeme';
 
-const deviceFilter = (state = browserme.device.getDevice(), action) => {
+const deviceFilter = (state = sizeme.getDeviceType(), action) => {
     switch (action.type) {
         case CONSTANTS.CHANGE_DEVICE:
             return action.device;

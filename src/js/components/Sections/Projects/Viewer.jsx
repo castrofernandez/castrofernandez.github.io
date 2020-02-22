@@ -78,7 +78,7 @@ const Skill = styled(TypingLi)`
     }
 `;
 
-const getProjectSlice = (device, projects, index) => device === 'desktop' ? [projects[index]] : projects;
+const getProjectSlice = (device, projects, index) => device !== 'mobile' ? [projects[index]] : projects;
 
 const Viewer = ({ projects, index, device }) => {
     return (
