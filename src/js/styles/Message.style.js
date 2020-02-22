@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import GLOBALS from './globals';
-import blink from '../styles/blink.keyframe';
+import { blink } from '../styles/keyframes';
 
 const Message = styled.p`
     font: 400 65px/70px ${GLOBALS.fonts.pixelCondensed};

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import scrolltome from 'scrolltome';
 
 import GLOBALS from '../../../styles/globals';
-import grow from '../../../styles/grow.keyframe';
+import { grow } from '../../../styles/keyframes';
 
 const BarWrapper = styled.hr`
     display: inline-block;

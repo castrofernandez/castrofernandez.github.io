@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import scrolltome from 'scrolltome';
-import fade from '../styles/fade.keyframe';
+import { fade } from '../styles/keyframes';
 
 import languageContainer from '../containers/Language.container';
 

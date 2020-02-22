@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import GLOBALS from '../styles/globals';
-import blink from '../styles/blink.keyframe';
+import { blink } from '../styles/keyframes';
 import containme from 'containme';
 
 const ClockWrapper = styled.p`
