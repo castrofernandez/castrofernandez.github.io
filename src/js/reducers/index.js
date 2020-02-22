@@ -1,15 +1,12 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import QueryString from '../querystring';
 import languageFilter from './language';
 import scoreFilter from './score';
 import levelFilter from './level';
 import sectionFilter from './section';
 import puzzleFilter from './puzzle';
 import deviceFilter from './device';
-
-QueryString.load();
 
 const reducers = (state = {}, action) => {
     return {
