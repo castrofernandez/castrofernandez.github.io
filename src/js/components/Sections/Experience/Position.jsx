@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { basicContent, line, trailComma } from './BasicContent';
 import String from './String';
 import Desc from './Desc';
-import TranslatableTypingSpan from '../../Translatable/Translatable.container';
+import TranslatableTypingSpan from '../../Translatable/Translatable';
 
 const PositionWrapper = styled.h4`
     ${basicContent};

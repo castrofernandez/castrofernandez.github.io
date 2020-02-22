@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import GLOBALS from '../../styles/globals';
+import containme from 'containme';
 
 import FadingSection from '../FadingSection';
 
@@ -52,4 +53,7 @@ Score.propTypes = {
     score: PropTypes.number.isRequired
 };
 
-export default Score;
+export default containme({
+    component: Score,
+    mapStateToProps: ({ score }) => ({ score })
+});

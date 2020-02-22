@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import GLOBALS from '../../styles/globals';
+import containme from 'containme';
 
 import { Game } from './Tetris.game';
 import Piece from './Piece.component';
+import { changeScore, changeLevel } from '../../actions';
 
 const TetrisWrapper = styled.div`
     display: flex;
@@ -63,4 +65,7 @@ Tetris.propTypes = {
     changeLevel: PropTypes.func.isRequired
 };
 
-export default Tetris;
+export default containme({
+    component: Tetris,
+    actions: { changeScore, changeLevel }
+});

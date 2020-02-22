@@ -5,10 +5,10 @@ import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
 
-import TranslatableTypingSpan from '../../Translatable/Translatable.container';
-import TypingChain from '../../TypingText/TypingChain.component';
-import { TypingLi } from '../../TypingText/TypingText.component';
-import { TranslatableTypingLi } from '../../TypingText/TranslatableTypingText.component';
+import TranslatableTypingSpan from '../../Translatable/Translatable';
+import TypingChain from '../../TypingText/TypingChain';
+import { TypingLi } from '../../TypingText/TypingText';
+import { TranslatableTypingLi } from '../../TypingText/TranslatableTypingText';
 
 const LanguageList = styled.ul`
     list-style: none;

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import languageContainer from '../../containers/Language.container';
 import Translations from '../../containers/Translations';
 
 const translate = (language, key) => Translations.getTranslationHTML(language, key);
@@ -14,4 +15,4 @@ Translation.propTypes = {
     text: PropTypes.string.isRequired
 };
 
-export default Translation;
+export default languageContainer(Translation);

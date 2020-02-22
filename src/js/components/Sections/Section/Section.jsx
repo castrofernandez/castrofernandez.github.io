@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import containme from 'containme';
 
 import scrolltome from 'scrolltome';
-
 import GLOBALS from '../../../styles/globals';
+import { changeSection } from '../../../actions';
 
 const SectionWrapper = styled.section`
     > div {
@@ -67,4 +68,8 @@ Section.propTypes = {
     changeSection: PropTypes.func.isRequired
 };
 
-export default Section;
+export default containme({
+    component: Section,
+    actions: { changeSection },
+    mapStateToProps: ({ section }) => ({ section })
+});

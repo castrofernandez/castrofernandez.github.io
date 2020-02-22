@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import GLOBALS from '../styles/globals';
 import blink from '../styles/blink.keyframe';
+import containme from 'containme';
 
 const ClockWrapper = styled.p`
     margin: -2px 0 0 0;
@@ -95,4 +96,7 @@ Clock.propTypes = {
     puzzle: PropTypes.bool.isRequired
 };
 
-export default Clock;
+export default containme({
+    component: Clock,
+    mapStateToProps: ({ section, puzzle }) => ({ section, puzzle })
+});

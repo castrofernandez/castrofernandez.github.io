@@ -1,13 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import containme from 'containme';
 
 import scrolltome from 'scrolltome';
 
-import Piece from './Piece.component';
+import Piece from './Piece';
 import { shuffle, swapPieces } from './Puzzle.sequence';
 import JuanCastro from '../../../images/juan-castro.gif';
 import GLOBALS from '../../styles/globals';
+import { changePuzzle } from '../../actions';
 
 const Wrapper = styled.div`
     @media (max-width: ${GLOBALS.sizes.mobile}) {
@@ -106,4 +108,8 @@ Puzzle.propTypes = {
     changePuzzle: PropTypes.func.isRequired
 };
 
-export default Puzzle;
+export default containme({
+    component: Puzzle,
+    actions: { changePuzzle },
+    mapStateToProps: ({ section }) => ({ section })
+});

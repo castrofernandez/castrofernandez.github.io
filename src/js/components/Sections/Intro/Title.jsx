@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { TypingParagraph } from '../../TypingText/TypingText.component';
+import { TypingParagraph } from '../../TypingText/TypingText';
 import Heart from './Heart';
 import Bar from './Bar';
 import GLOBALS from '../../../styles/globals';

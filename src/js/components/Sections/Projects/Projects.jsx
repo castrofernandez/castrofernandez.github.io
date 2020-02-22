@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
-import Section from '../Section/Section.container';
-import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTypingText.component';
+import Section from '../Section/Section';
+import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTypingText';
 
 import FadingSection from '../../FadingSection';
 
 import Sidebar from './Sidebar';
-import Viewer from './Viewer.container';
+import Viewer from './Viewer';
 
 const ProjectWrapper = styled.div`
     background-color: ${GLOBALS.colours.sections.projects.back};

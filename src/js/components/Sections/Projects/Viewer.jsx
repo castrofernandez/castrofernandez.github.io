@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import containme from 'containme';
 
 import GLOBALS from '../../../styles/globals';
-import TranslatableTypingSpan from '../../Translatable/Translatable.container';
+import TranslatableTypingSpan from '../../Translatable/Translatable';
 import { lighten } from 'polished';
 
-import { TypingLi } from '../../TypingText/TypingText.component';
-import TypingChain from '../../TypingText/TypingChain.component';
+import { TypingLi } from '../../TypingText/TypingText';
+import TypingChain from '../../TypingText/TypingChain';
 
 const ViewerWrapper = styled.aside`
     color: #fff;
@@ -113,4 +114,7 @@ Viewer.propTypes = {
     device: PropTypes.string.isRequired
 };
 
-export default Viewer;
+export default containme({
+    component: Viewer,
+    mapStateToProps: ({ device }) => ({ device })
+});

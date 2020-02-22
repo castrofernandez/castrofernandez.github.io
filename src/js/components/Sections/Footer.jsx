@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { darken, lighten } from 'polished';
 
 import GLOBALS from '../../styles/globals';
-import Section from './Section/Section.container';
-import { TypingSpan } from '../TypingText/TypingText.component';
-import TranslatableTypingSpan from '../Translatable/Translatable.container';
+import Section from './Section/Section';
+import { TypingSpan } from '../TypingText/TypingText';
+import TranslatableTypingSpan from '../Translatable/Translatable';
 
 import FadingSection from '../FadingSection';
 

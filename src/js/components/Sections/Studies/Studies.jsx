@@ -2,17 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
-import Section from '../Section/Section.container';
-import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTypingText.component';
+import Section from '../Section/Section';
+import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTypingText';
 import Shell from './Shell';
 import Study from './Study';
 import Languages from './Languages';
 import Command from './Command';
 
-import TranslatableTypingSpan from '../../Translatable/Translatable.container';
-import TypingChain from '../../TypingText/TypingChain.component';
-import { TypingLi } from '../../TypingText/TypingText.component';
-import { TranslatableTypingLi } from '../../TypingText/TranslatableTypingText.component';
+import TranslatableTypingSpan from '../../Translatable/Translatable';
+import TypingChain from '../../TypingText/TypingChain';
+import { TypingLi } from '../../TypingText/TypingText';
+import { TranslatableTypingLi } from '../../TypingText/TranslatableTypingText';
 
 const StudiesWrapper = styled.div`
     background-color: ${GLOBALS.colours.sections.studies.back};

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import typingDefault from './TypingText.component.default';
+import typingDefault from './TypingText.default';
 import Message from '../../styles/Message.style';
 import Li from './Li';
 

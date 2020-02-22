@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import containme from 'containme';
 
 import GLOBALS from '../../../styles/globals';
 
@@ -53,4 +54,7 @@ Bar.propTypes = {
     section: PropTypes.string.isRequired
 };
 
-export default Bar;
+export default containme({
+    component: Bar,
+    mapStateToProps: ({ section }) => ({ section })
+});

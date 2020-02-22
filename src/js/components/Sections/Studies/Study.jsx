@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
 
-import TranslatableTypingSpan from '../../Translatable/Translatable.container';
+import TranslatableTypingSpan from '../../Translatable/Translatable';
 
 const Title = styled.h3`
     font-weight: normal;

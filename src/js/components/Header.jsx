@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
+import containme from 'containme';
 
 import LanguageSelector from './LanguageSelector';
 import SectionSelector from './SectionSelector';
-import Clock from './Clock.container';
+import Clock from './Clock';
 import Burger from './Burger';
 import GLOBALS from '../styles/globals';
 
@@ -75,4 +76,7 @@ Header.propTypes = {
     puzzle: PropTypes.bool.isRequired
 };
 
-export default Header;
+export default containme({
+    component: Header,
+    mapStateToProps: ({ section, puzzle }) => ({ section, puzzle })
+});

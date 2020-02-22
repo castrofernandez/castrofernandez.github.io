@@ -2,9 +2,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { TypingLi } from '../../TypingText/TypingText.component';
-import { TranslatableTypingLi } from '../../TypingText/TranslatableTypingText.component';
-import TypingChain from '../../TypingText/TypingChain.component';
+import { TypingLi } from '../../TypingText/TypingText';
+import { TranslatableTypingLi } from '../../TypingText/TranslatableTypingText';
+import TypingChain from '../../TypingText/TypingChain';
 import GLOBALS from '../../../styles/globals';
 
 const SkillWrapper = styled.h2`

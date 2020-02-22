@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TypingParagraph, TypingMessage, TypingLi } from './TypingText.component';
+import { TypingParagraph, TypingMessage, TypingLi } from './TypingText';
 import languageContainer from '../../containers/Language.container';
 import Translations from '../../containers/Translations';
 

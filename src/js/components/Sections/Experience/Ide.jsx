@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
 import Job from './Job';
-import TranslatableTypingSpan from '../../Translatable/Translatable.container';
+import TranslatableTypingSpan from '../../Translatable/Translatable';
 
 const IdeWrapper = styled.div`
     position: relative;

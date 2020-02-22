@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
-import { TypingParagraph } from '../../TypingText/TypingText.component';
+import { TypingParagraph } from '../../TypingText/TypingText';
 import { darken } from 'polished';
 
 const SidebarWrapper = styled.aside`
