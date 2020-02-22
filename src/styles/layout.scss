@@ -1,0 +1,36 @@
+@font-face {
+    font-family: pixel;
+    src: url("../fonts/pixel.eot") format("embedded-opentype"),
+    url(../fonts/pixel.woff2) format("woff2"),
+    url(../fonts/pixel.woff) format("woff"),
+    url(../fonts/pixel.ttf) format("truetype"),
+    url(../fonts/pixel.svg#pixelregular) format("svg");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: pixel_condensed;
+    src: url("../fonts/pixel.condensed.eot") format("embedded-opentype"),
+    url(../fonts/pixel.condensed.woff2) format("woff2"),
+    url(../fonts/pixel.condensed.woff) format("woff"),
+    url(../fonts/pixel.condensed.ttf) format("truetype"),
+    url(../fonts/pixel.condensed.svg#pixel.condensedregular) format("svg");
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: pixel_condensed;
+}
