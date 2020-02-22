@@ -1,27 +1,13 @@
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
+import containme from 'containme';
 import { changeLanguage } from '../actions';
 
-export default function(component) {
-    const mapStateToProps = function(state) {
-        return {
-            language: state.language,
-            device: state.device
-        };
-    };
-
-    const mapDispatchToProps = function(dispatch) {
-        return bindActionCreators(
-            {
-                changeLanguage
-            },
-            dispatch
-        );
-    };
-
-    return connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(component);
-}
+export default (component) => containme({
+    component,
+    actions: {
+        changeLanguage
+    },
+    mapStateToProps: (state) => ({
+        language: state.language,
+        device: state.device
+    })
+});

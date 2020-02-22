@@ -28,6 +28,7 @@
     "babel-loader": "^8.0.5",
     "browserme": "^1.1.0",
     "clean-webpack-plugin": "^1.0.1",
+    "containme": "^1.0.0",
     "css-loader": "^2.1.0",
     "eslint": "^5.14.1",
     "eslint-config-react": "^1.1.7",
