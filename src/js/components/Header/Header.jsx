@@ -7,7 +7,7 @@ import LanguageSelector from './LanguageSelector';
 import SectionSelector from './SectionSelector';
 import Clock from './Clock';
 import Burger from './Burger';
-import GLOBALS from '../styles/globals';
+import GLOBALS from '../../styles/globals';
 
 const slide = keyframes`
     0% {

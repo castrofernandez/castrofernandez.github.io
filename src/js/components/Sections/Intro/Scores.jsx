@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import { TypingMessage } from '../../TypingText/TypingText';
 import { TranslatableTypingMessage } from '../../TypingText/TranslatableTypingText';
-import Score from '../../Score/Score';
-import Level from '../../Level/Level';
+import Score from './Score';
+import Level from './Level';
 
 const ScoreWrapper = styled.div`
     text-align: right;

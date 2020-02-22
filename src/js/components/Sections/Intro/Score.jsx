@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import GLOBALS from '../../styles/globals';
+import GLOBALS from '../../../styles/globals';
 import containme from 'containme';
 
-import FadingSection from '../FadingSection';
+import FadingSection from '../Section/FadingSection';
 
 const ScoreWrapper = styled.div`
     text-transform: uppercase;

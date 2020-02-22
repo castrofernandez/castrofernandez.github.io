@@ -6,7 +6,7 @@ import HeartFull from '../../../../images/heart.svg';
 import HeartSemi from '../../../../images/heart-semi.svg';
 import GLOBALS from '../../../styles/globals';
 
-import FadingSection from '../../FadingSection';
+import FadingSection from '../Section/FadingSection';
 
 const FadingHeart = styled.div`
     display: inline-block;

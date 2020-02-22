@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import scrolltome from 'scrolltome';
-import { fade } from '../styles/keyframes';
+import { fade } from '../../../styles/keyframes';
 
-import languageContainer from '../containers/Language.container';
+import languageContainer from '../../../containers/Language.container';
 
 const FadingSection = styled.div`
     opacity: 0;

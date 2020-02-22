@@ -5,7 +5,7 @@ import GLOBALS from '../../../styles/globals';
 import Section from '../Section/Section';
 import { TranslatableTypingParagraph } from '../../TypingText/TranslatableTypingText';
 
-import FadingSection from '../../FadingSection';
+import FadingSection from '../Section/FadingSection';
 
 import Sidebar from './Sidebar';
 import Viewer from './Viewer';

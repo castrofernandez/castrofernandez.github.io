@@ -5,7 +5,7 @@ import sizeme from 'sizeme';
 import querystringme from 'querystringme';
 import { Provider } from 'react-redux';
 import { store } from './reducers/index';
-import { LANGUAGE_LIST } from './components/LanguageSelector';
+import { LANGUAGE_LIST } from './components/Header/LanguageSelector';
 
 sizeme.load({
     sizes: [

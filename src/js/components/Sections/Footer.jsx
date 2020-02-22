@@ -7,7 +7,7 @@ import Section from './Section/Section';
 import { TypingSpan } from '../TypingText/TypingText';
 import TranslatableTypingSpan from '../Translatable/Translatable';
 
-import FadingSection from '../FadingSection';
+import FadingSection from './Section/FadingSection';
 
 import Asturies from '../../../images/asturies.svg';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MobileMenu from './Mobile.menu';
-import Header from './Header';
+import MobileMenu from './Header/Mobile.menu';
+import Header from './Header/Header';
 import Intro from './Sections/Intro/Intro';
 import Experience from './Sections/Experience/Experience';
 import Studies from './Sections/Studies/Studies';

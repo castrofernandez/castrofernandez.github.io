@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import GLOBALS from '../styles/globals';
-import Translatable from './Translatable/Translatable';
+import GLOBALS from '../../styles/globals';
+import Translatable from '../Translatable/Translatable';
 import SelectorItem from './SelectorItem';
 
 const NavWrapper = styled.ul`

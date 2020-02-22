@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import GLOBALS from '../../../styles/globals';
 
-import FadingSection from '../../FadingSection';
+import FadingSection from '../Section/FadingSection';
 
 const Input = styled.span`
     position: relative;

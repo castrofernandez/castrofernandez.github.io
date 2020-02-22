@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import GLOBALS from '../styles/globals';
+import GLOBALS from '../../styles/globals';
 
 const BurgerLink = styled.a`
     display: none;

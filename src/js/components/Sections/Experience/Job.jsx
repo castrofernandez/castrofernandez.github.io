@@ -6,7 +6,7 @@ import GLOBALS from '../../../styles/globals';
 import { basicContent, line } from './BasicContent';
 import JobData from './JobData';
 
-import FadingSection from '../../FadingSection';
+import FadingSection from '../Section/FadingSection';
 
 const JobWrapper = styled.article`
     ${basicContent};
