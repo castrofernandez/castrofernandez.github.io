@@ -46,17 +46,17 @@ const Main = ({ opened, changeOpened }) => {
     const theClassName = opened ? 'opened' : '';
     const ref = useRef(null);
 
-    const scrollTo = (y) => {
+    const scrollWindowTo = (y) => {
         changeOpened(false);
         scrolltome.start();
         window.scrollTo(0, y);
     };
 
-    const onChange = () => setTimeout(() => scrollTo(ref.current.scrollTop), 10);
+    const onChange = () => setTimeout(() => scrollWindowTo(ref.current.scrollTop), 1);
 
     const scrollMenuTo = (y) => () => ref.current.scroll(0, y);
 
-    const onOpen = () => setTimeout(scrollMenuTo(window.scrollY), 10);
+    const onOpen = () => setTimeout(scrollMenuTo(window.scrollY), 1);
 
     return (
         <OuterWrapper className={theClassName}>
