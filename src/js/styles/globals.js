@@ -46,7 +46,7 @@ export default {
             },
             studies: {
                 fore: white,
-                back: terminalBack,
+                back: '#FB93E0',
                 prompt,
                 input: 'rgba(255, 255, 255, 0.4)'
             },
@@ -61,6 +61,10 @@ export default {
                 twitter: '#1dA1F2',
                 linkedin: '#0077b5',
                 github: textDefault
+            },
+            mobileMenu: {
+                fore: white,
+                back: terminalBack
             }
         }
     },

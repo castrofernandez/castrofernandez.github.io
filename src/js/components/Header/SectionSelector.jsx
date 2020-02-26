@@ -5,6 +5,8 @@ import GLOBALS from '../../styles/globals';
 import Translatable from '../Translatable/Translatable';
 import SelectorItem from './SelectorItem';
 
+import sections from './sections';
+
 const NavWrapper = styled.ul`
     margin: 0;
     padding: 0;
@@ -33,8 +35,6 @@ const Li = styled.li`
         }
       }
 `;
-
-const sections = ['intro', 'experience', 'studies', 'projects'];
 
 const SectionSelector = ({ section }) => (
     <NavWrapper>

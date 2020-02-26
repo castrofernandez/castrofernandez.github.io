@@ -20,7 +20,7 @@ const slide = keyframes`
 `;
 
 const HeaderWrapper = styled.header`
-    position: fixed;
+    position: ${props => props.opened ? 'absolute' : 'fixed'};
     top: -70px;
     left: 0;
     right: 0;
@@ -60,8 +60,8 @@ const NavWrapper = styled.nav`
     align-items: center;
 `;
 
-const Header = ({ section, puzzle }) => (
-    <HeaderWrapper className={`section-${puzzle ? 'puzzle' : section}`}>
+const Header = ({ section, puzzle, opened }) => (
+    <HeaderWrapper opened={opened} className={`section-${puzzle ? 'puzzle' : section}`}>
         <NavWrapper>
             <Burger />
             <SectionSelector section={section} />
@@ -73,7 +73,8 @@ const Header = ({ section, puzzle }) => (
 
 Header.propTypes = {
     section: PropTypes.string.isRequired,
-    puzzle: PropTypes.bool.isRequired
+    puzzle: PropTypes.bool.isRequired,
+    opened: PropTypes.bool
 };
 
 export default containme({

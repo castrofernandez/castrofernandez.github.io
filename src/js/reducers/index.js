@@ -7,6 +7,7 @@ import levelFilter from './level';
 import sectionFilter from './section';
 import puzzleFilter from './puzzle';
 import deviceFilter from './device';
+import openedFilter from './opened';
 
 const reducers = (state = {}, action) => {
     return {
@@ -15,7 +16,8 @@ const reducers = (state = {}, action) => {
         level: levelFilter(state.level, action),
         section: sectionFilter(state.section, action),
         puzzle: puzzleFilter(state.puzzle, action),
-        device: deviceFilter(state.device, action)
+        device: deviceFilter(state.device, action),
+        opened: openedFilter(state.opened, action)
     };
 };
 

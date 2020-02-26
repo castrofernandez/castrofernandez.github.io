@@ -4,3 +4,4 @@ export * from './level';
 export * from './section';
 export * from './puzzle';
 export * from './device';
+export * from './opened';

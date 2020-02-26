@@ -5,6 +5,10 @@ import { darken, lighten } from 'polished';
 export default createGlobalStyle`
     ::-webkit-scrollbar {
         width: 16px;
+
+        @media (max-width: ${GLOBALS.sizes.mobile}) {
+            width: 0;
+        }
     }
 
     ::-webkit-scrollbar-track {

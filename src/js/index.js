@@ -2,10 +2,11 @@ import React from 'react';
 import Reactdom from 'react-dom';
 import App from './components/App.jsx';
 import sizeme from 'sizeme';
-import querystringme from 'querystringme';
+import querystring from './querystring';
 import { Provider } from 'react-redux';
 import { store } from './reducers/index';
-import { LANGUAGE_LIST } from './components/Header/LanguageSelector';
+
+querystring();
 
 sizeme.load({
     sizes: [
@@ -22,16 +23,6 @@ sizeme.load({
             maxWidth: 1200
         }
     ]
-});
-
-querystringme.load({
-    localStorage: true,
-    defaultValues: {
-        language: {
-            default: LANGUAGE_LIST[0],
-            validator: v => LANGUAGE_LIST.includes(v)
-        }
-    }
 });
 
 Reactdom.render(

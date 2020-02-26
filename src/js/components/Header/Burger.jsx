@@ -1,6 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import containme from 'containme';
 import GLOBALS from '../../styles/globals';
+
+import { changeOpened } from '../../actions';
 
 const BurgerLink = styled.a`
     display: none;
@@ -19,9 +23,12 @@ const BurgerLine = styled.span`
     margin-bottom: 5px;
 `;
 
-const Burger = () => {
+const Burger = ({ opened, changeOpened }) => {
     return (
-        <BurgerLink href="#">
+        <BurgerLink onClick={(e) => {
+            e.preventDefault();
+            changeOpened(!opened);
+        }} href="#">
             <BurgerLine />
             <BurgerLine />
             <BurgerLine />
@@ -29,4 +36,14 @@ const Burger = () => {
     );
 };
 
-export default Burger;
+Burger.propTypes = {
+    opened: PropTypes.bool.isRequired,
+    changeOpened: PropTypes.func.isRequired
+};
+
+export default containme({
+    component: Burger,
+    actions: { changeOpened },
+    mapStateToProps: ({ opened }) => ({ opened })
+});
+

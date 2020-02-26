@@ -80,7 +80,7 @@ module.exports = merge(common, {
             template: require('html-webpack-template'),
             headHtmlSnippet:
                 '<meta name="viewport" content="width=device-width, initial-scale=1">',
-            bodyHtmlSnippet: '<main class="main" id="app"></main>'
+            bodyHtmlSnippet: '<div class="main" id="app"></div>'
         })
     ]
 });
