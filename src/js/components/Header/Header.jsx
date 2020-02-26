@@ -60,10 +60,10 @@ const NavWrapper = styled.nav`
     align-items: center;
 `;
 
-const Header = ({ section, puzzle, opened }) => (
+const Header = ({ section, puzzle, opened, onOpen }) => (
     <HeaderWrapper opened={opened} className={`section-${puzzle ? 'puzzle' : section}`}>
         <NavWrapper>
-            <Burger />
+            <Burger onOpen={onOpen} />
             <SectionSelector section={section} />
             <Clock />
             <LanguageSelector />
@@ -74,7 +74,8 @@ const Header = ({ section, puzzle, opened }) => (
 Header.propTypes = {
     section: PropTypes.string.isRequired,
     puzzle: PropTypes.bool.isRequired,
-    opened: PropTypes.bool
+    opened: PropTypes.bool,
+    onOpen: PropTypes.func.isRequired
 };
 
 export default containme({

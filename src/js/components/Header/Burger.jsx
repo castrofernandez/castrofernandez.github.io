@@ -23,10 +23,11 @@ const BurgerLine = styled.span`
     margin-bottom: 5px;
 `;
 
-const Burger = ({ opened, changeOpened }) => {
+const Burger = ({ opened, changeOpened, onOpen }) => {
     return (
         <BurgerLink onClick={(e) => {
             e.preventDefault();
+            onOpen(!opened);
             changeOpened(!opened);
         }} href="#">
             <BurgerLine />
@@ -38,7 +39,8 @@ const Burger = ({ opened, changeOpened }) => {
 
 Burger.propTypes = {
     opened: PropTypes.bool.isRequired,
-    changeOpened: PropTypes.func.isRequired
+    changeOpened: PropTypes.func.isRequired,
+    onOpen: PropTypes.func.isRequired
 };
 
 export default containme({

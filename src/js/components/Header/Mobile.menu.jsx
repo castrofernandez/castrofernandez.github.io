@@ -92,7 +92,7 @@ const A = styled.a`
     }
 `;
 
-const MobileMenu = ({ section, changeSection, opened }) => (
+const MobileMenu = ({ section, changeSection, opened, onChange }) => (
     <Menu className={opened ? 'opened' : ''}>
         <MenuWrapper>
             <Title>Juan Castro</Title>
@@ -102,6 +102,7 @@ const MobileMenu = ({ section, changeSection, opened }) => (
                         <Li key={s} className={`section-${s} ${s === section ? 'active' : ''}`}>
                             <A href={`#${s}`} onClick={(e) => {
                                 changeSection(s);
+                                onChange();
                             }}
                             className={s === section ? 'active' : ''}>
                                 <Translatable text={s} />
@@ -118,7 +119,8 @@ const MobileMenu = ({ section, changeSection, opened }) => (
 MobileMenu.propTypes = {
     section: PropTypes.string.isRequired,
     changeSection: PropTypes.func.isRequired,
-    opened: PropTypes.bool
+    opened: PropTypes.bool,
+    onChange: PropTypes.func.isRequired
 };
 
 export default containme({

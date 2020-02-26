@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import containme from 'containme';
 
+import { changeOpened } from '../actions';
 import MobileMenu from './Header/Mobile.menu';
 import Header from './Header/Header';
 import Intro from './Sections/Intro/Intro';
@@ -26,7 +27,7 @@ const Wrapper = styled.main`
     flex-direction: row;
     width: 180vw;
     left: -80vw;
-    transition: left 0.5s ease-in-out;
+    transition: left 0.4s ease-in-out;
 
     &.opened {
         height: 100vh;
@@ -37,21 +38,30 @@ const Wrapper = styled.main`
 const Body = styled.div`
     position: relative;
     width: 100vw;
-
-    &.opened {
-        overflow-y: scroll;
-    }
+    overflow-y: hidden;
 `;
 
-const Main = ({ opened }) => {
+const Main = ({ opened, changeOpened }) => {
     const theClassName = opened ? 'opened' : '';
+    const ref = useRef(null);
+
+    const scrollTo = (y) => {
+        changeOpened(false);
+        window.scrollTo(0, y);
+    };
+
+    const onChange = () => setTimeout(() => scrollTo(ref.current.scrollTop), 10);
+
+    const scrollMenuTo = (y) => () => ref.current.scroll(0, y);
+
+    const onOpen = () => setTimeout(scrollMenuTo(window.scrollY), 10);
 
     return (
         <OuterWrapper className={theClassName}>
             <Wrapper className={theClassName}>
-                <MobileMenu />
-                <Body className={theClassName}>
-                    <Header opened={opened} />
+                <MobileMenu onChange={onChange} />
+                <Body ref={ref} className={theClassName}>
+                    <Header opened={opened} onOpen={onOpen} />
                     <Intro />
                     <Experience />
                     <Studies />
@@ -64,11 +74,13 @@ const Main = ({ opened }) => {
 };
 
 Main.propTypes = {
-    opened: PropTypes.bool.isRequired
+    opened: PropTypes.bool.isRequired,
+    changeOpened: PropTypes.func.isRequired
 };
 
 export default containme({
     component: Main,
+    actions: { changeOpened },
     mapStateToProps: ({ opened }) => ({ opened })
 });
 
