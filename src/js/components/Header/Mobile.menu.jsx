@@ -88,7 +88,7 @@ const A = styled.a`
     color: ${GLOBALS.colours.text.default};
 
     &.active {
-
+        color: ${GLOBALS.colours.white};
     }
 `;
 

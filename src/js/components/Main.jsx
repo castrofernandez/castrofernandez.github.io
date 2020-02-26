@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import containme from 'containme';
+import scrolltome from 'scrolltome';
 
 import { changeOpened } from '../actions';
 import MobileMenu from './Header/Mobile.menu';
@@ -47,6 +48,7 @@ const Main = ({ opened, changeOpened }) => {
 
     const scrollTo = (y) => {
         changeOpened(false);
+        scrolltome.start();
         window.scrollTo(0, y);
     };
 

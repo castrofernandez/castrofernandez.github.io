@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import containme from 'containme';
 import GLOBALS from '../../styles/globals';
+import scrolltome from 'scrolltome';
 
 import { changeOpened } from '../../actions';
 
@@ -28,6 +29,7 @@ const Burger = ({ opened, changeOpened, onOpen }) => {
         <BurgerLink onClick={(e) => {
             e.preventDefault();
             onOpen(!opened);
+            scrolltome.stop();
             changeOpened(!opened);
         }} href="#">
             <BurgerLine />
