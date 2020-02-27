@@ -71,5 +71,8 @@ export default {
     fonts: {
         pixel: 'pixel, sans-serif',
         pixelCondensed: 'pixel_condensed, sans-serif'
+    },
+    transitions: {
+        mobileMenu: 'left 0.4s ease-in-out'
     }
 };

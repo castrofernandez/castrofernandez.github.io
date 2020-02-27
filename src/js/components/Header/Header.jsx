@@ -20,12 +20,13 @@ const slide = keyframes`
 `;
 
 const HeaderWrapper = styled.header`
-    position: ${props => props.opened ? 'absolute' : 'fixed'};
+    position: fixed;
     top: -70px;
-    left: 0;
+    left: ${props => props.opened ? '80vw' : '0'};
     right: 0;
     width: 100%;
     z-index: 100;
+    transition: ${GLOBALS.transitions.mobileMenu};
     animation: ${slide} 0.5s linear;
     animation-fill-mode: forwards;
 
@@ -60,10 +61,10 @@ const NavWrapper = styled.nav`
     align-items: center;
 `;
 
-const Header = ({ section, puzzle, opened, onOpen }) => (
+const Header = ({ section, puzzle, opened, onBurgerClick }) => (
     <HeaderWrapper opened={opened} className={`section-${puzzle ? 'puzzle' : section}`}>
         <NavWrapper>
-            <Burger onOpen={onOpen} />
+            <Burger onBurgerClick={onBurgerClick} />
             <SectionSelector section={section} />
             <Clock />
             <LanguageSelector />
@@ -75,7 +76,7 @@ Header.propTypes = {
     section: PropTypes.string.isRequired,
     puzzle: PropTypes.bool.isRequired,
     opened: PropTypes.bool,
-    onOpen: PropTypes.func.isRequired
+    onBurgerClick: PropTypes.func.isRequired
 };
 
 export default containme({
